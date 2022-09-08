@@ -8,7 +8,7 @@ class VariousButton extends StatelessWidget {
       required this.color,
       required this.text})
       : super(key: key);
-  final void Function()? onTap;
+  final void Function() onTap;
   final IconData icon;
   final Color color;
   final String text;
@@ -24,9 +24,7 @@ class VariousButton extends StatelessWidget {
               color: Colors.white.withOpacity(.05),
               borderRadius: BorderRadius.circular(50)),
           child: MaterialButton(
-            onPressed: () {
-              onTap;
-            },
+            onPressed: onTap,
             child: Icon(
               icon,
               color: color,
