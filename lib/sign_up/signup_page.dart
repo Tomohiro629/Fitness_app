@@ -1,11 +1,11 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/login_page/components/input_from_filed.dart';
-import 'package:karaoke_app/login_page/components/login_button.dart';
+import 'package:karaoke_app/sign_up/components/signup_input_from_filed.dart';
+import 'package:karaoke_app/sign_up/components/signup_button.dart';
 
-class LoginPage extends ConsumerWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SignupPage extends ConsumerWidget {
+  const SignupPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     Size size = MediaQuery.of(context).size;
@@ -24,11 +24,11 @@ class LoginPage extends ConsumerWidget {
                       padding: EdgeInsets.only(top: size.height * .2),
                       child: BorderedText(
                         strokeWidth: 1.0,
-                        strokeColor: Colors.indigoAccent,
-                        child: Text(
-                          'Login',
+                        strokeColor: const Color.fromARGB(255, 65, 206, 201),
+                        child: const Text(
+                          'Signup',
                           style: TextStyle(
-                            color: Colors.white.withOpacity(0.7),
+                            decoration: TextDecoration.none,
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 1,
@@ -43,22 +43,22 @@ class LoginPage extends ConsumerWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const InputFromFiled(
+                        const SignupInputFromFiled(
                           icon: Icons.account_circle_outlined,
                           hintText: 'User name...',
                         ),
-                        const InputFromFiled(
+                        const SignupInputFromFiled(
                           icon: Icons.email_outlined,
                           hintText: 'Mail address...',
                         ),
-                        const InputFromFiled(
+                        const SignupInputFromFiled(
                           icon: Icons.lock_outline,
                           hintText: 'Password...',
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const LoginButton(),
+                            const SignupButton(),
                             SizedBox(width: size.width / 20),
                           ],
                         ),

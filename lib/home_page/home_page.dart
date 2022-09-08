@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:karaoke_app/login_page/login_page.dart';
+import 'package:karaoke_app/sign_up/signup_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -61,11 +62,11 @@ class HomePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(50)),
                       child: MaterialButton(
                         onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => const SignupPage()),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignupPage()),
+                          );
                         },
                         child: const Icon(
                           Icons.stop,
