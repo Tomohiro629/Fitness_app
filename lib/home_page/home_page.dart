@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:karaoke_app/login_page/login_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xff192028),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -34,11 +36,11 @@ class HomePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(50)),
                       child: MaterialButton(
                         onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => const LoginPage()),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginPage()),
+                          );
                         },
                         child: const Icon(
                           Icons.play_arrow,
