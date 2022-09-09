@@ -35,31 +35,35 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Column(
               children: [
-                VariousButton(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginPage()),
-                      );
-                    },
-                    icon: Icons.play_arrow,
-                    color: Colors.blue,
-                    text: "ログイン"),
-                VariousButton(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SignupPage()),
-                      );
-                    },
-                    icon: Icons.stop,
-                    color: Colors.red,
-                    text: "サインアップ")
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    VariousButton(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginPage()),
+                          );
+                        },
+                        icon: Icons.play_arrow,
+                        color: Colors.blue,
+                        text: "ログイン"),
+                    VariousButton(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignupPage()),
+                          );
+                        },
+                        icon: Icons.stop,
+                        color: Colors.red,
+                        text: "サインアップ")
+                  ],
+                ),
               ],
             )
           ],
