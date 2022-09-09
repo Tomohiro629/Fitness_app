@@ -1,8 +1,9 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/login_page/components/input_from_filed.dart';
-import 'package:karaoke_app/login_page/components/login_button.dart';
+
+import 'components/input_from_filed.dart';
+import 'components/login_button.dart';
 
 class LoginPage extends ConsumerWidget {
   const LoginPage({Key? key}) : super(key: key);

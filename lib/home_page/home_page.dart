@@ -1,8 +1,9 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
-import 'package:karaoke_app/components/various_button.dart';
-import 'package:karaoke_app/login_page/login_page.dart';
-import 'package:karaoke_app/sign_up/signup_page.dart';
+
+import '../components/various_button.dart';
+import '../login_page/login_page.dart';
+import '../sign_up/signup_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

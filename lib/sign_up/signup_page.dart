@@ -1,8 +1,9 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/sign_up/components/signup_input_from_filed.dart';
-import 'package:karaoke_app/sign_up/components/signup_button.dart';
+
+import 'components/signup_button.dart';
+import 'components/signup_input_from_filed.dart';
 
 class SignupPage extends ConsumerWidget {
   const SignupPage({Key? key}) : super(key: key);

@@ -1,9 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:karaoke_app/home_page/home_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+import 'home_page/home_page.dart';
+
+void main() async {
+  await Firebase.initializeApp();
   runApp(ProviderScope(
       child: ScreenUtilInit(
           designSize: const Size(360, 690),
