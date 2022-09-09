@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
-class SignupInputFromFiled extends StatelessWidget {
-  const SignupInputFromFiled(
-      {Key? key, required this.icon, required this.hintText})
+class InputFromFiled extends StatelessWidget {
+  const InputFromFiled(
+      {Key? key,
+      required this.controller,
+      required this.icon,
+      required this.hintText,
+      required this.keyboardType})
       : super(key: key);
+  final TextEditingController controller;
   final IconData icon;
   final String hintText;
+  final TextInputType keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,7 @@ class SignupInputFromFiled extends StatelessWidget {
         child: TextFormField(
           style: TextStyle(color: Colors.white.withOpacity(.8)),
           cursorColor: Colors.white,
-          keyboardType: TextInputType.emailAddress,
+          keyboardType: keyboardType,
           decoration: InputDecoration(
             prefixIcon: Icon(
               icon,
@@ -39,6 +45,7 @@ class SignupInputFromFiled extends StatelessWidget {
             hintStyle:
                 TextStyle(fontSize: 14, color: Colors.white.withOpacity(.5)),
           ),
+          controller: controller,
         ),
       ),
     );

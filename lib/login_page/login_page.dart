@@ -1,15 +1,20 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 
-import 'components/input_from_filed.dart';
+import '../components/input_from_filed.dart';
 import 'components/login_button.dart';
 
-class LoginPage extends ConsumerWidget {
+class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(
+    BuildContext context,
+  ) {
+    final TextEditingController mailController = TextEditingController();
+    final TextEditingController passController = TextEditingController();
     Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: const Color(0xff192028),
       body: SingleChildScrollView(
@@ -40,26 +45,34 @@ class LoginPage extends ConsumerWidget {
                     ),
                   ),
                   Expanded(
-                    flex: 2,
+                    flex: 3,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const InputFromFiled(
-                          icon: Icons.account_circle_outlined,
-                          hintText: 'User name...',
-                        ),
-                        const InputFromFiled(
-                          icon: Icons.email_outlined,
-                          hintText: 'Mail address...',
-                        ),
-                        const InputFromFiled(
-                          icon: Icons.lock_outline,
-                          hintText: 'Password...',
+                        Column(
+                          children: [
+                            InputFromFiled(
+                              icon: Icons.email_outlined,
+                              hintText: 'Mail address...',
+                              keyboardType: TextInputType.emailAddress,
+                              controller: mailController,
+                            ),
+                            const Gap(50),
+                            InputFromFiled(
+                              icon: Icons.lock_outline,
+                              hintText: 'Password...',
+                              keyboardType: TextInputType.visiblePassword,
+                              controller: passController,
+                            ),
+                          ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const LoginButton(),
+                            LoginButton(
+                              mailAddress: mailController.text,
+                              password: passController.text,
+                            ),
                             SizedBox(width: size.width / 20),
                           ],
                         ),

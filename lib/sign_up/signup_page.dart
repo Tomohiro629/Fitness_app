@@ -1,73 +1,88 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'components/signup_button.dart';
-import 'components/signup_input_from_filed.dart';
+import 'package:gap/gap.dart';
+import 'package:karaoke_app/components/input_from_filed.dart';
+import 'package:karaoke_app/sign_up/signup_controller.dart';
 
 class SignupPage extends ConsumerWidget {
   const SignupPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Size size = MediaQuery.of(context).size;
+    final signupController = ref.watch(signupControllerProvider);
+    final userName = TextEditingController();
+    final mailAddress = TextEditingController();
+    final password = TextEditingController();
+
     return Scaffold(
       backgroundColor: const Color(0xff192028),
-      body: SingleChildScrollView(
-        child: SizedBox(
-          height: size.height,
-          child: Stack(
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
             children: [
-              Column(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Padding(
-                      padding: EdgeInsets.only(top: size.height * .2),
-                      child: BorderedText(
-                        strokeWidth: 1.0,
-                        strokeColor: const Color.fromARGB(255, 65, 206, 201),
-                        child: const Text(
-                          'Signup',
-                          style: TextStyle(
-                            decoration: TextDecoration.none,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 1,
-                            wordSpacing: 4,
-                          ),
-                        ),
-                      ),
-                    ),
+              BorderedText(
+                strokeWidth: 1.0,
+                strokeColor: Colors.indigoAccent,
+                child: Text(
+                  'Signup',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.7),
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1,
+                    wordSpacing: 4,
                   ),
-                  Expanded(
-                    flex: 2,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        const SignupInputFromFiled(
-                          icon: Icons.account_circle_outlined,
-                          hintText: 'User name...',
-                        ),
-                        const SignupInputFromFiled(
-                          icon: Icons.email_outlined,
-                          hintText: 'Mail address...',
-                        ),
-                        const SignupInputFromFiled(
-                          icon: Icons.lock_outline,
-                          hintText: 'Password...',
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const SignupButton(),
-                            SizedBox(width: size.width / 20),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                ),
               ),
+              const Gap(100),
+              InputFromFiled(
+                  controller: userName,
+                  icon: Icons.person_outlined,
+                  hintText: "User name...",
+                  keyboardType: TextInputType.name),
+              const Gap(50),
+              InputFromFiled(
+                  controller: mailAddress,
+                  icon: Icons.mail_outline,
+                  hintText: "Mail address...",
+                  keyboardType: TextInputType.emailAddress),
+              const Gap(50),
+              InputFromFiled(
+                  controller: password,
+                  icon: Icons.lock_outline,
+                  hintText: "Password...",
+                  keyboardType: TextInputType.visiblePassword),
+              const Gap(50),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: InkWell(
+                  highlightColor: Colors.transparent,
+                  splashColor: const Color.fromARGB(117, 65, 206, 201),
+                  onTap: () async {
+                    try {
+                      await signupController.signupUser(
+                          newEmail: mailAddress.text,
+                          newPassword: password.text);
+                    } catch (e) {
+                      // ignore: avoid_print
+                      print(e);
+                    }
+                  },
+                  child: Container(
+                    height: 80.0,
+                    width: 150.0,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(.05),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Text(
+                      "サインアップ",
+                      style: TextStyle(color: Colors.white.withOpacity(.8)),
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),

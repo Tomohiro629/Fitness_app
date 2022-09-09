@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class LoginButton extends StatelessWidget {
-  const LoginButton({Key? key}) : super(key: key);
+  const LoginButton(
+      {Key? key, required this.mailAddress, required this.password})
+      : super(key: key);
+  final String mailAddress;
+  final String password;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -10,7 +15,9 @@ class LoginButton extends StatelessWidget {
       child: InkWell(
         highlightColor: Colors.transparent,
         splashColor: const Color.fromARGB(117, 65, 206, 201),
-        onTap: () {},
+        onTap: () {
+          print(mailAddress);
+        },
         child: Container(
           height: size.width / 8,
           width: size.width / 2,
