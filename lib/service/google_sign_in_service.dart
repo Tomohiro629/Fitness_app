@@ -14,7 +14,6 @@ class GoogleSignInService {
   Future<void> handleSignIn() async {
     try {
       await googleSignIn.signIn();
-      print("ログイン成功");
     } catch (e) {
       // ignore: avoid_print
       print(e);
