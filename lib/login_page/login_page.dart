@@ -47,34 +47,68 @@ class LoginPage extends ConsumerWidget {
                   hintText: "Password...",
                   keyboardType: TextInputType.visiblePassword),
               const Gap(50),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: InkWell(
-                  highlightColor: Colors.transparent,
-                  splashColor: const Color.fromARGB(117, 65, 206, 201),
-                  onTap: () async {
-                    try {
-                      await loginController.loginUser(
-                          email: mailAddress.text, password: password.text);
-                    } catch (e) {
-                      // ignore: avoid_print
-                      print(e);
-                    }
-                  },
-                  child: Container(
-                    height: 80.0,
-                    width: 150.0,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(.05),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Text(
-                      "ログイン",
-                      style: TextStyle(color: Colors.white.withOpacity(.8)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: InkWell(
+                      highlightColor: Colors.transparent,
+                      splashColor: const Color.fromARGB(117, 65, 206, 201),
+                      onTap: () async {
+                        try {
+                          await loginController.loginUser(
+                              email: mailAddress.text, password: password.text);
+                        } catch (e) {
+                          // ignore: avoid_print
+                          print(e);
+                        }
+                      },
+                      child: Container(
+                        height: 80.0,
+                        width: 150.0,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(.05),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Text(
+                          "ログイン",
+                          style: TextStyle(color: Colors.white.withOpacity(.8)),
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                  const Gap(50),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: InkWell(
+                      highlightColor: Colors.transparent,
+                      splashColor: const Color.fromARGB(117, 65, 206, 201),
+                      onTap: () async {
+                        try {
+                          await loginController.handleSignIn();
+                        } catch (e) {
+                          // ignore: avoid_print
+                          print(e);
+                        }
+                      },
+                      child: Container(
+                        height: 80.0,
+                        width: 150.0,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(.05),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Text(
+                          "Googleアカウント\nでログイン",
+                          style: TextStyle(color: Colors.white.withOpacity(.8)),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
