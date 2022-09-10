@@ -22,7 +22,7 @@ class SignupPage extends ConsumerWidget {
             children: [
               BorderedText(
                 strokeWidth: 1.0,
-                strokeColor: Colors.indigoAccent,
+                strokeColor: Colors.red,
                 child: Text(
                   'Signup',
                   style: TextStyle(
@@ -57,7 +57,7 @@ class SignupPage extends ConsumerWidget {
                 borderRadius: BorderRadius.circular(15),
                 child: InkWell(
                   highlightColor: Colors.transparent,
-                  splashColor: const Color.fromARGB(117, 65, 206, 201),
+                  splashColor: const Color.fromARGB(117, 206, 65, 65),
                   onTap: () async {
                     try {
                       await signupController.signupUser(

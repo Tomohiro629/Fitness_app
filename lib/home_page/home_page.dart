@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: const Color(0xff192028),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Column(
               children: [
@@ -35,37 +35,35 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            Column(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    VariousButton(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const LoginPage()),
-                          );
-                        },
-                        icon: Icons.play_arrow,
-                        color: Colors.blue,
-                        text: "ログイン"),
-                    VariousButton(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SignupPage()),
-                          );
-                        },
-                        icon: Icons.stop,
-                        color: Colors.red,
-                        text: "サインアップ")
-                  ],
-                ),
+                VariousButton(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginPage()),
+                      );
+                    },
+                    icon: Icons.play_arrow,
+                    color: Colors.blue,
+                    textColor: Colors.blue,
+                    text: "ログイン"),
+                VariousButton(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignupPage()),
+                      );
+                    },
+                    icon: Icons.stop,
+                    color: Colors.red,
+                    textColor: Colors.red,
+                    text: "サインアップ")
               ],
-            )
+            ),
           ],
         ),
       ),
