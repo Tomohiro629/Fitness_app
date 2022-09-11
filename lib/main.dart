@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:karaoke_app/start_page/start_page.dart';
 
 import 'home_page/home_page.dart';
 
@@ -23,6 +24,6 @@ class MyApp extends StatelessWidget {
         title: 'Karaoke App',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(brightness: Brightness.dark),
-        home: const HomePage());
+        home: const StartPage());
   }
 }
