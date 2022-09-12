@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
                   strokeWidth: 2.0,
                   strokeColor: Colors.indigo,
                   child: const Text(
-                    "RECODE",
+                    "RECORD",
                     style: TextStyle(fontSize: 50.0),
                   ),
                 ),
