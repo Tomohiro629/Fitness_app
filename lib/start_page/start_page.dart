@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:karaoke_app/components/various_button.dart';
+import 'package:karaoke_app/movie_file_page/movie_file_page.dart';
 
 class StartPage extends ConsumerWidget {
   const StartPage({Key? key}) : super(key: key);
@@ -49,36 +50,21 @@ class StartPage extends ConsumerWidget {
               color: const Color.fromARGB(255, 3, 42, 52),
               child: GridView.count(
                 crossAxisCount: 2,
-                children: const [
-                  Card(
-                    color: Colors.green,
-                    child: Center(
-                      child: Text(
-                        "録音ファイル",
-                      ),
-                    ),
-                  ),
-                  Card(
-                    color: Colors.green,
-                    child: Center(
-                      child: Text(
-                        "動画ファイル",
-                      ),
-                    ),
-                  ),
-                  Card(
-                    color: Colors.green,
-                    child: Center(
-                      child: Text(
-                        "ランキング",
-                      ),
-                    ),
-                  ),
-                  Card(
-                    color: Colors.green,
-                    child: Center(
-                      child: Text(
-                        "ランダムに\n曲を選択",
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MovieFilePage()),
+                      );
+                    },
+                    child: const Card(
+                      color: Colors.green,
+                      child: Center(
+                        child: Text(
+                          "動画ファイル",
+                        ),
                       ),
                     ),
                   ),
