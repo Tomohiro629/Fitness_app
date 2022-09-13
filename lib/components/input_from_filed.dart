@@ -6,12 +6,14 @@ class InputFromFiled extends StatelessWidget {
       required this.controller,
       required this.icon,
       required this.hintText,
-      required this.keyboardType})
+      required this.keyboardType,
+      required this.borderColor})
       : super(key: key);
   final TextEditingController controller;
   final IconData icon;
   final String hintText;
   final TextInputType keyboardType;
+  final BorderSide borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +38,8 @@ class InputFromFiled extends StatelessWidget {
               icon,
               color: Colors.white.withOpacity(.7),
             ),
-            focusedBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(
-                  color: Color.fromARGB(255, 65, 206, 201), width: 3.0),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: borderColor,
             ),
             hintMaxLines: 1,
             hintText: hintText,

@@ -36,22 +36,31 @@ class SignupPage extends ConsumerWidget {
               ),
               const Gap(100),
               InputFromFiled(
-                  controller: userName,
-                  icon: Icons.person_outlined,
-                  hintText: "User name...",
-                  keyboardType: TextInputType.name),
+                controller: userName,
+                icon: Icons.person_outlined,
+                hintText: "User name...",
+                keyboardType: TextInputType.name,
+                borderColor: const BorderSide(
+                    color: Color.fromARGB(117, 206, 65, 65), width: 3.0),
+              ),
               const Gap(50),
               InputFromFiled(
-                  controller: mailAddress,
-                  icon: Icons.mail_outline,
-                  hintText: "Mail address...",
-                  keyboardType: TextInputType.emailAddress),
+                controller: mailAddress,
+                icon: Icons.mail_outline,
+                hintText: "Mail address...",
+                keyboardType: TextInputType.emailAddress,
+                borderColor: const BorderSide(
+                    color: Color.fromARGB(117, 206, 65, 65), width: 3.0),
+              ),
               const Gap(50),
               InputFromFiled(
-                  controller: password,
-                  icon: Icons.lock_outline,
-                  hintText: "Password...",
-                  keyboardType: TextInputType.visiblePassword),
+                controller: password,
+                icon: Icons.lock_outline,
+                hintText: "Password...",
+                keyboardType: TextInputType.visiblePassword,
+                borderColor: const BorderSide(
+                    color: Color.fromARGB(117, 206, 65, 65), width: 3.0),
+              ),
               const Gap(50),
               ClipRRect(
                 borderRadius: BorderRadius.circular(15),
@@ -63,6 +72,8 @@ class SignupPage extends ConsumerWidget {
                       await signupController.signupUser(
                           newEmail: mailAddress.text,
                           newPassword: password.text);
+                      // ignore: use_build_context_synchronously
+                      Navigator.pop(context);
                     } catch (e) {
                       // ignore: avoid_print
                       print(e);

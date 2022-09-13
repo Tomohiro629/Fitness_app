@@ -36,16 +36,22 @@ class LoginPage extends ConsumerWidget {
               ),
               const Gap(100),
               InputFromFiled(
-                  controller: mailAddress,
-                  icon: Icons.mail_outline,
-                  hintText: "Mail address...",
-                  keyboardType: TextInputType.emailAddress),
+                controller: mailAddress,
+                icon: Icons.mail_outline,
+                hintText: "Mail address...",
+                keyboardType: TextInputType.emailAddress,
+                borderColor: const BorderSide(
+                    color: Color.fromARGB(255, 65, 206, 201), width: 3.0),
+              ),
               const Gap(50),
               InputFromFiled(
-                  controller: password,
-                  icon: Icons.lock_outline,
-                  hintText: "Password...",
-                  keyboardType: TextInputType.visiblePassword),
+                controller: password,
+                icon: Icons.lock_outline,
+                hintText: "Password...",
+                keyboardType: TextInputType.visiblePassword,
+                borderColor: const BorderSide(
+                    color: Color.fromARGB(255, 65, 206, 201), width: 3.0),
+              ),
               const Gap(50),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
