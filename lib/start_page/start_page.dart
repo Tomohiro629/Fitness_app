@@ -78,13 +78,33 @@ class StartPage extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 VariousButton(
-                    onTap: () {},
+                    onTap: () {
+                      // if (movieData != null) {
+                      //   Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => const SetMovieDataPage()),
+                      //   );
+                      // } else {
+                      //   Navigator.pop(context);
+                      // }
+                    },
                     icon: Icons.play_arrow,
                     color: Colors.blue,
                     textColor: Colors.blue,
                     text: "撮影開始"),
                 VariousButton(
-                    onTap: () {},
+                    onTap: () {
+                      // if (recordingData != null) {
+                      //   Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => const SetRecordingDataPage()),
+                      //   );
+                      // } else {
+                      //   Navigator.pop(context);
+                      // }
+                    },
                     icon: Icons.play_arrow,
                     color: Colors.red,
                     textColor: Colors.red,
