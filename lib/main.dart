@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:karaoke_app/auth_gate/aute_gate_page.dart';
-import 'package:karaoke_app/start_page/start_page.dart';
-
-import 'home_page/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
