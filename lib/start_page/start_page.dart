@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:karaoke_app/components/various_button.dart';
-import 'package:karaoke_app/movie_file_page/movie_file_page.dart';
+
+import '../movie-file_page/movie_file_page.dart';
 
 class StartPage extends ConsumerWidget {
   const StartPage({Key? key}) : super(key: key);
