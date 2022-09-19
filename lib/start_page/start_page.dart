@@ -4,8 +4,6 @@ import 'package:karaoke_app/components/various_button.dart';
 import 'package:karaoke_app/start_page/components/movie_files.dart';
 import 'package:karaoke_app/start_page/components/score_cards.dart';
 
-import '../movie-file_page/movie_file_page.dart';
-
 class StartPage extends ConsumerWidget {
   const StartPage({Key? key}) : super(key: key);
   @override
