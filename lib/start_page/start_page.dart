@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:karaoke_app/components/various_button.dart';
+import 'package:karaoke_app/start_page/components/score_cards.dart';
 
 import '../movie-file_page/movie_file_page.dart';
 
@@ -8,43 +9,12 @@ class StartPage extends ConsumerWidget {
   const StartPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pageController = PageController(viewportFraction: 0.85);
     return Scaffold(
       backgroundColor: const Color(0xff192028),
       body: Center(
           child: Column(
         children: [
-          Container(
-            margin: const EdgeInsets.only(top: 50.0, bottom: 20.0),
-            height: 250.0,
-            child: PageView(
-              controller: pageController,
-              scrollDirection: Axis.horizontal,
-              children: const [
-                Card(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                        color: Color.fromARGB(255, 34, 171, 234), width: 5),
-                  ),
-                ),
-                Card(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                        color: Color.fromARGB(255, 34, 171, 234), width: 5),
-                  ),
-                ),
-                Card(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                        color: Color.fromARGB(255, 34, 171, 234), width: 5),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          const ScoreCards(),
           Expanded(
             child: Container(
               height: 350,
