@@ -75,8 +75,29 @@ class SignupPage extends ConsumerWidget {
                       // ignore: use_build_context_synchronously
                       Navigator.pop(context);
                     } catch (e) {
-                      // ignore: avoid_print
-                      print(e);
+                      if (e.toString() ==
+                          "[firebase_auth/unknown] Given String is empty or null") {
+                        signupController.setErrorText("メールアドレス又はパスワード未入力です。");
+                      } else if (password.text.length < 8) {
+                        signupController.setErrorText("パスワードは8文字以上です。");
+                        // ignore: unrelated_type_equality_checks
+                      } else if (e.toString() ==
+                          "[firebase_auth/email-already-in-use] The email address is already in use by another account.") {
+                        signupController.setErrorText('既にこのメールアドレスは利用されてます。');
+                      } else {
+                        signupController.setErrorText("登録エラー\n再度お試しください。");
+                      }
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            signupController.errorMessage,
+                            style: const TextStyle(color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
+                          backgroundColor: Colors.red,
+                          duration: const Duration(seconds: 2),
+                        ),
+                      );
                     }
                   },
                   child: Container(
