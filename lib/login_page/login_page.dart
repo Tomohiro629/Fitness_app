@@ -95,8 +95,26 @@ class LoginPage extends ConsumerWidget {
                         try {
                           await loginController.handleSignIn();
                         } catch (e) {
-                          // ignore: avoid_print
-                          print(e);
+                          if (e.toString() ==
+                              "[firebase_auth/unknown] Given String is empty or null") {
+                            loginController
+                                .setErrorText("メールアドレス又はパスワード未入力です。");
+                          } else if (e.toString() ==
+                              "[firebase_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.") {
+                            loginController.setErrorText("登録のないメールアドレスです。");
+                          } else {
+                            loginController.setErrorText("ログインエラー\n再度お試しください。");
+                          }
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                loginController.errorMessage,
+                                textAlign: TextAlign.center,
+                              ),
+                              backgroundColor: Colors.red,
+                              duration: const Duration(seconds: 2),
+                            ),
+                          );
                         }
                       },
                       child: Container(
