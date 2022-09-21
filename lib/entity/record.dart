@@ -4,24 +4,24 @@ import 'package:uuid/uuid.dart';
 class Record {
   Record(
       {required this.recordId,
-      required this.title,
-      required this.artist,
-      required this.playTime,
+      required this.calorie,
+      required this.protein,
+      required this.weight,
       required this.recordTime,
       required this.userId});
 
   factory Record.create(
       {required String recordId,
-      required String title,
-      required String artist,
-      required int playTime,
+      required double calorie,
+      required double protein,
+      required double weight,
       required int recordTime,
       required String userId}) {
     return Record(
         recordId: const Uuid().v4(),
-        title: title,
-        artist: artist,
-        playTime: playTime,
+        calorie: calorie,
+        protein: protein,
+        weight: weight,
         recordTime: DateTime.now(),
         userId: userId);
   }
@@ -29,9 +29,9 @@ class Record {
   factory Record.fromJson(Map<String, dynamic> map) {
     return Record(
       recordId: map['recordId'],
-      title: map['title'],
-      artist: map['artist'],
-      playTime: map['playTime'],
+      calorie: map['calorie'],
+      protein: map['protein'],
+      weight: map['weight'],
       recordTime: (map['recordTime'] as Timestamp).toDate(),
       userId: map['userId'],
     );
@@ -40,18 +40,18 @@ class Record {
   Map<String, dynamic> toJson() {
     return {
       'recordId': recordId,
-      'title': title,
-      'artist': artist,
-      'playTime': playTime,
+      'calorie': calorie,
+      'protein': protein,
+      'weight': weight,
       'recordTime': recordTime,
       'userId': userId,
     };
   }
 
   final String recordId;
-  final String title;
-  final String artist;
-  final int playTime;
+  final double calorie;
+  final double protein;
+  final double weight;
   final DateTime recordTime;
   final String userId;
 }
