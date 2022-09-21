@@ -77,7 +77,7 @@ class SignupPage extends ConsumerWidget {
                     } catch (e) {
                       if (e.toString() ==
                           "[firebase_auth/unknown] Given String is empty or null") {
-                        signupController.setErrorText("メールアドレス又はパスワード未入力です。");
+                        signupController.setErrorText("未入力の項目があります。");
                       } else if (password.text.length < 8) {
                         signupController.setErrorText("パスワードは8文字以上です。");
                         // ignore: unrelated_type_equality_checks
