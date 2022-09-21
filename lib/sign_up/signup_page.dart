@@ -24,7 +24,7 @@ class SignupPage extends ConsumerWidget {
                 strokeWidth: 1.0,
                 strokeColor: Colors.red,
                 child: Text(
-                  'Signup',
+                  'SIGN UP',
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.7),
                     fontSize: 30,
@@ -39,6 +39,7 @@ class SignupPage extends ConsumerWidget {
                 controller: userName,
                 icon: Icons.person_outlined,
                 hintText: "User name...",
+                suffixText: "",
                 keyboardType: TextInputType.name,
                 borderColor: const BorderSide(
                     color: Color.fromARGB(117, 206, 65, 65), width: 3.0),
@@ -48,6 +49,7 @@ class SignupPage extends ConsumerWidget {
                 controller: mailAddress,
                 icon: Icons.mail_outline,
                 hintText: "Mail address...",
+                suffixText: "",
                 keyboardType: TextInputType.emailAddress,
                 borderColor: const BorderSide(
                     color: Color.fromARGB(117, 206, 65, 65), width: 3.0),
@@ -57,6 +59,7 @@ class SignupPage extends ConsumerWidget {
                 controller: password,
                 icon: Icons.lock_outline,
                 hintText: "Password...",
+                suffixText: "",
                 keyboardType: TextInputType.visiblePassword,
                 borderColor: const BorderSide(
                     color: Color.fromARGB(117, 206, 65, 65), width: 3.0),
@@ -77,7 +80,7 @@ class SignupPage extends ConsumerWidget {
                     } catch (e) {
                       if (e.toString() ==
                           "[firebase_auth/unknown] Given String is empty or null") {
-                        signupController.setErrorText("メールアドレス又はパスワード未入力です。");
+                        signupController.setErrorText("未入力の項目があります。");
                       } else if (password.text.length < 8) {
                         signupController.setErrorText("パスワードは8文字以上です。");
                         // ignore: unrelated_type_equality_checks
@@ -101,16 +104,19 @@ class SignupPage extends ConsumerWidget {
                     }
                   },
                   child: Container(
-                    height: 80.0,
-                    width: 150.0,
+                    height: 50.0,
+                    width: 100.0,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: Colors.white.withOpacity(.05),
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    child: Text(
-                      "サインアップ",
-                      style: TextStyle(color: Colors.white.withOpacity(.8)),
+                    child: BorderedText(
+                      strokeWidth: 1.0,
+                      strokeColor: Colors.red,
+                      child: const Text(
+                        "SIGN UP",
+                      ),
                     ),
                   ),
                 ),

@@ -6,12 +6,14 @@ class InputFromFiled extends StatelessWidget {
       required this.controller,
       required this.icon,
       required this.hintText,
+      required this.suffixText,
       required this.keyboardType,
       required this.borderColor})
       : super(key: key);
   final TextEditingController controller;
   final IconData icon;
   final String hintText;
+  final String suffixText;
   final TextInputType keyboardType;
   final BorderSide borderColor;
 
@@ -34,6 +36,10 @@ class InputFromFiled extends StatelessWidget {
           cursorColor: Colors.white,
           keyboardType: keyboardType,
           decoration: InputDecoration(
+            suffixIcon: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text(suffixText),
+            ),
             prefixIcon: Icon(
               icon,
               color: Colors.white.withOpacity(.7),

@@ -11,11 +11,9 @@ class Record {
       required this.userId});
 
   factory Record.create(
-      {required String recordId,
-      required double calorie,
+      {required double calorie,
       required double protein,
       required double weight,
-      required int recordTime,
       required String userId}) {
     return Record(
         recordId: const Uuid().v4(),

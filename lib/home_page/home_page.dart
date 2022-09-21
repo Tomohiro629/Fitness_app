@@ -1,6 +1,9 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 
+import '../login_page/login_page.dart';
+import '../sign_up/signup_page.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
   @override
@@ -17,7 +20,7 @@ class HomePage extends StatelessWidget {
                   strokeWidth: 2.0,
                   strokeColor: Colors.red,
                   child: const Text(
-                    "SONG",
+                    "FITNESS",
                     style: TextStyle(fontSize: 50.0),
                   ),
                 ),
@@ -31,6 +34,71 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: InkWell(
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.red,
+                    onTap: () async {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignupPage()),
+                      );
+                    },
+                    child: Container(
+                      height: 50.0,
+                      width: 100.0,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(.05),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: BorderedText(
+                        strokeWidth: 1.0,
+                        strokeColor: Colors.red,
+                        child: const Text(
+                          "SIGN UP",
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: InkWell(
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.indigo,
+                    onTap: () async {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginPage()),
+                      );
+                    },
+                    child: Container(
+                      height: 50.0,
+                      width: 100.0,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(.05),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: BorderedText(
+                        strokeWidth: 1.0,
+                        strokeColor: Colors.indigo,
+                        child: const Text(
+                          "LOG IN",
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
