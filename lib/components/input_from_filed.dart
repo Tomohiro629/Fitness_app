@@ -36,10 +36,6 @@ class InputFromFiled extends StatelessWidget {
           cursorColor: Colors.white,
           keyboardType: keyboardType,
           decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 70,
-              vertical: 20,
-            ),
             suffixIcon: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Text(suffixText),

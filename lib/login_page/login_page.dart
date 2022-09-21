@@ -65,6 +65,8 @@ class LoginPage extends ConsumerWidget {
                         try {
                           await loginController.loginUser(
                               email: mailAddress.text, password: password.text);
+                          // ignore: use_build_context_synchronously
+                          Navigator.pop(context);
                         } catch (e) {
                           // ignore: avoid_print
                           print(e);
