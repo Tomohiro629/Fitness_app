@@ -2,6 +2,7 @@ import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 
 import '../login_page/login_page.dart';
+import '../set_page/set_page.dart';
 import '../sign_up/signup_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -76,7 +77,7 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const LoginPage()),
+                            builder: (context) => const SetPage()),
                       );
                     },
                     child: Container(

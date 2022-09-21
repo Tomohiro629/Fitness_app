@@ -39,6 +39,7 @@ class SignupPage extends ConsumerWidget {
                 controller: userName,
                 icon: Icons.person_outlined,
                 hintText: "User name...",
+                suffixText: "",
                 keyboardType: TextInputType.name,
                 borderColor: const BorderSide(
                     color: Color.fromARGB(117, 206, 65, 65), width: 3.0),
@@ -48,6 +49,7 @@ class SignupPage extends ConsumerWidget {
                 controller: mailAddress,
                 icon: Icons.mail_outline,
                 hintText: "Mail address...",
+                suffixText: "",
                 keyboardType: TextInputType.emailAddress,
                 borderColor: const BorderSide(
                     color: Color.fromARGB(117, 206, 65, 65), width: 3.0),
@@ -57,6 +59,7 @@ class SignupPage extends ConsumerWidget {
                 controller: password,
                 icon: Icons.lock_outline,
                 hintText: "Password...",
+                suffixText: "",
                 keyboardType: TextInputType.visiblePassword,
                 borderColor: const BorderSide(
                     color: Color.fromARGB(117, 206, 65, 65), width: 3.0),
