@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "760119647932",
-    "project_id": "karaokeapp-a7aad",
-    "storage_bucket": "karaokeapp-a7aad.appspot.com"
+    "project_number": "1076968877132",
+    "project_id": "fitnessapp-1cdeb",
+    "storage_bucket": "fitnessapp-1cdeb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:760119647932:android:0d08227e7b8cb14c5cfab9",
+        "mobilesdk_app_id": "1:1076968877132:android:9c03e51ed1f846c779d8e9",
         "android_client_info": {
-          "package_name": "com.example.karaoke_app"
+          "package_name": "com.fitness_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "760119647932-a3trd8da4teru097ge8as2mf319i32e7.apps.googleusercontent.com",
+          "client_id": "1076968877132-li3510kmmidt24iqp63uck9ddgm2k8hj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBRN6dkF225uYAtQlTWgLNLCf6oh4FqxcU"
+          "current_key": "AIzaSyAHx_3ZRrdCGu5Pxv-7bWrQskPIhO8UX9w"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "760119647932-a3trd8da4teru097ge8as2mf319i32e7.apps.googleusercontent.com",
+              "client_id": "1076968877132-li3510kmmidt24iqp63uck9ddgm2k8hj.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
