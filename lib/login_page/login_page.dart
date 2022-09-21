@@ -71,8 +71,8 @@ class LoginPage extends ConsumerWidget {
                         }
                       },
                       child: Container(
-                        height: 80.0,
-                        width: 150.0,
+                        height: 50.0,
+                        width: 100.0,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           color: Colors.white.withOpacity(.05),
@@ -118,15 +118,15 @@ class LoginPage extends ConsumerWidget {
                         }
                       },
                       child: Container(
-                        height: 80.0,
-                        width: 150.0,
+                        height: 50.0,
+                        width: 100.0,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           color: Colors.white.withOpacity(.05),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Text(
-                          "Googleアカウント\nでログイン",
+                          "Google\nアカウント",
                           style: TextStyle(color: Colors.white.withOpacity(.8)),
                         ),
                       ),
