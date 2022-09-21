@@ -36,8 +36,12 @@ class InputFromFiled extends StatelessWidget {
           cursorColor: Colors.white,
           keyboardType: keyboardType,
           decoration: InputDecoration(
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 70,
+              vertical: 20,
+            ),
             suffixIcon: Padding(
-              padding: const EdgeInsets.only(right: 5.0),
+              padding: const EdgeInsets.all(15.0),
               child: Text(suffixText),
             ),
             prefixIcon: Icon(
@@ -48,7 +52,7 @@ class InputFromFiled extends StatelessWidget {
               borderSide: borderColor,
             ),
             hintMaxLines: 1,
-            labelText: hintText,
+            hintText: hintText,
             hintStyle:
                 TextStyle(fontSize: 14, color: Colors.white.withOpacity(.5)),
           ),
