@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const LoginPage()),
+                            builder: (context) => const SignupPage()),
                       );
                     },
                     child: Container(
@@ -58,10 +58,10 @@ class HomePage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: BorderedText(
-                        strokeWidth: 2.0,
+                        strokeWidth: 1.0,
                         strokeColor: Colors.red,
                         child: const Text(
-                          "LOG IN",
+                          "SIGN UP",
                         ),
                       ),
                     ),
@@ -76,7 +76,7 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const SignupPage()),
+                            builder: (context) => const LoginPage()),
                       );
                     },
                     child: Container(
@@ -88,15 +88,15 @@ class HomePage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: BorderedText(
-                        strokeWidth: 2.0,
+                        strokeWidth: 1.0,
                         strokeColor: Colors.indigo,
                         child: const Text(
-                          "SIGN UP",
+                          "LOG IN",
                         ),
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             )
           ],

@@ -24,7 +24,7 @@ class SignupPage extends ConsumerWidget {
                 strokeWidth: 1.0,
                 strokeColor: Colors.red,
                 child: Text(
-                  'Signup',
+                  'SIGN UP',
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.7),
                     fontSize: 30,
@@ -101,16 +101,19 @@ class SignupPage extends ConsumerWidget {
                     }
                   },
                   child: Container(
-                    height: 80.0,
-                    width: 150.0,
+                    height: 50.0,
+                    width: 100.0,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: Colors.white.withOpacity(.05),
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    child: Text(
-                      "サインアップ",
-                      style: TextStyle(color: Colors.white.withOpacity(.8)),
+                    child: BorderedText(
+                      strokeWidth: 1.0,
+                      strokeColor: Colors.red,
+                      child: const Text(
+                        "SIGN UP",
+                      ),
                     ),
                   ),
                 ),

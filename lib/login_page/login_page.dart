@@ -22,7 +22,7 @@ class LoginPage extends ConsumerWidget {
             children: [
               BorderedText(
                 strokeWidth: 1.0,
-                strokeColor: Colors.indigoAccent,
+                strokeColor: Colors.indigo,
                 child: Text(
                   'Login',
                   style: TextStyle(
@@ -40,8 +40,7 @@ class LoginPage extends ConsumerWidget {
                 icon: Icons.mail_outline,
                 hintText: "Mail address...",
                 keyboardType: TextInputType.emailAddress,
-                borderColor: const BorderSide(
-                    color: Color.fromARGB(255, 65, 206, 201), width: 3.0),
+                borderColor: const BorderSide(color: Colors.indigo, width: 3.0),
               ),
               const Gap(50),
               InputFromFiled(
@@ -49,8 +48,7 @@ class LoginPage extends ConsumerWidget {
                 icon: Icons.lock_outline,
                 hintText: "Password...",
                 keyboardType: TextInputType.visiblePassword,
-                borderColor: const BorderSide(
-                    color: Color.fromARGB(255, 65, 206, 201), width: 3.0),
+                borderColor: const BorderSide(color: Colors.indigo, width: 3.0),
               ),
               const Gap(50),
               Row(
@@ -60,7 +58,7 @@ class LoginPage extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(15),
                     child: InkWell(
                       highlightColor: Colors.transparent,
-                      splashColor: const Color.fromARGB(117, 65, 206, 201),
+                      splashColor: Colors.indigo,
                       onTap: () async {
                         try {
                           await loginController.loginUser(
@@ -78,9 +76,12 @@ class LoginPage extends ConsumerWidget {
                           color: Colors.white.withOpacity(.05),
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        child: Text(
-                          "ログイン",
-                          style: TextStyle(color: Colors.white.withOpacity(.8)),
+                        child: BorderedText(
+                          strokeWidth: 1.0,
+                          strokeColor: Colors.indigo,
+                          child: const Text(
+                            "LOG IN",
+                          ),
                         ),
                       ),
                     ),
@@ -90,7 +91,7 @@ class LoginPage extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(15),
                     child: InkWell(
                       highlightColor: Colors.transparent,
-                      splashColor: const Color.fromARGB(117, 65, 206, 201),
+                      splashColor: Colors.indigo,
                       onTap: () async {
                         try {
                           await loginController.handleSignIn();
@@ -125,9 +126,12 @@ class LoginPage extends ConsumerWidget {
                           color: Colors.white.withOpacity(.05),
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        child: Text(
-                          "Google\nアカウント",
-                          style: TextStyle(color: Colors.white.withOpacity(.8)),
+                        child: BorderedText(
+                          strokeWidth: 1.0,
+                          strokeColor: Colors.indigo,
+                          child: const Text(
+                            "Google\nLOG IN",
+                          ),
                         ),
                       ),
                     ),
