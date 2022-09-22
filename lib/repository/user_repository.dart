@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../entity/user.dart';
+import '../entity/fitness_user.dart';
 
 final userRepositoryProvider = Provider(((ref) {
   return UserRepository();
@@ -12,7 +12,7 @@ class UserRepository {
   final _firestore = FirebaseFirestore.instance;
 
   Future<void> setUser({
-    required User user,
+    required FitnessUser user,
   }) async {
     try {
       await _firestore
@@ -30,15 +30,15 @@ class UserRepository {
     await _firestore.collection("users").doc(userId).delete();
   }
 
-  Stream<User?> fetchUserStream(String userId) {
+  Stream<FitnessUser?> fetchUserStream(String userId) {
     final snapshots = _firestore.collection('users').doc(userId).snapshots();
 
-    return snapshots
-        .map(((doc) => doc.data() == null ? null : User.fromJson(doc.data()!)));
+    return snapshots.map(((doc) =>
+        doc.data() == null ? null : FitnessUser.fromJson(doc.data()!)));
   }
 
-  Future<User> getUserDate({required String userId}) async {
+  Future<FitnessUser> getUserDate({required String userId}) async {
     final snapshot = await _firestore.collection("users").doc(userId).get();
-    return User.fromJson(snapshot.data()!);
+    return FitnessUser.fromJson(snapshot.data()!);
   }
 }
