@@ -1,6 +1,7 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 
+import '../components/account_button.dart';
 import '../login_page/login_page.dart';
 import '../sign_up/signup_page.dart';
 
@@ -37,11 +38,8 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: InkWell(
-                    highlightColor: Colors.transparent,
-                    splashColor: Colors.red,
+                AccountButton(
+                    splashColor: const Color.fromARGB(117, 206, 65, 65),
                     onTap: () async {
                       Navigator.push(
                         context,
@@ -49,28 +47,9 @@ class HomePage extends StatelessWidget {
                             builder: (context) => const SignupPage()),
                       );
                     },
-                    child: Container(
-                      height: 50.0,
-                      width: 100.0,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(.05),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: BorderedText(
-                        strokeWidth: 1.0,
-                        strokeColor: Colors.red,
-                        child: const Text(
-                          "SIGN UP",
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: InkWell(
-                    highlightColor: Colors.transparent,
+                    strokeColor: Colors.red,
+                    text: "SIGN UP"),
+                AccountButton(
                     splashColor: Colors.indigo,
                     onTap: () async {
                       Navigator.push(
@@ -79,24 +58,8 @@ class HomePage extends StatelessWidget {
                             builder: (context) => const LoginPage()),
                       );
                     },
-                    child: Container(
-                      height: 50.0,
-                      width: 100.0,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(.05),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: BorderedText(
-                        strokeWidth: 1.0,
-                        strokeColor: Colors.indigo,
-                        child: const Text(
-                          "LOG IN",
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                    strokeColor: Colors.indigo,
+                    text: "LOG IN"),
               ],
             )
           ],
