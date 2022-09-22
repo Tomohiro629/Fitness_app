@@ -11,7 +11,6 @@ class SignupPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final signupController = ref.watch(signupControllerProvider);
-    final userName = TextEditingController();
     final mailAddress = TextEditingController();
     final password = TextEditingController();
 
@@ -36,15 +35,6 @@ class SignupPage extends ConsumerWidget {
                 ),
               ),
               const Gap(100),
-              InputFromFiled(
-                controller: userName,
-                icon: Icons.person_outlined,
-                hintText: "User name...",
-                suffixText: "",
-                keyboardType: TextInputType.name,
-                borderColor: const BorderSide(
-                    color: Color.fromARGB(117, 206, 65, 65), width: 3.0),
-              ),
               const Gap(50),
               InputFromFiled(
                 controller: mailAddress,

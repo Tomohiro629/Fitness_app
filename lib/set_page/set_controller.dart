@@ -23,13 +23,15 @@ class SetController extends ChangeNotifier {
     required double totalCalorie,
     required double totalProtein,
     required double weight,
+    required String userName,
   }) async {
     final userId = _reader(authServiceProvider).userId;
     final record = Record.create(
         calorie: totalCalorie,
         protein: totalProtein,
         weight: weight,
-        userId: userId);
+        userId: userId,
+        userName: userName);
     await _reader(recordRepositoryProvider).setRecord(record: record);
   }
 }
