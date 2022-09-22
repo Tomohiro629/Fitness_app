@@ -2,6 +2,7 @@ import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:karaoke_app/components/account_button.dart';
 import 'package:karaoke_app/login_page/login_controller.dart';
 
 import '../components/input_from_filed.dart';
@@ -56,10 +57,7 @@ class LoginPage extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: InkWell(
-                      highlightColor: Colors.transparent,
+                  AccountButton(
                       splashColor: Colors.indigo,
                       onTap: () async {
                         try {
@@ -72,29 +70,10 @@ class LoginPage extends ConsumerWidget {
                           print(e);
                         }
                       },
-                      child: Container(
-                        height: 50.0,
-                        width: 100.0,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(.05),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: BorderedText(
-                          strokeWidth: 1.0,
-                          strokeColor: Colors.indigo,
-                          child: const Text(
-                            "LOG IN",
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                      strokeColor: Colors.indigo,
+                      text: "LOG IN"),
                   const Gap(50),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: InkWell(
-                      highlightColor: Colors.transparent,
+                  AccountButton(
                       splashColor: Colors.indigo,
                       onTap: () async {
                         try {
@@ -122,24 +101,8 @@ class LoginPage extends ConsumerWidget {
                           );
                         }
                       },
-                      child: Container(
-                        height: 50.0,
-                        width: 100.0,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(.05),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: BorderedText(
-                          strokeWidth: 1.0,
-                          strokeColor: Colors.indigo,
-                          child: const Text(
-                            "Google\nLOG IN",
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                      strokeColor: Colors.indigo,
+                      text: "Google\nLOG IN")
                 ],
               ),
             ],
