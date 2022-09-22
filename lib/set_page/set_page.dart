@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:karaoke_app/set_page/set_controller.dart';
-import 'package:karaoke_app/start_page/start_page.dart';
 
 import '../components/input_from_filed.dart';
 
@@ -46,7 +45,7 @@ class SetPage extends ConsumerWidget {
                 suffixText: "",
                 keyboardType: TextInputType.name,
                 borderColor: const BorderSide(
-                    color: Color.fromARGB(117, 206, 65, 65), width: 3.0),
+                    color: Color.fromARGB(117, 105, 240, 175), width: 3.0),
               ),
               const Gap(50),
               InputFromFiled(
