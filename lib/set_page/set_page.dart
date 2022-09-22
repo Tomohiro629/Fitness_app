@@ -12,6 +12,7 @@ class SetPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final setController = ref.watch(setControllerProvider);
+    final userName = TextEditingController();
     final weight = TextEditingController();
     final totalCalorie = TextEditingController();
     final totalProtein = TextEditingController();
@@ -37,6 +38,16 @@ class SetPage extends ConsumerWidget {
                 ),
               ),
               const Gap(100),
+              InputFromFiled(
+                controller: userName,
+                icon: Icons.person_outlined,
+                hintText: "User name...",
+                suffixText: "",
+                keyboardType: TextInputType.name,
+                borderColor: const BorderSide(
+                    color: Color.fromARGB(117, 105, 240, 175), width: 3.0),
+              ),
+              const Gap(50),
               InputFromFiled(
                 controller: weight,
                 icon: Icons.person_outlined,
@@ -78,7 +89,8 @@ class SetPage extends ConsumerWidget {
                         await setController.setUserDate(
                             totalCalorie: double.parse(totalCalorie.text),
                             totalProtein: double.parse(totalProtein.text),
-                            weight: double.parse(weight.text));
+                            weight: double.parse(weight.text),
+                            userName: userName.text);
                       }
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(

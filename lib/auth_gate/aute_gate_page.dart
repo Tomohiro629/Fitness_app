@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:karaoke_app/home_page/home_page.dart';
 import 'package:karaoke_app/service/auth_service.dart';
-import 'package:karaoke_app/set_page/set_page.dart';
+import 'package:karaoke_app/user_date_gate/user_date_gate_page.dart';
 
 class AuthGatePage extends ConsumerWidget {
   const AuthGatePage({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class AuthGatePage extends ConsumerWidget {
         stream: authUser,
         builder: ((context, snapshot) {
           final isLogin = snapshot.data != null;
-          return isLogin ? const SetPage() : const HomePage();
+          return isLogin ? const UserDateGatePage() : const HomePage();
         }));
   }
 }

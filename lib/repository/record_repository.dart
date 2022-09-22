@@ -13,6 +13,12 @@ class RecordRepository {
     await _firestore.collection("records").doc(recordId).delete();
   }
 
+  Stream<Record?> fetchRecord(String userId) {
+    final snapshots = _firestore.collection('records').doc(userId).snapshots();
+    return snapshots.map(
+        ((doc) => doc.data() == null ? null : Record.fromJson(doc.data()!)));
+  }
+
   Future<void> setRecord({required Record record}) async {
     try {
       await _firestore
