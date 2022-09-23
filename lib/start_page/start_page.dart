@@ -19,9 +19,27 @@ class StartPage extends ConsumerWidget {
           final record = snapshot.data();
           return Column(
             children: [
-              Text(record.weight.toString()),
-              Text(record.calorie.toString()),
-              Text(record.protein.toString())
+              Card(
+                color: Colors.blueAccent,
+                child: Text(
+                  record.weight.toString(),
+                  style: const TextStyle(fontSize: 25.0),
+                ),
+              ),
+              Card(
+                color: Colors.blueAccent,
+                child: Text(
+                  record.calorie.toString(),
+                  style: const TextStyle(fontSize: 25.0),
+                ),
+              ),
+              Card(
+                color: Colors.blueAccent,
+                child: Text(
+                  record.calorie.toString(),
+                  style: const TextStyle(fontSize: 25.0),
+                ),
+              ),
             ],
           );
         },
