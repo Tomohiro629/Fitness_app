@@ -2,6 +2,7 @@ import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:karaoke_app/components/account_button.dart';
 import 'package:karaoke_app/set_page/set_controller.dart';
 
 import '../components/input_from_filed.dart';
@@ -78,10 +79,7 @@ class SetPage extends ConsumerWidget {
                     color: Color.fromARGB(117, 105, 240, 175), width: 3.0),
               ),
               const Gap(50),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: InkWell(
-                  highlightColor: Colors.transparent,
+              AccountButton(
                   splashColor: const Color.fromARGB(117, 105, 240, 175),
                   onTap: () async {
                     try {
@@ -106,24 +104,8 @@ class SetPage extends ConsumerWidget {
                       );
                     }
                   },
-                  child: Container(
-                    height: 50.0,
-                    width: 100.0,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(.05),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: BorderedText(
-                      strokeWidth: 1.0,
-                      strokeColor: Colors.greenAccent,
-                      child: const Text(
-                        "SET",
-                      ),
-                    ),
-                  ),
-                ),
-              )
+                  strokeColor: Colors.greenAccent,
+                  text: "SET")
             ],
           ),
         ),
