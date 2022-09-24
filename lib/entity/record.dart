@@ -1,3 +1,5 @@
+import 'dart:isolate';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
 
@@ -24,6 +26,25 @@ class Record {
         protein: protein,
         weight: weight,
         recordTime: DateTime.now(),
+        userId: userId,
+        userName: userName);
+  }
+
+  Record update({
+    required double calorie,
+    required double protein,
+    required double weight,
+  }) {
+    return _copyWith(calorie: calorie, protein: protein, weight: weight);
+  }
+
+  Record _copyWith({double? calorie, double? protein, double? weight}) {
+    return Record(
+        recordId: recordId,
+        calorie: calorie ?? this.calorie,
+        protein: protein ?? this.protein,
+        weight: weight ?? this.weight,
+        recordTime: recordTime,
         userId: userId,
         userName: userName);
   }
