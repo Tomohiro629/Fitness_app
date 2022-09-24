@@ -28,6 +28,25 @@ class Record {
         userName: userName);
   }
 
+  Record update({
+    required double calorie,
+    required double protein,
+    required double weight,
+  }) {
+    return _copyWith(calorie: calorie, protein: protein, weight: weight);
+  }
+
+  Record _copyWith({double? calorie, double? protein, double? weight}) {
+    return Record(
+        recordId: recordId,
+        calorie: calorie ?? this.calorie,
+        protein: protein ?? this.protein,
+        weight: weight ?? this.weight,
+        recordTime: recordTime,
+        userId: userId,
+        userName: userName);
+  }
+
   factory Record.fromJson(Map<String, dynamic> map) {
     return Record(
       recordId: map['recordId'],
