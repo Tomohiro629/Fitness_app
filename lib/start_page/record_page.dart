@@ -22,21 +22,21 @@ class RecordPage extends ConsumerWidget {
               Card(
                 color: Colors.blueAccent,
                 child: Text(
-                  record.weight.toString(),
+                  "${record.weight}kg",
                   style: const TextStyle(fontSize: 25.0),
                 ),
               ),
               Card(
                 color: Colors.blueAccent,
                 child: Text(
-                  record.calorie.toString(),
+                  "${record.calorie.toString()}cal",
                   style: const TextStyle(fontSize: 25.0),
                 ),
               ),
               Card(
                 color: Colors.blueAccent,
                 child: Text(
-                  record.protein.toString(),
+                  "${record.protein.toString()}g",
                   style: const TextStyle(fontSize: 25.0),
                 ),
               ),
