@@ -23,6 +23,6 @@ class MyApp extends StatelessWidget {
         title: 'Fitness App',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(brightness: Brightness.dark),
-        home: const CalendarPage());
+        home: const AuthGatePage());
   }
 }
