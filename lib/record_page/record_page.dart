@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/firestore.dart';
-import 'package:karaoke_app/start_page/record_controller.dart';
 
 import '../entity/record.dart';
+import 'record_controller.dart';
 
 class RecordPage extends ConsumerWidget {
   const RecordPage({Key? key}) : super(key: key);

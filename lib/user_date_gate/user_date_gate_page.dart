@@ -4,8 +4,8 @@ import 'package:karaoke_app/entity/record.dart';
 import 'package:karaoke_app/repository/record_repository.dart';
 import 'package:karaoke_app/service/auth_service.dart';
 
+import '../record_page/record_page.dart';
 import '../set_page/set_page.dart';
-import '../start_page/record_page.dart';
 
 class UserDateGatePage extends ConsumerWidget {
   const UserDateGatePage({Key? key}) : super(key: key);
