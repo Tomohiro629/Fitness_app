@@ -9,8 +9,8 @@ final recordRepositoryProvider = Provider(((ref) {
 class RecordRepository {
   final _firestore = FirebaseFirestore.instance;
 
-  Future<void> deleteRecord(recordId) async {
-    await _firestore.collection("records").doc(recordId).delete();
+  Future<void> deleteRecord(userId) async {
+    await _firestore.collection("records").doc(userId).delete();
   }
 
   Stream<Record?> fetchRecord(String userId) {
@@ -23,7 +23,7 @@ class RecordRepository {
     try {
       await _firestore
           .collection("records")
-          .doc(record.recordId)
+          .doc(record.userId)
           .set(record.toJson(), SetOptions(merge: true));
     } catch (e) {
       // ignore: avoid_print
