@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/firestore.dart';
+import 'package:karaoke_app/record_page/widgets/sfradial_gauge_widget.dart';
 
 import '../entity/record.dart';
 import 'record_controller.dart';
@@ -26,20 +27,16 @@ class RecordPage extends ConsumerWidget {
                   style: const TextStyle(fontSize: 25.0),
                 ),
               ),
-              Card(
-                color: Colors.blueAccent,
-                child: Text(
-                  "${record.calorie.toString()}cal",
-                  style: const TextStyle(fontSize: 25.0),
-                ),
+              SfRadialGaugeWidget(
+                addValue: 90.0,
+                label: "add cal",
+                total: '${record.calorie}cal',
               ),
-              Card(
-                color: Colors.blueAccent,
-                child: Text(
-                  "${record.protein.toString()}g",
-                  style: const TextStyle(fontSize: 25.0),
-                ),
-              ),
+              SfRadialGaugeWidget(
+                addValue: 50.0,
+                label: 'add protein',
+                total: '${record.protein}g',
+              )
             ],
           );
         },
