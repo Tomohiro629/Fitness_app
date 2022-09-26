@@ -6,45 +6,50 @@ class DailyRecord {
     required this.dailyRecordId,
     required this.dailyCalorie,
     required this.dailyProtein,
-    required this.dailyWeight,
     required this.recordTime,
     required this.userId,
   });
 
   factory DailyRecord.create({
-    required double dailyCalorie,
-    required double dailyProtein,
-    required double dailyWeight,
+    required int dailyCalorie,
+    required int dailyProtein,
     required String userId,
   }) {
     return DailyRecord(
       dailyRecordId: const Uuid().v4(),
       dailyCalorie: dailyCalorie,
       dailyProtein: dailyProtein,
-      dailyWeight: dailyWeight,
       recordTime: DateTime.now(),
       userId: userId,
     );
   }
 
   DailyRecord update({
-    required double dailyCalorie,
-    required double dailyProtein,
-    required double dailyWeight,
+    required int dailyCalorie,
+    required int dailyProtein,
   }) {
     return _copyWith(
-        dailyCalorie: dailyCalorie,
-        dailyProtein: dailyProtein,
-        dailyWeight: dailyWeight);
+      dailyCalorie: dailyCalorie,
+      dailyProtein: dailyProtein,
+    );
   }
 
-  DailyRecord _copyWith(
-      {double? dailyCalorie, double? dailyProtein, double? dailyWeight}) {
+  DailyRecord totalCalorie(int addCalorie) {
+    return _copyWith(dailyCalorie: addCalorie);
+  }
+
+  DailyRecord totalProtein(int addProtein) {
+    return _copyWith(dailyProtein: addProtein);
+  }
+
+  DailyRecord _copyWith({
+    int? dailyCalorie,
+    int? dailyProtein,
+  }) {
     return DailyRecord(
       dailyRecordId: dailyRecordId,
       dailyCalorie: dailyCalorie ?? this.dailyCalorie,
       dailyProtein: dailyProtein ?? this.dailyProtein,
-      dailyWeight: dailyWeight ?? this.dailyWeight,
       recordTime: recordTime,
       userId: userId,
     );
@@ -55,7 +60,6 @@ class DailyRecord {
       dailyRecordId: map['dailyRecordId'],
       dailyCalorie: map['dailyCalorie'],
       dailyProtein: map['dailyProtein'],
-      dailyWeight: map['dailyWeight'],
       recordTime: (map['recordTime'] as Timestamp).toDate(),
       userId: map['userId'],
     );
@@ -66,16 +70,14 @@ class DailyRecord {
       'dailyRecordId': dailyRecordId,
       'dailyCalorie': dailyCalorie,
       'dailyProtein': dailyProtein,
-      'weight': dailyWeight,
       'recordTime': recordTime,
       'userId': userId,
     };
   }
 
   final String dailyRecordId;
-  final double dailyCalorie;
-  final double dailyProtein;
-  final double dailyWeight;
+  final int dailyCalorie;
+  final int dailyProtein;
   final DateTime recordTime;
   final String userId;
 }
