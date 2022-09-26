@@ -44,6 +44,7 @@ dependencies:
   gap: ^2.0.0
   google_sign_in: ^5.4.1
   riverpod: ^1.0.3
+  syncfusion_flutter_gauges: ^20.2.50
   table_calendar: ^3.0.7
   uuid: 3.0.6
 
