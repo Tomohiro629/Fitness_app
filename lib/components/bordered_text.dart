@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class BorderedTextWidget extends StatelessWidget {
   const BorderedTextWidget({
     Key? key,
-    required this.storokeColor,
     required this.label,
+    required this.storokeColor,
   }) : super(key: key);
   final Color storokeColor;
   final String label;
