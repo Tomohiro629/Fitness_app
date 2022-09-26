@@ -38,10 +38,10 @@ class RecordController extends ChangeNotifier {
   }
 
   Future<void> setAddCalorie(
-      {required DailyRecord dailyRecord, required int addCalorie}) async {
+      {required Record record, required int addCalorie}) async {
     try {
-      await _reader(dailyRecordRepositoryProvider)
-          .setDailyRecord(dailyRecord: dailyRecord.totalCalorie(addCalorie));
+      await _reader(recordRepositoryProvider)
+          .setRecord(record: record.addTotalCalorie(addCalorie));
     } catch (e) {
       // ignore: avoid_print
       print(e);
@@ -49,10 +49,10 @@ class RecordController extends ChangeNotifier {
   }
 
   Future<void> setAddProtein(
-      {required DailyRecord dailyRecord, required int addProtein}) async {
+      {required Record record, required int addProtein}) async {
     try {
-      await _reader(dailyRecordRepositoryProvider)
-          .setDailyRecord(dailyRecord: dailyRecord.totalProtein(addProtein));
+      await _reader(recordRepositoryProvider)
+          .setRecord(record: record.addTotalProtein(addProtein));
     } catch (e) {
       // ignore: avoid_print
       print(e);

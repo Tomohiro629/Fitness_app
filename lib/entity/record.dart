@@ -15,8 +15,8 @@ class Record {
   });
 
   factory Record.create(
-      {required double calorie,
-      required double protein,
+      {required int calorie,
+      required int protein,
       required double weight,
       required String userId,
       required String userName}) {
@@ -33,29 +33,37 @@ class Record {
   }
 
   Record update({
-    required double calorie,
-    required double protein,
+    required int calorie,
+    required int protein,
     required double weight,
   }) {
     return _copyWith(calorie: calorie, protein: protein, weight: weight);
   }
 
   Record _copyWith(
-      {double? calorie,
-      double? protein,
+      {int? calorie,
+      int? protein,
       double? weight,
       int? todayCalorie,
       int? todayProtein}) {
     return Record(
         recordId: recordId,
         calorie: calorie ?? this.calorie,
-        todayCalorie: todayCalorie ?? 0,
+        todayCalorie: todayCalorie ?? this.todayCalorie,
         protein: protein ?? this.protein,
-        todayProtein: todayProtein ?? 0,
+        todayProtein: todayProtein ?? this.todayProtein,
         weight: weight ?? this.weight,
         recordTime: recordTime,
         userId: userId,
         userName: userName);
+  }
+
+  Record addTotalCalorie(int addCalorie) {
+    return _copyWith(todayCalorie: addCalorie);
+  }
+
+  Record addTotalProtein(int addProtein) {
+    return _copyWith(todayProtein: addProtein);
   }
 
   factory Record.fromJson(Map<String, dynamic> map) {
@@ -87,9 +95,9 @@ class Record {
   }
 
   final String recordId;
-  final double calorie;
+  final int calorie;
   final int todayCalorie;
-  final double protein;
+  final int protein;
   final int todayProtein;
   final double weight;
   final DateTime recordTime;

@@ -37,10 +37,24 @@ class RecordPage extends ConsumerWidget {
               ),
               Column(
                 children: [
-                  SfRadialGaugeWidget(
-                    addValue: double.parse(record.todayCalorie.toString()),
-                    label: record.todayCalorie.toString(),
-                    total: '${record.calorie}',
+                  Stack(
+                    children: <Widget>[
+                      record.todayCalorie < record.calorie
+                          ? const Text("")
+                          : Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                "OVER + ${record.todayCalorie - record.calorie}",
+                                style: const TextStyle(
+                                    color: Colors.red, fontSize: 25.0),
+                              ),
+                            ),
+                      SfRadialGaugeWidget(
+                        addValue: double.parse(record.todayCalorie.toString()),
+                        label: record.todayCalorie.toString(),
+                        total: '${record.calorie}',
+                      ),
+                    ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -65,10 +79,14 @@ class RecordPage extends ConsumerWidget {
                               return IconButton(
                                 color: Colors.yellowAccent,
                                 onPressed: () {
-                                  // ignore: unnecessary_null_comparison
+                                  recordController.setAddCalorie(
+                                      record: record,
+                                      addCalorie: (record.todayCalorie +
+                                          int.parse(addCalorie.text)));
                                   recordController.setDailyRecord(
                                       addCalorie: int.parse(addCalorie.text),
                                       addProtein: dailyRecord.dailyProtein);
+                                  addCalorie.clear();
                                 },
                                 icon: const Icon(Icons.add),
                               );
@@ -81,10 +99,24 @@ class RecordPage extends ConsumerWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SfRadialGaugeWidget(
-                    addValue: double.parse(record.todayProtein.toString()),
-                    label: record.todayProtein.toString(),
-                    total: '${record.protein}',
+                  Stack(
+                    children: [
+                      record.todayProtein < record.protein
+                          ? const Text("")
+                          : Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                "OVER + ${record.todayProtein - record.protein}",
+                                style: const TextStyle(
+                                    color: Colors.red, fontSize: 25.0),
+                              ),
+                            ),
+                      SfRadialGaugeWidget(
+                        addValue: double.parse(record.todayProtein.toString()),
+                        label: record.todayProtein.toString(),
+                        total: '${record.protein}',
+                      ),
+                    ],
                   ),
                   Row(
                     children: [
@@ -108,10 +140,14 @@ class RecordPage extends ConsumerWidget {
                               return IconButton(
                                 color: Colors.yellowAccent,
                                 onPressed: () {
-                                  // ignore: unnecessary_null_comparison
+                                  recordController.setAddProtein(
+                                      record: record,
+                                      addProtein: record.todayProtein +
+                                          int.parse(addProtein.text));
                                   recordController.setDailyRecord(
                                       addCalorie: dailyRecord.dailyCalorie,
                                       addProtein: int.parse(addProtein.text));
+                                  addProtein.clear();
                                 },
                                 icon: const Icon(Icons.add),
                               );

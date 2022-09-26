@@ -22,8 +22,8 @@ class SetController extends ChangeNotifier {
   }
 
   Future<void> setUserDate({
-    required double totalCalorie,
-    required double totalProtein,
+    required int totalCalorie,
+    required int totalProtein,
     required double weight,
     required String userName,
   }) async {

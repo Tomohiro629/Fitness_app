@@ -73,8 +73,8 @@ class SetPage extends ConsumerWidget {
                     try {
                       if (800 < double.parse(totalCalorie.text)) {
                         await setController.setUserDate(
-                            totalCalorie: double.parse(totalCalorie.text),
-                            totalProtein: double.parse(totalProtein.text),
+                            totalCalorie: int.parse(totalCalorie.text),
+                            totalProtein: int.parse(totalProtein.text),
                             weight: double.parse(weight.text),
                             userName: userName.text);
                         await setController.setDailyRecord();
