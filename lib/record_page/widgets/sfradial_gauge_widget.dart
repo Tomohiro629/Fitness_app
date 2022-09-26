@@ -19,11 +19,11 @@ class SfRadialGaugeWidget extends ConsumerWidget {
         RadialAxis(
             minimum: 0.0,
             maximum: double.parse(total),
-            showLabels: false, //メモリ数
+            showLabels: true, //メモリ数
             showTicks: false, //メモリ
             startAngle: 270,
             endAngle: 270,
-            radiusFactor: 0.6, //サイズ
+            radiusFactor: 0.7, //サイズ
             axisLineStyle: const AxisLineStyle(
                 thicknessUnit: GaugeSizeUnit.factor, thickness: 0.15),
             annotations: <GaugeAnnotation>[

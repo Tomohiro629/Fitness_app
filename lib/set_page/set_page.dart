@@ -1,8 +1,8 @@
-import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:karaoke_app/components/account_button.dart';
+import 'package:karaoke_app/components/bordered_text.dart';
 import 'package:karaoke_app/set_page/set_controller.dart';
 
 import '../components/input_from_filed.dart';
@@ -24,20 +24,8 @@ class SetPage extends ConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              BorderedText(
-                strokeWidth: 1.0,
-                strokeColor: Colors.greenAccent,
-                child: Text(
-                  'SET DATE',
-                  style: TextStyle(
-                    color: Colors.white.withOpacity(0.7),
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1,
-                    wordSpacing: 4,
-                  ),
-                ),
-              ),
+              const BorderedTextWidget(
+                  label: 'SET DATE', storokeColor: Colors.greenAccent),
               const Gap(100),
               InputFromFiled(
                 controller: userName,
@@ -85,10 +73,11 @@ class SetPage extends ConsumerWidget {
                     try {
                       if (800 < double.parse(totalCalorie.text)) {
                         await setController.setUserDate(
-                            totalCalorie: double.parse(totalCalorie.text),
-                            totalProtein: double.parse(totalProtein.text),
+                            totalCalorie: int.parse(totalCalorie.text),
+                            totalProtein: int.parse(totalProtein.text),
                             weight: double.parse(weight.text),
                             userName: userName.text);
+                        await setController.setDailyRecord();
                       }
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(

@@ -1,5 +1,5 @@
-import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
+import 'package:karaoke_app/components/bordered_text.dart';
 
 import '../components/account_button.dart';
 import '../login_page/login_page.dart';
@@ -16,23 +16,9 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Column(
-              children: [
-                BorderedText(
-                  strokeWidth: 2.0,
-                  strokeColor: Colors.red,
-                  child: const Text(
-                    "FITNESS",
-                    style: TextStyle(fontSize: 50.0),
-                  ),
-                ),
-                BorderedText(
-                  strokeWidth: 2.0,
-                  strokeColor: Colors.indigo,
-                  child: const Text(
-                    "RECORD",
-                    style: TextStyle(fontSize: 50.0),
-                  ),
-                ),
+              children: const [
+                BorderedTextWidget(label: "FITNESS", storokeColor: Colors.red),
+                BorderedTextWidget(label: "RECORD", storokeColor: Colors.indigo)
               ],
             ),
             Row(

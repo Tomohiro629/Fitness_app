@@ -1,8 +1,8 @@
-import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:karaoke_app/components/account_button.dart';
+import 'package:karaoke_app/components/bordered_text.dart';
 import 'package:karaoke_app/components/input_from_filed.dart';
 import 'package:karaoke_app/sign_up/signup_controller.dart';
 
@@ -20,22 +20,9 @@ class SignupPage extends ConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              BorderedText(
-                strokeWidth: 1.0,
-                strokeColor: Colors.red,
-                child: Text(
-                  'SIGN UP',
-                  style: TextStyle(
-                    color: Colors.white.withOpacity(0.7),
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1,
-                    wordSpacing: 4,
-                  ),
-                ),
-              ),
-              const Gap(100),
-              const Gap(50),
+              const BorderedTextWidget(
+                  label: "SIGN UP", storokeColor: Colors.red),
+              const Gap(150),
               InputFromFiled(
                 controller: mailAddress,
                 icon: Icons.mail_outline,
