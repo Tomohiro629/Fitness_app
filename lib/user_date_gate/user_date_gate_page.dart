@@ -5,7 +5,7 @@ import 'package:karaoke_app/repository/record_repository.dart';
 import 'package:karaoke_app/service/auth_service.dart';
 
 import '../set_page/set_page.dart';
-import '../start_page/start_page.dart';
+import '../start_page/record_page.dart';
 
 class UserDateGatePage extends ConsumerWidget {
   const UserDateGatePage({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class UserDateGatePage extends ConsumerWidget {
         stream: currentUser,
         builder: ((context, snapshot) {
           final isExist = snapshot.data != null;
-          return isExist ? const StartPage() : const SetPage();
+          return isExist ? const RecordPage() : const SetPage();
         }));
   }
 }
