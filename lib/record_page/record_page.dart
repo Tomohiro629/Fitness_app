@@ -76,8 +76,6 @@ class RecordPage extends ConsumerWidget {
                                     addCalorie: (record.todayCalorie +
                                         int.parse(addCalorie.text)));
                                 recordController.setDailyRecord(
-                                    addCalorie: int.parse(addCalorie.text),
-                                    addProtein: dailyRecord.dailyProtein,
                                     dayTotalCalorie: (record.todayCalorie +
                                         int.parse(addCalorie.text)),
                                     dayTotalProtein:
@@ -140,8 +138,6 @@ class RecordPage extends ConsumerWidget {
                                       addProtein: record.todayProtein +
                                           int.parse(addProtein.text));
                                   recordController.setDailyRecord(
-                                      addCalorie: dailyRecord.dailyCalorie,
-                                      addProtein: int.parse(addProtein.text),
                                       dayTotalCalorie:
                                           dailyRecord.dayTotalCalorie,
                                       dayTotalProtein: record.todayProtein +

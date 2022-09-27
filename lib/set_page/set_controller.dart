@@ -40,8 +40,6 @@ class SetController extends ChangeNotifier {
   Future<void> setDailyRecord() async {
     final userId = _reader(authServiceProvider).userId;
     final dailyRecord = DailyRecord.create(
-      dailyCalorie: 0,
-      dailyProtein: 0,
       userId: userId,
       dayTotalCalorie: 0,
       dayTotalProtein: 0,

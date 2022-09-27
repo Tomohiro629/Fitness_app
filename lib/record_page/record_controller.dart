@@ -34,15 +34,10 @@ class RecordController extends ChangeNotifier {
   }
 
   Future<void> setDailyRecord(
-      {required int addCalorie,
-      required int addProtein,
-      required int dayTotalCalorie,
-      required int dayTotalProtein}) async {
+      {required int dayTotalCalorie, required int dayTotalProtein}) async {
     final userId = _reader(authServiceProvider).userId;
     final dailyRecord = DailyRecord.create(
-      dailyCalorie: addCalorie,
       dayTotalCalorie: dayTotalCalorie,
-      dailyProtein: addProtein,
       dayTotalProtein: dayTotalProtein,
       userId: userId,
     );
