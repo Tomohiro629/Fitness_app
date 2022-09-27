@@ -3,13 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/firestore.dart';
 import 'package:karaoke_app/entity/daily_record.dart';
 import 'package:karaoke_app/record_page/widgets/sfradial_gauge_widget.dart';
-<<<<<<< HEAD
-=======
-import 'package:karaoke_app/service/common_method.dart';
->>>>>>> aa99dcb39b29c5212581efa10335e4ec395612e4
 
 import '../components/input_from_filed.dart';
 import '../entity/record.dart';
+import '../service/common_method.dart';
 import 'record_controller.dart';
 
 class RecordPage extends ConsumerWidget {
