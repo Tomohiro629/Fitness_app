@@ -8,15 +8,20 @@ import 'package:karaoke_app/repository/record_repository.dart';
 
 import '../service/auth_service.dart';
 
-final recordControllerProvider =
-    ChangeNotifierProvider<RecordController>((ref) {
-  return RecordController(ref.read);
+final recordControllerProvider = ChangeNotifierProvider<RecordController>((
+  ref,
+) {
+  return RecordController(
+    ref.read,
+  );
 });
 
 class RecordController extends ChangeNotifier {
   final Reader _reader;
-  String errorMessage = "";
-  RecordController(this._reader);
+
+  RecordController(
+    this._reader,
+  );
 
   Query<DailyRecord> dailyRecordQuery({required Record record}) {
     return _reader(dailyRecordRepositoryProvider)
@@ -29,10 +34,13 @@ class RecordController extends ChangeNotifier {
   }
 
   Future<void> setDailyRecord(
-      {required int addCalorie, required int addProtein}) async {
+      {required int dayTotalCalorie, required int dayTotalProtein}) async {
     final userId = _reader(authServiceProvider).userId;
     final dailyRecord = DailyRecord.create(
-        dailyCalorie: addCalorie, dailyProtein: addProtein, userId: userId);
+      dayTotalCalorie: dayTotalCalorie,
+      dayTotalProtein: dayTotalProtein,
+      userId: userId,
+    );
     return await _reader(dailyRecordRepositoryProvider)
         .setDailyRecord(dailyRecord: dailyRecord);
   }
@@ -58,4 +66,20 @@ class RecordController extends ChangeNotifier {
       print(e);
     }
   }
+
+  // Future<void> upDateDate(
+  //     {required Record record, required DailyRecord dailyRecord}) async {
+  //   {
+  //     final userId = _reader(authServiceProvider).userId;
+  //     final newDailyRecord = DailyRecord.create(
+  //         dailyCalorie: 0,
+  //         dailyProtein: 0,
+  //         userId: userId,
+  //         dayTotalCalorie: 0,
+  //         dayTotalProtein: 0);
+  //     await _reader(dailyRecordRepositoryProvider)
+  //         .setDailyRecord(dailyRecord: newDailyRecord);
+  //     _reader(recordRepositoryProvider).setRecord(record: record.resetValue());
+  //   }
+  // }
 }
