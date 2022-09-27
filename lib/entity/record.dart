@@ -53,7 +53,7 @@ class Record {
         protein: protein ?? this.protein,
         todayProtein: todayProtein ?? this.todayProtein,
         weight: weight ?? this.weight,
-        recordTime: recordTime,
+        recordTime: DateTime.now(),
         userId: userId,
         userName: userName);
   }
@@ -64,6 +64,10 @@ class Record {
 
   Record addTotalProtein(int addProtein) {
     return _copyWith(todayProtein: addProtein);
+  }
+
+  Record resetValue() {
+    return _copyWith(todayCalorie: 0, todayProtein: 0);
   }
 
   factory Record.fromJson(Map<String, dynamic> map) {
