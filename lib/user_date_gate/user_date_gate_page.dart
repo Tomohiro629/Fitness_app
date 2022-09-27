@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:karaoke_app/bottom_bar_page/bottom_bar_page.dart';
 import 'package:karaoke_app/entity/record.dart';
 import 'package:karaoke_app/repository/record_repository.dart';
 import 'package:karaoke_app/service/auth_service.dart';
 
-import '../record_page/record_page.dart';
 import '../set_page/set_page.dart';
 
 class UserDateGatePage extends ConsumerWidget {
@@ -19,7 +19,7 @@ class UserDateGatePage extends ConsumerWidget {
         stream: currentUser,
         builder: ((context, snapshot) {
           final isExist = snapshot.data != null;
-          return isExist ? const RecordPage() : const SetPage();
+          return isExist ? BottomBarPage() : const SetPage();
         }));
   }
 }
