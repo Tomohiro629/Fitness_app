@@ -4,8 +4,6 @@ import 'package:flutterfire_ui/firestore.dart';
 import 'package:karaoke_app/components/bordered_text.dart';
 import 'package:karaoke_app/entity/daily_record.dart';
 import 'package:karaoke_app/record_page/widgets/sfradial_gauge_widget.dart';
-import 'package:karaoke_app/repository/daily_record_repository.dart';
-import 'package:karaoke_app/service/auth_service.dart';
 
 import '../components/input_from_filed.dart';
 import '../entity/record.dart';
