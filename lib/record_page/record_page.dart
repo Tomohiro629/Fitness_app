@@ -80,7 +80,18 @@ class RecordPage extends ConsumerWidget {
                                         int.parse(addCalorie.text)),
                                     dayTotalProtein:
                                         dailyRecord.dayTotalProtein);
-                              } else {}
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      "数字を入力してください。",
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    backgroundColor: Colors.red,
+                                    duration: Duration(seconds: 1),
+                                  ),
+                                );
+                              }
                               addCalorie.clear();
                             },
                             icon: const Icon(Icons.add),
@@ -133,16 +144,29 @@ class RecordPage extends ConsumerWidget {
                               return IconButton(
                                 color: Colors.yellowAccent,
                                 onPressed: () {
-                                  recordController.setAddProtein(
-                                      record: record,
-                                      addProtein: record.todayProtein +
-                                          int.parse(addProtein.text));
-                                  recordController.setDailyRecord(
-                                      dayTotalCalorie:
-                                          dailyRecord.dayTotalCalorie,
-                                      dayTotalProtein: record.todayProtein +
-                                          int.parse(addProtein.text));
-                                  addProtein.clear();
+                                  if (addProtein.text.isNotEmpty) {
+                                    recordController.setAddProtein(
+                                        record: record,
+                                        addProtein: record.todayProtein +
+                                            int.parse(addProtein.text));
+                                    recordController.setDailyRecord(
+                                        dayTotalCalorie:
+                                            dailyRecord.dayTotalCalorie,
+                                        dayTotalProtein: record.todayProtein +
+                                            int.parse(addProtein.text));
+                                    addProtein.clear();
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text(
+                                          "数字を入力してください。",
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        backgroundColor: Colors.red,
+                                        duration: Duration(seconds: 1),
+                                      ),
+                                    );
+                                  }
                                 },
                                 icon: const Icon(Icons.add),
                               );
