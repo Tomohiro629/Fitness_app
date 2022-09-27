@@ -77,7 +77,11 @@ class RecordPage extends ConsumerWidget {
                                         int.parse(addCalorie.text)));
                                 recordController.setDailyRecord(
                                     addCalorie: int.parse(addCalorie.text),
-                                    addProtein: dailyRecord.dailyProtein);
+                                    addProtein: dailyRecord.dailyProtein,
+                                    dayTotalCalorie: (record.todayCalorie +
+                                        int.parse(addCalorie.text)),
+                                    dayTotalProtein:
+                                        dailyRecord.dayTotalProtein);
                               } else {}
                               addCalorie.clear();
                             },
@@ -137,7 +141,11 @@ class RecordPage extends ConsumerWidget {
                                           int.parse(addProtein.text));
                                   recordController.setDailyRecord(
                                       addCalorie: dailyRecord.dailyCalorie,
-                                      addProtein: int.parse(addProtein.text));
+                                      addProtein: int.parse(addProtein.text),
+                                      dayTotalCalorie:
+                                          dailyRecord.dayTotalCalorie,
+                                      dayTotalProtein: record.todayProtein +
+                                          int.parse(addProtein.text));
                                   addProtein.clear();
                                 },
                                 icon: const Icon(Icons.add),

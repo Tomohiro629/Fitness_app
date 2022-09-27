@@ -5,7 +5,6 @@ import 'package:karaoke_app/entity/daily_record.dart';
 import 'package:karaoke_app/entity/record.dart';
 import 'package:karaoke_app/repository/daily_record_repository.dart';
 import 'package:karaoke_app/repository/record_repository.dart';
-import 'package:karaoke_app/service/common_method.dart';
 
 import '../service/auth_service.dart';
 
@@ -35,10 +34,18 @@ class RecordController extends ChangeNotifier {
   }
 
   Future<void> setDailyRecord(
-      {required int addCalorie, required int addProtein}) async {
+      {required int addCalorie,
+      required int addProtein,
+      required int dayTotalCalorie,
+      required int dayTotalProtein}) async {
     final userId = _reader(authServiceProvider).userId;
     final dailyRecord = DailyRecord.create(
-        dailyCalorie: addCalorie, dailyProtein: addProtein, userId: userId);
+      dailyCalorie: addCalorie,
+      dayTotalCalorie: dayTotalCalorie,
+      dailyProtein: addProtein,
+      dayTotalProtein: dayTotalProtein,
+      userId: userId,
+    );
     return await _reader(dailyRecordRepositoryProvider)
         .setDailyRecord(dailyRecord: dailyRecord);
   }
@@ -65,15 +72,19 @@ class RecordController extends ChangeNotifier {
     }
   }
 
-  Future<void> upDateDate(
-      {required Record record, required DailyRecord dailyRecord}) async {
-    {
-      final userId = _reader(authServiceProvider).userId;
-      final newDailyRecord =
-          DailyRecord.create(dailyCalorie: 0, dailyProtein: 0, userId: userId);
-      await _reader(dailyRecordRepositoryProvider)
-          .setDailyRecord(dailyRecord: newDailyRecord);
-      _reader(recordRepositoryProvider).setRecord(record: record.resetValue());
-    }
-  }
+  // Future<void> upDateDate(
+  //     {required Record record, required DailyRecord dailyRecord}) async {
+  //   {
+  //     final userId = _reader(authServiceProvider).userId;
+  //     final newDailyRecord = DailyRecord.create(
+  //         dailyCalorie: 0,
+  //         dailyProtein: 0,
+  //         userId: userId,
+  //         dayTotalCalorie: 0,
+  //         dayTotalProtein: 0);
+  //     await _reader(dailyRecordRepositoryProvider)
+  //         .setDailyRecord(dailyRecord: newDailyRecord);
+  //     _reader(recordRepositoryProvider).setRecord(record: record.resetValue());
+  //   }
+  // }
 }
