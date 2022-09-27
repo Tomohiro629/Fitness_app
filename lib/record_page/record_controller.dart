@@ -5,18 +5,24 @@ import 'package:karaoke_app/entity/daily_record.dart';
 import 'package:karaoke_app/entity/record.dart';
 import 'package:karaoke_app/repository/daily_record_repository.dart';
 import 'package:karaoke_app/repository/record_repository.dart';
+import 'package:karaoke_app/service/common_method.dart';
 
 import '../service/auth_service.dart';
 
-final recordControllerProvider =
-    ChangeNotifierProvider<RecordController>((ref) {
-  return RecordController(ref.read);
+final recordControllerProvider = ChangeNotifierProvider<RecordController>((
+  ref,
+) {
+  return RecordController(
+    ref.read,
+  );
 });
 
 class RecordController extends ChangeNotifier {
   final Reader _reader;
-  String errorMessage = "";
-  RecordController(this._reader);
+
+  RecordController(
+    this._reader,
+  );
 
   Query<DailyRecord> dailyRecordQuery({required Record record}) {
     return _reader(dailyRecordRepositoryProvider)
@@ -56,6 +62,18 @@ class RecordController extends ChangeNotifier {
     } catch (e) {
       // ignore: avoid_print
       print(e);
+    }
+  }
+
+  Future<void> upDateDate(
+      {required Record record, required DailyRecord dailyRecord}) async {
+    {
+      final userId = _reader(authServiceProvider).userId;
+      final newDailyRecord =
+          DailyRecord.create(dailyCalorie: 0, dailyProtein: 0, userId: userId);
+      await _reader(dailyRecordRepositoryProvider)
+          .setDailyRecord(dailyRecord: newDailyRecord);
+      _reader(recordRepositoryProvider).setRecord(record: record.resetValue());
     }
   }
 }

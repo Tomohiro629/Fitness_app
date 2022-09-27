@@ -23,7 +23,7 @@ class SfRadialGaugeWidget extends ConsumerWidget {
             showTicks: false, //メモリ
             startAngle: 270,
             endAngle: 270,
-            radiusFactor: 0.7, //サイズ
+            radiusFactor: 0.8, //サイズ
             axisLineStyle: const AxisLineStyle(
                 thicknessUnit: GaugeSizeUnit.factor, thickness: 0.15),
             annotations: <GaugeAnnotation>[
@@ -56,9 +56,13 @@ class SfRadialGaugeWidget extends ConsumerWidget {
                   enableAnimation: true,
                   animationDuration: 1200,
                   sizeUnit: GaugeSizeUnit.factor,
-                  gradient: const SweepGradient(
-                      colors: <Color>[Colors.indigo, Colors.red],
-                      stops: <double>[0.25, 0.75]),
+                  gradient: const SweepGradient(colors: <Color>[
+                    Color.fromARGB(150, 23, 54, 234),
+                    Color.fromARGB(150, 255, 17, 0)
+                  ], stops: <double>[
+                    0.25,
+                    0.75
+                  ]),
                   color: const Color(0xFF00A8B5),
                   width: 0.15),
             ]),
