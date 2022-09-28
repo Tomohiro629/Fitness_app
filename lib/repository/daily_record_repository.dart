@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/entity/record.dart';
 import 'package:karaoke_app/service/common_method.dart';
 
 import '../entity/daily_record.dart';
