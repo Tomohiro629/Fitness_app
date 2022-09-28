@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:karaoke_app/calendar_page/calendar_widget.dart';
+import 'package:karaoke_app/calendar_page/widgets/calendar_widget.dart';
 
 class CalendarPage extends StatelessWidget {
   const CalendarPage({super.key});
