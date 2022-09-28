@@ -5,10 +5,12 @@ import 'package:syncfusion_flutter_gauges/gauges.dart';
 class SfRadialGaugeWidget extends ConsumerWidget {
   const SfRadialGaugeWidget(
       {Key? key,
+      required this.radiusSize,
       required this.label,
       required this.total,
       required this.addValue})
       : super(key: key);
+  final double radiusSize;
   final String label;
   final String total;
   final double addValue;
@@ -23,7 +25,7 @@ class SfRadialGaugeWidget extends ConsumerWidget {
             showTicks: false, //メモリ
             startAngle: 270,
             endAngle: 270,
-            radiusFactor: 0.8, //サイズ
+            radiusFactor: radiusSize, //サイズ
             axisLineStyle: const AxisLineStyle(
                 thicknessUnit: GaugeSizeUnit.factor, thickness: 0.15),
             annotations: <GaugeAnnotation>[

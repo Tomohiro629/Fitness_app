@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/entity/record.dart';
 import 'package:karaoke_app/service/common_method.dart';
 
 import '../entity/daily_record.dart';
@@ -37,10 +36,10 @@ class DailyRecordRepository {
     }
   }
 
-  Query<DailyRecord> queryDailyRecord({required Record record}) {
+  Query<DailyRecord> queryDailyRecord(userId) {
     final query = _firestore
         .collection("records")
-        .doc(record.userId)
+        .doc(userId)
         .collection("daily_records");
     return query.withConverter(
         fromFirestore: (snapshot, _) => DailyRecord.fromJson(snapshot.data()!),

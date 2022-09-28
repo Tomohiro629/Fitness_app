@@ -23,9 +23,9 @@ class RecordController extends ChangeNotifier {
     this._reader,
   );
 
-  Query<DailyRecord> dailyRecordQuery({required Record record}) {
-    return _reader(dailyRecordRepositoryProvider)
-        .queryDailyRecord(record: record);
+  Query<DailyRecord> dailyRecordQuery() {
+    final userId = _reader(authServiceProvider).userId;
+    return _reader(dailyRecordRepositoryProvider).queryDailyRecord(userId);
   }
 
   Query<Record> recordQuery() {
