@@ -123,6 +123,7 @@ class RecordPage extends ConsumerWidget {
                     ],
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       InputFromFiled(
                         controller: addProtein,
@@ -150,8 +151,8 @@ class RecordPage extends ConsumerWidget {
                                         addProtein: record.todayProtein +
                                             int.parse(addProtein.text));
                                     recordController.setDailyRecord(
-                                        dayTotalCalorie:
-                                            dailyRecord.dayTotalCalorie,
+                                        dayTotalCalorie: dailyRecord
+                                            .dayTotalCalorie, //ここをその日のデータに
                                         dayTotalProtein: record.todayProtein +
                                             int.parse(addProtein.text));
                                     addProtein.clear();
