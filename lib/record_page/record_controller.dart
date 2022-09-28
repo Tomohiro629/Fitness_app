@@ -66,20 +66,4 @@ class RecordController extends ChangeNotifier {
       print(e);
     }
   }
-
-  // Future<void> upDateDate(
-  //     {required Record record, required DailyRecord dailyRecord}) async {
-  //   {
-  //     final userId = _reader(authServiceProvider).userId;
-  //     final newDailyRecord = DailyRecord.create(
-  //         dailyCalorie: 0,
-  //         dailyProtein: 0,
-  //         userId: userId,
-  //         dayTotalCalorie: 0,
-  //         dayTotalProtein: 0);
-  //     await _reader(dailyRecordRepositoryProvider)
-  //         .setDailyRecord(dailyRecord: newDailyRecord);
-  //     _reader(recordRepositoryProvider).setRecord(record: record.resetValue());
-  //   }
-  // }
 }
