@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/firestore.dart';
 import 'package:karaoke_app/entity/daily_record.dart';
-import 'package:karaoke_app/record_page/widgets/sfradial_gauge_widget.dart';
+import 'package:karaoke_app/components/sfradial_gauge_widget.dart';
 
 import '../components/input_from_filed.dart';
 import '../entity/record.dart';
@@ -41,6 +41,7 @@ class RecordPage extends ConsumerWidget {
                           ),
                         ),
                   SfRadialGaugeWidget(
+                    radiusSize: 0.8,
                     addValue: double.parse(record.todayCalorie.toString()),
                     label: record.todayCalorie.toString(),
                     total: '${record.calorie}',
@@ -63,8 +64,7 @@ class RecordPage extends ConsumerWidget {
                     width: 50,
                     height: 50,
                     child: FirestoreListView<DailyRecord>(
-                        query:
-                            recordController.dailyRecordQuery(record: record),
+                        query: recordController.dailyRecordQuery(),
                         itemBuilder: (context, snapshot) {
                           final dailyRecord = snapshot.data();
                           return IconButton(
@@ -116,6 +116,7 @@ class RecordPage extends ConsumerWidget {
                               ),
                             ),
                       SfRadialGaugeWidget(
+                        radiusSize: 0.8,
                         addValue: double.parse(record.todayProtein.toString()),
                         label: record.todayProtein.toString(),
                         total: '${record.protein}',
@@ -138,8 +139,7 @@ class RecordPage extends ConsumerWidget {
                         width: 50,
                         height: 50,
                         child: FirestoreListView<DailyRecord>(
-                            query: recordController.dailyRecordQuery(
-                                record: record),
+                            query: recordController.dailyRecordQuery(),
                             itemBuilder: (context, snapshot) {
                               final dailyRecord = snapshot.data();
                               return IconButton(

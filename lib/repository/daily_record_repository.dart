@@ -37,10 +37,10 @@ class DailyRecordRepository {
     }
   }
 
-  Query<DailyRecord> queryDailyRecord({required Record record}) {
+  Query<DailyRecord> queryDailyRecord(userId) {
     final query = _firestore
         .collection("records")
-        .doc(record.userId)
+        .doc(userId)
         .collection("daily_records");
     return query.withConverter(
         fromFirestore: (snapshot, _) => DailyRecord.fromJson(snapshot.data()!),
