@@ -123,6 +123,7 @@ class RecordPage extends ConsumerWidget {
                     ],
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       InputFromFiled(
                         controller: addProtein,
