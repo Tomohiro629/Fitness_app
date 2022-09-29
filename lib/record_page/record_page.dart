@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/firestore.dart';
-import 'package:karaoke_app/entity/daily_record.dart';
+import 'package:karaoke_app/entity/record.dart';
 import 'package:karaoke_app/components/sfradial_gauge_widget.dart';
 
 import '../components/input_from_filed.dart';
-import '../entity/record.dart';
 import '../service/common_method.dart';
 import 'record_controller.dart';
 
@@ -24,27 +23,16 @@ class RecordPage extends ConsumerWidget {
         query: recordController.recordQuery(),
         itemBuilder: (context, snapshot) {
           final record = snapshot.data();
-
           return Column(
             children: [
               Text(getDateString(DateTime.now())),
               Stack(
                 children: <Widget>[
-                  record.todayCalorie < record.calorie
-                      ? const Text("")
-                      : Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            "OVER + ${record.todayCalorie - record.calorie}",
-                            style: const TextStyle(
-                                color: Colors.red, fontSize: 25.0),
-                          ),
-                        ),
                   SfRadialGaugeWidget(
                     radiusSize: 0.8,
-                    addValue: double.parse(record.todayCalorie.toString()),
-                    label: record.todayCalorie.toString(),
-                    total: '${record.calorie}',
+                    addValue: double.parse(record.totalCalorie.toString()),
+                    label: record.recordTime.toString(),
+                    total: '${record.totalCalorie}',
                   ),
                 ],
               ),
@@ -60,123 +48,48 @@ class RecordPage extends ConsumerWidget {
                     borderColor: const BorderSide(
                         color: Colors.yellowAccent, width: 3.0),
                   ),
-                  SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: FirestoreListView<DailyRecord>(
-                        query: recordController.dailyRecordQuery(),
-                        itemBuilder: (context, snapshot) {
-                          final dailyRecord = snapshot.data();
-                          return IconButton(
-                            color: Colors.yellowAccent,
-                            onPressed: () {
-                              if (addCalorie.text.isNotEmpty) {
-                                recordController.setAddCalorie(
-                                    record: record,
-                                    addCalorie: (record.todayCalorie +
-                                        int.parse(addCalorie.text)));
-                                recordController.setDailyRecord(
-                                    dayTotalCalorie: (record.todayCalorie +
-                                        int.parse(addCalorie.text)),
-                                    dayTotalProtein:
-                                        dailyRecord.dayTotalProtein);
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text(
-                                      "数字を入力してください。",
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    backgroundColor: Colors.red,
-                                    duration: Duration(seconds: 1),
-                                  ),
-                                );
-                              }
-                              addCalorie.clear();
-                            },
-                            icon: const Icon(Icons.add),
-                          );
-                        }),
-                  )
-                ],
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Stack(
-                    children: [
-                      record.todayProtein < record.protein
-                          ? const Text("")
-                          : Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                "OVER + ${record.todayProtein - record.protein}",
-                                style: const TextStyle(
-                                    color: Colors.red, fontSize: 25.0),
-                              ),
-                            ),
-                      SfRadialGaugeWidget(
-                        radiusSize: 0.8,
-                        addValue: double.parse(record.todayProtein.toString()),
-                        label: record.todayProtein.toString(),
-                        total: '${record.protein}',
-                      ),
-                    ],
+                  IconButton(
+                    color: Colors.yellowAccent,
+                    onPressed: () {},
+                    icon: const Icon(Icons.add),
                   ),
-                  Row(
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      InputFromFiled(
-                        controller: addProtein,
-                        icon: Icons.fitness_center_outlined,
-                        hintText: "Add protein...",
-                        suffixText: "g",
-                        keyboardType: TextInputType.number,
-                        borderColor: const BorderSide(
-                            color: Colors.yellowAccent, width: 3.0),
+                      Stack(
+                        children: [
+                          SfRadialGaugeWidget(
+                            radiusSize: 0.8,
+                            addValue:
+                                double.parse(record.totalProtein.toString()),
+                            label: record.recordTime.toString(),
+                            total: '${record.totalProtein}',
+                          ),
+                        ],
                       ),
-                      SizedBox(
-                        width: 50,
-                        height: 50,
-                        child: FirestoreListView<DailyRecord>(
-                            query: recordController.dailyRecordQuery(),
-                            itemBuilder: (context, snapshot) {
-                              final dailyRecord = snapshot.data();
-                              return IconButton(
-                                color: Colors.yellowAccent,
-                                onPressed: () {
-                                  if (addProtein.text.isNotEmpty) {
-                                    recordController.setAddProtein(
-                                        record: record,
-                                        addProtein: record.todayProtein +
-                                            int.parse(addProtein.text));
-                                    recordController.setDailyRecord(
-                                        dayTotalCalorie: dailyRecord
-                                            .dayTotalCalorie, //ここをその日のデータに
-                                        dayTotalProtein: record.todayProtein +
-                                            int.parse(addProtein.text));
-                                    addProtein.clear();
-                                  } else {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text(
-                                          "数字を入力してください。",
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        backgroundColor: Colors.red,
-                                        duration: Duration(seconds: 1),
-                                      ),
-                                    );
-                                  }
-                                },
-                                icon: const Icon(Icons.add),
-                              );
-                            }),
-                      )
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          InputFromFiled(
+                            controller: addProtein,
+                            icon: Icons.fitness_center_outlined,
+                            hintText: "Add protein...",
+                            suffixText: "g",
+                            keyboardType: TextInputType.number,
+                            borderColor: const BorderSide(
+                                color: Colors.yellowAccent, width: 3.0),
+                          ),
+                          IconButton(
+                            color: Colors.yellowAccent,
+                            onPressed: () {},
+                            icon: const Icon(Icons.add),
+                          )
+                        ],
+                      ),
                     ],
                   ),
                 ],
-              )
+              ),
             ],
           );
         },

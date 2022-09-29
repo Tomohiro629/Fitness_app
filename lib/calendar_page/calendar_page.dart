@@ -30,13 +30,15 @@ class CalendarPage extends ConsumerWidget {
                       children: <Widget>[
                         SfRadialGaugeWidget(
                           radiusSize: 0.5,
-                          addValue: double.parse(record.calorie.toString()),
+                          addValue:
+                              double.parse(record.totalCalorie.toString()),
                           label: "test",
                           total: '1800',
                         ),
                         SfRadialGaugeWidget(
                           radiusSize: 0.5,
-                          addValue: double.parse(record.protein.toString()),
+                          addValue:
+                              double.parse(record.totalProtein.toString()),
                           label: "test",
                           total: "100",
                         ),
