@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/entity/user.dart';
+
+import '../entity/user.dart';
 
 final userRepositoryProvider = Provider(((ref) {
   return UserRepository();
@@ -9,17 +10,17 @@ final userRepositoryProvider = Provider(((ref) {
 class UserRepository {
   final _firestore = FirebaseFirestore.instance;
 
-  Future<void> deleteuser(userId) async {
+  Future<void> deleteUser(userId) async {
     await _firestore.collection("users").doc(userId).delete();
   }
 
-  Stream<User?> fetchuser(String userId) {
+  Stream<User?> fetchUser(String userId) {
     final snapshots = _firestore.collection('users').doc(userId).snapshots();
     return snapshots
         .map(((doc) => doc.data() == null ? null : User.fromJson(doc.data()!)));
   }
 
-  Future<void> setuser({required User user}) async {
+  Future<void> setUser({required User user}) async {
     try {
       await _firestore
           .collection("users")
@@ -31,7 +32,7 @@ class UserRepository {
     }
   }
 
-  Query<User> queryuser(String userId) {
+  Query<User> queryUser(String userId) {
     final query =
         _firestore.collection("users").where("userId", isEqualTo: userId);
     return query.withConverter(

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Record {
-  Record({
+class User {
+  User({
     required this.calorie,
     required this.protein,
     required this.weight,
@@ -10,13 +10,13 @@ class Record {
     required this.userName,
   });
 
-  factory Record.create(
+  factory User.create(
       {required int calorie,
       required int protein,
       required double weight,
       required String userId,
       required String userName}) {
-    return Record(
+    return User(
         calorie: calorie,
         protein: protein,
         weight: weight,
@@ -25,7 +25,7 @@ class Record {
         userName: userName);
   }
 
-  Record update({
+  User update({
     required int calorie,
     required int protein,
     required double weight,
@@ -33,12 +33,12 @@ class Record {
     return _copyWith(calorie: calorie, protein: protein, weight: weight);
   }
 
-  Record _copyWith({
+  User _copyWith({
     int? calorie,
     int? protein,
     double? weight,
   }) {
-    return Record(
+    return User(
         calorie: calorie ?? this.calorie,
         protein: protein ?? this.protein,
         weight: weight ?? this.weight,
@@ -47,8 +47,8 @@ class Record {
         userName: userName);
   }
 
-  factory Record.fromJson(Map<String, dynamic> map) {
-    return Record(
+  factory User.fromJson(Map<String, dynamic> map) {
+    return User(
       calorie: map['calorie'],
       protein: map['protein'],
       weight: map['weight'],

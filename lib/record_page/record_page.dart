@@ -5,7 +5,7 @@ import 'package:karaoke_app/entity/daily_record.dart';
 import 'package:karaoke_app/components/sfradial_gauge_widget.dart';
 
 import '../components/input_from_filed.dart';
-import '../entity/record.dart';
+import '../entity/user.dart';
 import '../service/common_method.dart';
 import 'record_controller.dart';
 
@@ -20,7 +20,7 @@ class RecordPage extends ConsumerWidget {
     return Scaffold(
       backgroundColor: const Color(0xff192028),
       body: Center(
-          child: FirestoreListView<Record>(
+          child: FirestoreListView<User>(
         query: recordController.recordQuery(),
         itemBuilder: (context, snapshot) {
           final record = snapshot.data();

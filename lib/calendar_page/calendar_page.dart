@@ -5,7 +5,7 @@ import 'package:karaoke_app/calendar_page/widgets/calendar_widget.dart';
 import 'package:karaoke_app/record_page/record_controller.dart';
 import 'package:karaoke_app/components/sfradial_gauge_widget.dart';
 
-import '../entity/record.dart';
+import '../entity/user.dart';
 
 class CalendarPage extends ConsumerWidget {
   const CalendarPage({super.key});
