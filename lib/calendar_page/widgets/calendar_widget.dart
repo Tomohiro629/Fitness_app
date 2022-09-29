@@ -19,8 +19,8 @@ class CalendarWidget extends ConsumerWidget {
       },
       calendarFormat: calendarModel.format,
       availableCalendarFormats: const {
-        CalendarFormat.week: 'Week',
         CalendarFormat.month: 'Month',
+        CalendarFormat.week: 'Week',
       },
       startingDayOfWeek: StartingDayOfWeek.sunday,
       calendarStyle: const CalendarStyle(
