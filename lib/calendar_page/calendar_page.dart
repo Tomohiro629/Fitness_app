@@ -5,7 +5,7 @@ import 'package:karaoke_app/calendar_page/widgets/calendar_widget.dart';
 import 'package:karaoke_app/record_page/record_controller.dart';
 import 'package:karaoke_app/components/sfradial_gauge_widget.dart';
 
-import '../entity/user.dart';
+import '../entity/record.dart';
 
 class CalendarPage extends ConsumerWidget {
   const CalendarPage({super.key});
@@ -30,13 +30,15 @@ class CalendarPage extends ConsumerWidget {
                       children: <Widget>[
                         SfRadialGaugeWidget(
                           radiusSize: 0.5,
-                          addValue: double.parse(record.calorie.toString()),
+                          addValue:
+                              double.parse(record.totalCalorie.toString()),
                           label: "test",
                           total: '1800',
                         ),
                         SfRadialGaugeWidget(
                           radiusSize: 0.5,
-                          addValue: double.parse(record.protein.toString()),
+                          addValue:
+                              double.parse(record.totalProtein.toString()),
                           label: "test",
                           total: "100",
                         ),

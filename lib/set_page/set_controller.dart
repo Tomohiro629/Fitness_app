@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/entity/daily_record.dart';
 import 'package:karaoke_app/entity/user.dart';
-import 'package:karaoke_app/repository/daily_record_repository.dart';
 import 'package:karaoke_app/repository/user_repository.dart';
 
 import '../service/auth_service.dart';
@@ -35,17 +33,5 @@ class SetController extends ChangeNotifier {
         userId: userId,
         userName: userName);
     await _reader(userRepositoryProvider).setUser(user: user);
-  }
-
-  Future<void> setDailyRecord() async {
-    final userId = _reader(authServiceProvider).userId;
-    final dailyRecord = DailyRecord.create(
-      userId: userId,
-      dayTotalCalorie: 0,
-      dayTotalProtein: 0,
-    );
-    await _reader(dailyRecordRepositoryProvider)
-        .setDailyRecord(dailyRecord: dailyRecord);
-    notifyListeners();
   }
 }

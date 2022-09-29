@@ -77,7 +77,6 @@ class SetPage extends ConsumerWidget {
                             totalProtein: int.parse(totalProtein.text),
                             weight: double.parse(weight.text),
                             userName: userName.text);
-                        await setController.setDailyRecord();
                       }
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(
