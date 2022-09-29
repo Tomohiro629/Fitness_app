@@ -11,7 +11,7 @@ final recordRepositoryProvider = Provider(((ref) {
 class RecordRepository {
   final _firestore = FirebaseFirestore.instance;
 
-  Stream<Record?> fetchDailyRecord() {
+  Stream<Record?> fetchRecord() {
     final snapshots = _firestore
         .collection('records')
         .doc(getDateString(DateTime.now()))
@@ -24,7 +24,7 @@ class RecordRepository {
     try {
       await _firestore
           .collection("records")
-          .doc(record.recordTime.toString())
+          .doc(getDateString(record.recordTime))
           .set(record.toJson(), SetOptions(merge: true));
     } catch (e) {
       // ignore: avoid_print
@@ -32,11 +32,8 @@ class RecordRepository {
     }
   }
 
-  Query<Record> queryDailyRecord(userId) {
-    final query = _firestore
-        .collection("records")
-        .doc(userId)
-        .collection("daily_records");
+  Query<Record> queryRecord() {
+    final query = _firestore.collection("records");
     return query.withConverter(
         fromFirestore: (snapshot, _) => Record.fromJson(snapshot.data()!),
         toFirestore: (record, _) => record.toJson());

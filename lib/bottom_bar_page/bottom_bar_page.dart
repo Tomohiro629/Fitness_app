@@ -5,7 +5,9 @@ import 'package:karaoke_app/calendar_page/calendar_page.dart';
 import 'package:karaoke_app/record_page/record_page.dart';
 
 class BottomBarPage extends ConsumerWidget {
-  BottomBarPage({super.key});
+  BottomBarPage({
+    super.key,
+  });
 
   final pages = [
     const RecordPage(),

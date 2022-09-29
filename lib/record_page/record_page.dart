@@ -9,7 +9,10 @@ import '../service/common_method.dart';
 import 'record_controller.dart';
 
 class RecordPage extends ConsumerWidget {
-  const RecordPage({Key? key}) : super(key: key);
+  const RecordPage({
+    Key? key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final recordController = ref.watch(recordControllerProvider);
@@ -31,8 +34,8 @@ class RecordPage extends ConsumerWidget {
                   SfRadialGaugeWidget(
                     radiusSize: 0.8,
                     addValue: double.parse(record.totalCalorie.toString()),
-                    label: record.recordTime.toString(),
-                    total: '${record.totalCalorie}',
+                    label: record.setCalorie.toString(),
+                    total: '${record.setCalorie}',
                   ),
                 ],
               ),
@@ -62,8 +65,8 @@ class RecordPage extends ConsumerWidget {
                             radiusSize: 0.8,
                             addValue:
                                 double.parse(record.totalProtein.toString()),
-                            label: record.recordTime.toString(),
-                            total: '${record.totalProtein}',
+                            label: record.setProtein.toString(),
+                            total: '${record.setProtein}',
                           ),
                         ],
                       ),
