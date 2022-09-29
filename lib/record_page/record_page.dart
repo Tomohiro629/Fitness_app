@@ -3,16 +3,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/firestore.dart';
 import 'package:karaoke_app/entity/record.dart';
 import 'package:karaoke_app/components/sfradial_gauge_widget.dart';
+import 'package:karaoke_app/service/common_method.dart';
 
 import '../components/input_from_filed.dart';
-import '../service/common_method.dart';
 import 'record_controller.dart';
 
 class RecordPage extends ConsumerWidget {
-  const RecordPage({Key? key}) : super(key: key);
+  const RecordPage({Key? key, required this.record, required this.selectedDay})
+      : super(key: key);
+  final Record record;
+  final DateTime selectedDay;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final recordController = ref.watch(recordControllerProvider);
+    final recordController = ref.watch(recordControllerProvider(record));
     final addCalorie = TextEditingController();
     final addProtein = TextEditingController();
 
@@ -25,16 +29,12 @@ class RecordPage extends ConsumerWidget {
           final record = snapshot.data();
           return Column(
             children: [
-              Text(getDateString(DateTime.now())),
-              Stack(
-                children: <Widget>[
-                  SfRadialGaugeWidget(
-                    radiusSize: 0.8,
-                    addValue: double.parse(record.totalCalorie.toString()),
-                    label: record.recordTime.toString(),
-                    total: '${record.totalCalorie}',
-                  ),
-                ],
+              Text(getDateString(selectedDay)),
+              SfRadialGaugeWidget(
+                radiusSize: 0.8,
+                addValue: double.parse(record.totalCalorie.toString()),
+                label: record.totalCalorie.toString(),
+                total: '${record.setCalorie}',
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -50,42 +50,41 @@ class RecordPage extends ConsumerWidget {
                   ),
                   IconButton(
                     color: Colors.yellowAccent,
-                    onPressed: () {},
+                    onPressed: () {
+                      addCalorie.clear();
+                    },
                     icon: const Icon(Icons.add),
                   ),
-                  Column(
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SfRadialGaugeWidget(
+                    radiusSize: 0.8,
+                    addValue: double.parse(record.totalProtein.toString()),
+                    label: record.totalProtein.toString(),
+                    total: '${record.setProtein}',
+                  ),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Stack(
-                        children: [
-                          SfRadialGaugeWidget(
-                            radiusSize: 0.8,
-                            addValue:
-                                double.parse(record.totalProtein.toString()),
-                            label: record.recordTime.toString(),
-                            total: '${record.totalProtein}',
-                          ),
-                        ],
+                      InputFromFiled(
+                        controller: addProtein,
+                        icon: Icons.fitness_center_outlined,
+                        hintText: "Add protein...",
+                        suffixText: "g",
+                        keyboardType: TextInputType.number,
+                        borderColor: const BorderSide(
+                            color: Colors.yellowAccent, width: 3.0),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InputFromFiled(
-                            controller: addProtein,
-                            icon: Icons.fitness_center_outlined,
-                            hintText: "Add protein...",
-                            suffixText: "g",
-                            keyboardType: TextInputType.number,
-                            borderColor: const BorderSide(
-                                color: Colors.yellowAccent, width: 3.0),
-                          ),
-                          IconButton(
-                            color: Colors.yellowAccent,
-                            onPressed: () {},
-                            icon: const Icon(Icons.add),
-                          )
-                        ],
-                      ),
+                      IconButton(
+                        color: Colors.yellowAccent,
+                        onPressed: () {
+                          addProtein.clear();
+                        },
+                        icon: const Icon(Icons.add),
+                      )
                     ],
                   ),
                 ],

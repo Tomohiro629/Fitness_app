@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/bottom_bar_page/bottom_bar_page.dart';
+import 'package:karaoke_app/calendar_page/calendar_page.dart';
 import 'package:karaoke_app/entity/user.dart';
 import 'package:karaoke_app/repository/user_repository.dart';
 import 'package:karaoke_app/service/auth_service.dart';
@@ -19,7 +19,7 @@ class UserDateGatePage extends ConsumerWidget {
         stream: currentUser,
         builder: ((context, snapshot) {
           final isExist = snapshot.data != null;
-          return isExist ? BottomBarPage() : const SetPage();
+          return isExist ? const CalendarPage() : const SetPage();
         }));
   }
 }
