@@ -29,15 +29,11 @@ class RecordPage extends ConsumerWidget {
           return Column(
             children: [
               Text(getDateString(DateTime.now())),
-              Stack(
-                children: <Widget>[
-                  SfRadialGaugeWidget(
-                    radiusSize: 0.8,
-                    addValue: double.parse(record.totalCalorie.toString()),
-                    label: record.setCalorie.toString(),
-                    total: '${record.setCalorie}',
-                  ),
-                ],
+              SfRadialGaugeWidget(
+                radiusSize: 0.8,
+                addValue: double.parse(record.totalCalorie.toString()),
+                label: record.totalCalorie.toString(),
+                total: '${record.setCalorie}',
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -53,42 +49,41 @@ class RecordPage extends ConsumerWidget {
                   ),
                   IconButton(
                     color: Colors.yellowAccent,
-                    onPressed: () {},
+                    onPressed: () {
+                      addCalorie.clear();
+                    },
                     icon: const Icon(Icons.add),
                   ),
-                  Column(
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SfRadialGaugeWidget(
+                    radiusSize: 0.8,
+                    addValue: double.parse(record.totalProtein.toString()),
+                    label: record.totalProtein.toString(),
+                    total: '${record.setProtein}',
+                  ),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Stack(
-                        children: [
-                          SfRadialGaugeWidget(
-                            radiusSize: 0.8,
-                            addValue:
-                                double.parse(record.totalProtein.toString()),
-                            label: record.setProtein.toString(),
-                            total: '${record.setProtein}',
-                          ),
-                        ],
+                      InputFromFiled(
+                        controller: addProtein,
+                        icon: Icons.fitness_center_outlined,
+                        hintText: "Add protein...",
+                        suffixText: "g",
+                        keyboardType: TextInputType.number,
+                        borderColor: const BorderSide(
+                            color: Colors.yellowAccent, width: 3.0),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InputFromFiled(
-                            controller: addProtein,
-                            icon: Icons.fitness_center_outlined,
-                            hintText: "Add protein...",
-                            suffixText: "g",
-                            keyboardType: TextInputType.number,
-                            borderColor: const BorderSide(
-                                color: Colors.yellowAccent, width: 3.0),
-                          ),
-                          IconButton(
-                            color: Colors.yellowAccent,
-                            onPressed: () {},
-                            icon: const Icon(Icons.add),
-                          )
-                        ],
-                      ),
+                      IconButton(
+                        color: Colors.yellowAccent,
+                        onPressed: () {
+                          addProtein.clear();
+                        },
+                        icon: const Icon(Icons.add),
+                      )
                     ],
                   ),
                 ],
