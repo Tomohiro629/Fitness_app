@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:karaoke_app/entity/record.dart';
+import 'package:karaoke_app/record_page/record_page.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../calendar_controller.dart';
 
 class CalendarWidget extends ConsumerWidget {
-  const CalendarWidget({super.key});
+  const CalendarWidget({super.key, required this.record});
+  final Record record;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final calendarModel = ref.watch(calendarControllerProvider);
+
     return TableCalendar(
       focusedDay: calendarModel.focusDay,
       firstDay: DateTime.utc(2022, 9, 1),
@@ -36,7 +40,14 @@ class CalendarWidget extends ConsumerWidget {
       },
       onDaySelected: (selectedDay, _) {
         ref.read(calendarControllerProvider.notifier).changeDay(selectedDay);
-        //getDailyRecordDate
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => RecordPage(
+                    record: record,
+                    selectedDay: selectedDay,
+                  )),
+        );
       },
     );
   }

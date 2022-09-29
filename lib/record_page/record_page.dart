@@ -3,19 +3,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/firestore.dart';
 import 'package:karaoke_app/entity/record.dart';
 import 'package:karaoke_app/components/sfradial_gauge_widget.dart';
+import 'package:karaoke_app/service/common_method.dart';
 
 import '../components/input_from_filed.dart';
-import '../service/common_method.dart';
 import 'record_controller.dart';
 
 class RecordPage extends ConsumerWidget {
-  const RecordPage({
-    Key? key,
-  }) : super(key: key);
+  const RecordPage({Key? key, required this.record, required this.selectedDay})
+      : super(key: key);
+  final Record record;
+  final DateTime selectedDay;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final recordController = ref.watch(recordControllerProvider);
+    final recordController = ref.watch(recordControllerProvider(record));
     final addCalorie = TextEditingController();
     final addProtein = TextEditingController();
 
@@ -28,7 +29,7 @@ class RecordPage extends ConsumerWidget {
           final record = snapshot.data();
           return Column(
             children: [
-              Text(getDateString(DateTime.now())),
+              Text(getDateString(selectedDay)),
               SfRadialGaugeWidget(
                 radiusSize: 0.8,
                 addValue: double.parse(record.totalCalorie.toString()),

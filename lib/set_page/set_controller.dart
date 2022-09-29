@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:karaoke_app/entity/record.dart';
 import 'package:karaoke_app/entity/user.dart';
-import 'package:karaoke_app/repository/repository.dart';
+import 'package:karaoke_app/repository/record_repository.dart';
 import 'package:karaoke_app/repository/user_repository.dart';
 
 import '../service/auth_service.dart';

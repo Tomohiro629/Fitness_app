@@ -2,24 +2,32 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:karaoke_app/entity/record.dart';
-import 'package:karaoke_app/repository/repository.dart';
+import 'package:karaoke_app/repository/record_repository.dart';
 
 import '../service/auth_service.dart';
 
-final recordControllerProvider = ChangeNotifierProvider<RecordController>((
-  ref,
-) {
+final recordControllerProvider =
+    ChangeNotifierProvider.family<RecordController, Record>((ref, record) {
   return RecordController(
     ref.read,
+    record,
   );
 });
 
 class RecordController extends ChangeNotifier {
   final Reader _reader;
-
+  final Record _record;
   RecordController(
     this._reader,
+    this._record,
   );
+
+  Future<void> addCalorie(
+      {required int addCalorie, required int totalProtein}) async {
+    final addRecord =
+        _record.update(totalCalorie: addCalorie, totalProtein: totalProtein);
+    await _reader(recordRepositoryProvider).setRecord(record: addRecord);
+  }
 
   Query<Record> recordQuery() {
     return _reader(recordRepositoryProvider).queryRecord();
