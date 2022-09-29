@@ -5,20 +5,26 @@ class Record {
   Record({
     required this.recordId,
     required this.totalCalorie,
+    required this.setCalorie,
     required this.totalProtein,
+    required this.setProtein,
     required this.recordTime,
     required this.userId,
   });
 
   factory Record.create({
     required int totalCalorie,
+    required int setCalorie,
     required int totalProtein,
+    required int setProtein,
     required String userId,
   }) {
     return Record(
       recordId: getDateString(DateTime.now()),
       totalCalorie: totalCalorie,
+      setCalorie: setCalorie,
       totalProtein: totalProtein,
+      setProtein: setProtein,
       recordTime: DateTime.now(),
       userId: userId,
     );
@@ -38,7 +44,9 @@ class Record {
     return Record(
       recordId: recordId,
       totalCalorie: totalCalorie ?? this.totalCalorie,
+      setCalorie: setCalorie,
       totalProtein: totalProtein ?? this.totalProtein,
+      setProtein: setProtein,
       recordTime: recordTime,
       userId: userId,
     );
@@ -48,7 +56,9 @@ class Record {
     return Record(
       recordId: map['recordId'],
       totalCalorie: map['totalCalorie'],
+      setCalorie: map['setCalorie'],
       totalProtein: map['totalProtein'],
+      setProtein: map['setProtein'],
       recordTime: (map['recordTime'] as Timestamp).toDate(),
       userId: map['userId'],
     );
@@ -58,7 +68,9 @@ class Record {
     return {
       'recordId': recordId,
       'totalCalorie': totalCalorie,
+      'setCalorie': setCalorie,
       'totalProtein': totalProtein,
+      'setProtein': setProtein,
       'recordTime': recordTime,
       'userId': userId,
     };
@@ -66,7 +78,9 @@ class Record {
 
   final String recordId;
   final int totalCalorie;
+  final int setCalorie;
   final int totalProtein;
+  final int setProtein;
   final DateTime recordTime;
   final String userId;
 }
