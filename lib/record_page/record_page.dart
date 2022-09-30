@@ -22,77 +22,82 @@ class RecordPage extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: const Color(0xff192028),
-      body: Center(
-          child: FirestoreListView<Record>(
-        query: recordController.recordQuery(),
-        itemBuilder: (context, snapshot) {
-          final record = snapshot.data();
-          return Column(
-            children: [
-              Text(getDateString(selectedDay)),
-              SfRadialGaugeWidget(
-                radiusSize: 0.8,
-                addValue: double.parse(record.totalCalorie.toString()),
-                label: record.totalCalorie.toString(),
-                total: '${record.setCalorie}',
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InputFromFiled(
-                    controller: addCalorie,
-                    icon: Icons.insights_outlined,
-                    hintText: "Add calorie...",
-                    suffixText: "cal",
-                    keyboardType: TextInputType.number,
-                    borderColor: const BorderSide(
-                        color: Colors.yellowAccent, width: 3.0),
-                  ),
-                  IconButton(
-                    color: Colors.yellowAccent,
-                    onPressed: () {
-                      addCalorie.clear();
-                    },
-                    icon: const Icon(Icons.add),
-                  ),
-                ],
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SfRadialGaugeWidget(
-                    radiusSize: 0.8,
-                    addValue: double.parse(record.totalProtein.toString()),
-                    label: record.totalProtein.toString(),
-                    total: '${record.setProtein}',
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      InputFromFiled(
-                        controller: addProtein,
-                        icon: Icons.fitness_center_outlined,
-                        hintText: "Add protein...",
-                        suffixText: "g",
-                        keyboardType: TextInputType.number,
-                        borderColor: const BorderSide(
-                            color: Colors.yellowAccent, width: 3.0),
-                      ),
-                      IconButton(
-                        color: Colors.yellowAccent,
-                        onPressed: () {
-                          addProtein.clear();
-                        },
-                        icon: const Icon(Icons.add),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          );
-        },
-      )),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
+                Text(getDateString(selectedDay)),
+                SfRadialGaugeWidget(
+                  radiusSize: 0.8,
+                  addValue: double.parse(record.totalCalorie.toString()),
+                  label: record.totalCalorie.toString(),
+                  total: '${record.setCalorie}',
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InputFromFiled(
+                      controller: addCalorie,
+                      icon: Icons.insights_outlined,
+                      hintText: "Add calorie...",
+                      suffixText: "cal",
+                      keyboardType: TextInputType.number,
+                      borderColor: const BorderSide(
+                          color: Colors.yellowAccent, width: 3.0),
+                    ),
+                    IconButton(
+                      color: Colors.yellowAccent,
+                      onPressed: () {
+                        recordController.addCalorie(
+                            addCalorie: record.totalCalorie +
+                                int.parse(addCalorie.text));
+                        addCalorie.clear();
+                      },
+                      icon: const Icon(Icons.add),
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SfRadialGaugeWidget(
+                      radiusSize: 0.8,
+                      addValue: double.parse(record.totalProtein.toString()),
+                      label: record.totalProtein.toString(),
+                      total: '${record.setProtein}',
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InputFromFiled(
+                          controller: addProtein,
+                          icon: Icons.fitness_center_outlined,
+                          hintText: "Add protein...",
+                          suffixText: "g",
+                          keyboardType: TextInputType.number,
+                          borderColor: const BorderSide(
+                              color: Colors.yellowAccent, width: 3.0),
+                        ),
+                        IconButton(
+                          color: Colors.yellowAccent,
+                          onPressed: () {
+                            recordController.addProtein(
+                                totalProtein: record.totalProtein +
+                                    int.parse(addProtein.text));
+                            addProtein.clear();
+                          },
+                          icon: const Icon(Icons.add),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

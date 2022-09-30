@@ -40,6 +40,8 @@ class CalendarWidget extends ConsumerWidget {
       },
       onDaySelected: (selectedDay, _) {
         ref.read(calendarControllerProvider.notifier).changeDay(selectedDay);
+        //whereで選んだ日のデータを選択
+        //その日のデータがなければセットする
         Navigator.push(
           context,
           MaterialPageRoute(
