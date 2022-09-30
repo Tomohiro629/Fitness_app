@@ -22,10 +22,17 @@ class RecordController extends ChangeNotifier {
     this._record,
   );
 
-  Future<void> addCalorie(
-      {required int addCalorie, required int totalProtein}) async {
-    final addRecord =
-        _record.update(totalCalorie: addCalorie, totalProtein: totalProtein);
+  Future<void> addCalorie({
+    required int addCalorie,
+  }) async {
+    final addRecord = _record.update(
+        totalCalorie: addCalorie, totalProtein: _record.totalProtein);
+    await _reader(recordRepositoryProvider).setRecord(record: addRecord);
+  }
+
+  Future<void> addProtein({required int totalProtein}) async {
+    final addRecord = _record.update(
+        totalCalorie: _record.totalCalorie, totalProtein: totalProtein);
     await _reader(recordRepositoryProvider).setRecord(record: addRecord);
   }
 
