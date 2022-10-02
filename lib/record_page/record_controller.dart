@@ -22,22 +22,16 @@ class RecordController extends ChangeNotifier {
     this._record,
   );
 
-  Future<void> addCalorie({
-    required int addCalorie,
-  }) async {
-    final addRecord = _record.update(
-        totalCalorie: addCalorie, totalProtein: _record.totalProtein);
-    await _reader(recordRepositoryProvider).setRecord(record: addRecord);
+  Future<void> addRecord(
+      {required int addCalorie, required int addProtein}) async {
+    final recordCalorie =
+        _record.update(totalCalorie: addCalorie, totalProtein: addProtein);
+
+    await _reader(recordRepositoryProvider).setRecord(record: recordCalorie);
   }
 
-  Future<void> addProtein({required int totalProtein}) async {
-    final addRecord = _record.update(
-        totalCalorie: _record.totalCalorie, totalProtein: totalProtein);
-    await _reader(recordRepositoryProvider).setRecord(record: addRecord);
-  }
-
-  Query<Record> recordQuery() {
-    return _reader(recordRepositoryProvider).queryRecord();
+  Query<Record> recordQuery(slectedDay) {
+    return _reader(recordRepositoryProvider).querySlectedDayRecord(slectedDay);
   }
 
   Future<void> setDailyRecord(

@@ -20,16 +20,32 @@ class RecordRepository {
         ((doc) => doc.data() == null ? null : Record.fromJson(doc.data()!)));
   }
 
+  Stream<List<Record>> fetchRecordStream() {
+    final snapshot = _firestore.collection('stores').snapshots();
+
+    return snapshot.map(
+        (qs) => qs.docs.map((doc) => Record.fromJson(doc.data())).toList());
+  }
+
   Future<void> setRecord({required Record record}) async {
     try {
       await _firestore
           .collection("records")
-          .doc(getDateString(record.recordTime))
+          .doc(getDateString(DateTime.now()))
           .set(record.toJson(), SetOptions(merge: true));
     } catch (e) {
       // ignore: avoid_print
       print(e);
     }
+  }
+
+  Query<Record> querySlectedDayRecord(slectedDay) {
+    final query = _firestore
+        .collection('records')
+        .where('recordId', isEqualTo: getDateString(slectedDay));
+    return query.withConverter(
+        fromFirestore: (snapshot, _) => Record.fromJson(snapshot.data()!),
+        toFirestore: (record, _) => record.toJson());
   }
 
   Query<Record> queryRecord() {

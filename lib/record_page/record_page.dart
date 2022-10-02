@@ -9,7 +9,7 @@ import '../components/input_from_filed.dart';
 import 'record_controller.dart';
 
 class RecordPage extends ConsumerWidget {
-  const RecordPage({Key? key, required this.record, required this.selectedDay})
+  const RecordPage({Key? key, required this.selectedDay, required this.record})
       : super(key: key);
   final Record record;
   final DateTime selectedDay;
@@ -23,9 +23,12 @@ class RecordPage extends ConsumerWidget {
     return Scaffold(
       backgroundColor: const Color(0xff192028),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Column(
+        child: Center(
+            child: FirestoreListView<Record>(
+          query: recordController.recordQuery(selectedDay),
+          itemBuilder: (context, snapshot) {
+            final record = snapshot.data();
+            return Column(
               children: [
                 Text(getDateString(selectedDay)),
                 SfRadialGaugeWidget(
@@ -49,9 +52,10 @@ class RecordPage extends ConsumerWidget {
                     IconButton(
                       color: Colors.yellowAccent,
                       onPressed: () {
-                        recordController.addCalorie(
+                        recordController.addRecord(
                             addCalorie: record.totalCalorie +
-                                int.parse(addCalorie.text));
+                                int.parse(addCalorie.text),
+                            addProtein: record.totalProtein);
                         addCalorie.clear();
                       },
                       icon: const Icon(Icons.add),
@@ -82,9 +86,10 @@ class RecordPage extends ConsumerWidget {
                         IconButton(
                           color: Colors.yellowAccent,
                           onPressed: () {
-                            recordController.addProtein(
-                                totalProtein: record.totalProtein +
-                                    int.parse(addProtein.text));
+                            recordController.addRecord(
+                                addProtein: record.totalProtein +
+                                    int.parse(addProtein.text),
+                                addCalorie: record.totalCalorie);
                             addProtein.clear();
                           },
                           icon: const Icon(Icons.add),
@@ -94,9 +99,9 @@ class RecordPage extends ConsumerWidget {
                   ],
                 ),
               ],
-            ),
-          ),
-        ),
+            );
+          },
+        )),
       ),
     );
   }
