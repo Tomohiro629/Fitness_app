@@ -34,7 +34,18 @@ class RecordPage extends ConsumerWidget {
             final record = snapshot.data();
             return Column(
               children: [
-                Text(getDateString(selectedDay)),
+                Text(
+                  getDateString(selectedDay),
+                  style:
+                      const TextStyle(color: Color.fromARGB(255, 49, 158, 235)),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15.0),
+                  child: Text(
+                    '総カロリー (${getRecordTime(record.recordTime)}時点)',
+                    style: const TextStyle(fontSize: 15.0),
+                  ),
+                ),
                 SfRadialGaugeWidget(
                   radiusSize: 0.8,
                   addValue: double.parse(record.totalCalorie.toString()),
@@ -57,11 +68,13 @@ class RecordPage extends ConsumerWidget {
                           IconButton(
                             color: Colors.yellowAccent,
                             onPressed: () {
-                              recordController.addRecord(
-                                  record: record,
-                                  addCalorie: record.totalCalorie +
-                                      int.parse(addCalorie.text),
-                                  addProtein: record.totalProtein);
+                              if (addCalorie.text.isNotEmpty) {
+                                recordController.addRecord(
+                                    record: record,
+                                    addCalorie: record.totalCalorie +
+                                        int.parse(addCalorie.text),
+                                    addProtein: record.totalProtein);
+                              }
                               addCalorie.clear();
                             },
                             icon: const Icon(Icons.add),
@@ -77,6 +90,13 @@ class RecordPage extends ConsumerWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15.0),
+                      child: Text(
+                        '総タンパク質 (${getRecordTime(record.recordTime)}時点)',
+                        style: const TextStyle(fontSize: 15.0),
+                      ),
+                    ),
                     SfRadialGaugeWidget(
                       radiusSize: 0.8,
                       addValue: double.parse(record.totalProtein.toString()),
@@ -100,11 +120,13 @@ class RecordPage extends ConsumerWidget {
                               IconButton(
                                 color: Colors.yellowAccent,
                                 onPressed: () {
-                                  recordController.addRecord(
-                                      record: record,
-                                      addProtein: record.totalProtein +
-                                          int.parse(addProtein.text),
-                                      addCalorie: record.totalCalorie);
+                                  if (addProtein.text.isNotEmpty) {
+                                    recordController.addRecord(
+                                        record: record,
+                                        addProtein: record.totalProtein +
+                                            int.parse(addProtein.text),
+                                        addCalorie: record.totalCalorie);
+                                  }
                                   addProtein.clear();
                                 },
                                 icon: const Icon(Icons.add),
