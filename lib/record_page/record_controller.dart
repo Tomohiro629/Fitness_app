@@ -7,25 +7,25 @@ import 'package:karaoke_app/repository/record_repository.dart';
 import '../service/auth_service.dart';
 
 final recordControllerProvider =
-    ChangeNotifierProvider.family<RecordController, Record>((ref, record) {
+    ChangeNotifierProvider<RecordController>((ref) {
   return RecordController(
     ref.read,
-    record,
   );
 });
 
 class RecordController extends ChangeNotifier {
   final Reader _reader;
-  final Record _record;
+
   RecordController(
     this._reader,
-    this._record,
   );
 
   Future<void> addRecord(
-      {required int addCalorie, required int addProtein}) async {
+      {required Record record,
+      required int addCalorie,
+      required int addProtein}) async {
     final recordCalorie =
-        _record.update(totalCalorie: addCalorie, totalProtein: addProtein);
+        record.update(totalCalorie: addCalorie, totalProtein: addProtein);
 
     await _reader(recordRepositoryProvider).setRecord(record: recordCalorie);
   }

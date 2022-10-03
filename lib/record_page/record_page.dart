@@ -9,14 +9,16 @@ import '../components/input_from_filed.dart';
 import 'record_controller.dart';
 
 class RecordPage extends ConsumerWidget {
-  const RecordPage({Key? key, required this.selectedDay, required this.record})
-      : super(key: key);
-  final Record record;
+  const RecordPage({
+    Key? key,
+    required this.selectedDay,
+  }) : super(key: key);
+
   final DateTime selectedDay;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final recordController = ref.watch(recordControllerProvider(record));
+    final recordController = ref.watch(recordControllerProvider);
     final addCalorie = TextEditingController();
     final addProtein = TextEditingController();
 
@@ -53,6 +55,7 @@ class RecordPage extends ConsumerWidget {
                       color: Colors.yellowAccent,
                       onPressed: () {
                         recordController.addRecord(
+                            record: record,
                             addCalorie: record.totalCalorie +
                                 int.parse(addCalorie.text),
                             addProtein: record.totalProtein);
@@ -87,6 +90,7 @@ class RecordPage extends ConsumerWidget {
                           color: Colors.yellowAccent,
                           onPressed: () {
                             recordController.addRecord(
+                                record: record,
                                 addProtein: record.totalProtein +
                                     int.parse(addProtein.text),
                                 addCalorie: record.totalCalorie);

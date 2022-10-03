@@ -7,7 +7,7 @@ class CalendarModel {
 
   factory CalendarModel.init() {
     return CalendarModel(
-      CalendarFormat.week,
+      CalendarFormat.month,
       DateTime.now(),
     );
   }
