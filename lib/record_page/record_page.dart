@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/firestore.dart';
+import 'package:karaoke_app/components/bordered_text.dart';
 import 'package:karaoke_app/entity/record.dart';
 import 'package:karaoke_app/components/sfradial_gauge_widget.dart';
 import 'package:karaoke_app/service/common_method.dart';
@@ -39,32 +40,39 @@ class RecordPage extends ConsumerWidget {
                   label: record.totalCalorie.toString(),
                   total: '${record.setCalorie}',
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    InputFromFiled(
-                      controller: addCalorie,
-                      icon: Icons.insights_outlined,
-                      hintText: "Add calorie...",
-                      suffixText: "cal",
-                      keyboardType: TextInputType.number,
-                      borderColor: const BorderSide(
-                          color: Colors.yellowAccent, width: 3.0),
-                    ),
-                    IconButton(
-                      color: Colors.yellowAccent,
-                      onPressed: () {
-                        recordController.addRecord(
-                            record: record,
-                            addCalorie: record.totalCalorie +
-                                int.parse(addCalorie.text),
-                            addProtein: record.totalProtein);
-                        addCalorie.clear();
-                      },
-                      icon: const Icon(Icons.add),
-                    ),
-                  ],
-                ),
+                selectedDay == DateTime.now()
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          InputFromFiled(
+                            controller: addCalorie,
+                            icon: Icons.insights_outlined,
+                            hintText: "Add calorie...",
+                            suffixText: "cal",
+                            keyboardType: TextInputType.number,
+                            borderColor: const BorderSide(
+                                color: Colors.yellowAccent, width: 3.0),
+                          ),
+                          IconButton(
+                            color: Colors.yellowAccent,
+                            onPressed: () {
+                              recordController.addRecord(
+                                  record: record,
+                                  addCalorie: record.totalCalorie +
+                                      int.parse(addCalorie.text),
+                                  addProtein: record.totalProtein);
+                              addCalorie.clear();
+                            },
+                            icon: const Icon(Icons.add),
+                          ),
+                        ],
+                      )
+                    : BorderedTextWidget(
+                        label: 'Total ${record.totalCalorie} cal',
+                        storokeColor: record.setCalorie > record.totalCalorie
+                            ? Colors.blue
+                            : Colors.red,
+                      ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -74,32 +82,41 @@ class RecordPage extends ConsumerWidget {
                       label: record.totalProtein.toString(),
                       total: '${record.setProtein}',
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InputFromFiled(
-                          controller: addProtein,
-                          icon: Icons.fitness_center_outlined,
-                          hintText: "Add protein...",
-                          suffixText: "g",
-                          keyboardType: TextInputType.number,
-                          borderColor: const BorderSide(
-                              color: Colors.yellowAccent, width: 3.0),
-                        ),
-                        IconButton(
-                          color: Colors.yellowAccent,
-                          onPressed: () {
-                            recordController.addRecord(
-                                record: record,
-                                addProtein: record.totalProtein +
-                                    int.parse(addProtein.text),
-                                addCalorie: record.totalCalorie);
-                            addProtein.clear();
-                          },
-                          icon: const Icon(Icons.add),
-                        )
-                      ],
-                    ),
+                    // ignore: unrelated_type_equality_checks
+                    selectedDay == DateTime.now
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InputFromFiled(
+                                controller: addProtein,
+                                icon: Icons.fitness_center_outlined,
+                                hintText: "Add protein...",
+                                suffixText: "g",
+                                keyboardType: TextInputType.number,
+                                borderColor: const BorderSide(
+                                    color: Colors.yellowAccent, width: 3.0),
+                              ),
+                              IconButton(
+                                color: Colors.yellowAccent,
+                                onPressed: () {
+                                  recordController.addRecord(
+                                      record: record,
+                                      addProtein: record.totalProtein +
+                                          int.parse(addProtein.text),
+                                      addCalorie: record.totalCalorie);
+                                  addProtein.clear();
+                                },
+                                icon: const Icon(Icons.add),
+                              )
+                            ],
+                          )
+                        : BorderedTextWidget(
+                            label: 'Total ${record.totalProtein} g',
+                            storokeColor:
+                                record.setProtein > record.totalProtein
+                                    ? Colors.blue
+                                    : Colors.red,
+                          ),
                   ],
                 ),
               ],
