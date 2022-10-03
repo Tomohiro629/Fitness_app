@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/firestore.dart';
-import 'package:karaoke_app/entity/record.dart';
-import 'package:karaoke_app/record_page/record_controller.dart';
-import 'package:karaoke_app/record_page/record_page.dart';
-import 'package:karaoke_app/service/common_method.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../../entity/record.dart';
+import '../../record_page/record_controller.dart';
+import '../../record_page/record_page.dart';
+import '../../service/common_method.dart';
 import '../calendar_controller.dart';
 
 class CalendarWidget extends ConsumerWidget {

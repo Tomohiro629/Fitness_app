@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/firestore.dart';
-import 'package:karaoke_app/components/account_button.dart';
-import 'package:karaoke_app/components/bordered_text.dart';
-import 'package:karaoke_app/entity/record.dart';
-import 'package:karaoke_app/components/sfradial_gauge_widget.dart';
-import 'package:karaoke_app/service/common_method.dart';
 
+import '../components/bordered_text.dart';
 import '../components/input_from_filed.dart';
+import '../components/sfradial_gauge_widget.dart';
+import '../entity/record.dart';
+import '../service/common_method.dart';
 import 'record_controller.dart';
 
 class RecordPage extends ConsumerWidget {
