@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/service/common_method.dart';
 
 import '../entity/record.dart';
+import '../service/common_method.dart';
 
 final recordRepositoryProvider = Provider(((ref) {
   return RecordRepository();

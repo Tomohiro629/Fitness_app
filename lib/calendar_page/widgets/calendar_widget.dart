@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/firestore.dart';
-import 'package:karaoke_app/record_page/record_page.dart';
-import 'package:karaoke_app/repository/record_repository.dart';
-import 'package:karaoke_app/service/common_method.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../entity/record.dart';
+import '../../record_page/record_controller.dart';
+import '../../record_page/record_page.dart';
+import '../../service/common_method.dart';
 import '../calendar_controller.dart';
 
 class CalendarWidget extends ConsumerWidget {
@@ -17,10 +17,9 @@ class CalendarWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final calendarModel = ref.watch(calendarControllerProvider);
-    final recordController = ref.watch(recordRepositoryProvider);
 
     return FirestoreListView<Record>(
-        query: recordController.queryRecord(),
+        query: ref.watch(recordControllerProvider).recordQuery(DateTime.now()),
         itemBuilder: (context, snapshot) {
           final record = snapshot.data();
           return TableCalendar(
@@ -51,22 +50,28 @@ class CalendarWidget extends ConsumerWidget {
                   .read(calendarControllerProvider.notifier)
                   .changeFormat(format);
             },
-            onDaySelected: (selectedDay, _) {
+            onDaySelected: (selectedDay, _) async {
               ref
                   .read(calendarControllerProvider.notifier)
                   .changeDay(selectedDay);
-              // ignore: unrelated_type_equality_checks
-              if (selectedDay == getDateString(DateTime.now())) {
-                recordController.setRecord(record: record);
-              }
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => RecordPage(
+                    builder: (
+                  context,
+                ) =>
+                        RecordPage(
                           selectedDay: selectedDay,
-                          record: record,
                         )),
               );
+              if (getDateString(selectedDay) == getDateString(DateTime.now())) {
+                ref.read(recordControllerProvider).setDailyRecord(
+                    totalCalorie: record.totalCalorie,
+                    setCalorie: record.setCalorie,
+                    totalProtein: record.totalProtein,
+                    setProtein: record.setProtein);
+              }
             },
           );
         });
