@@ -15,7 +15,6 @@ final recordControllerProvider =
 
 class RecordController extends ChangeNotifier {
   final Reader _reader;
-
   RecordController(
     this._reader,
   );
