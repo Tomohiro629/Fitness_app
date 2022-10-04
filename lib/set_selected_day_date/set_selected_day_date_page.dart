@@ -27,7 +27,7 @@ class SetSelectedDayDatePage extends ConsumerWidget {
           itemBuilder: ((context, snapshot) {
             final user = snapshot.data();
             return Column(children: [
-              const Gap(300),
+              const Gap(400),
               getDateString(selectedDay) == getDateString(DateTime.now())
                   ? AccountButton(
                       splashColor: Colors.orange,
@@ -43,10 +43,7 @@ class SetSelectedDayDatePage extends ConsumerWidget {
                       },
                       strokeColor: Colors.orange,
                       text: "RECORD START")
-                  : const Center(
-                      child: BorderedTextWidget(
-                          label: "記録開始は当日です。", storokeColor: Colors.yellow),
-                    )
+                  : const Center(child: Text("please wait..."))
             ]);
           }),
         ),
