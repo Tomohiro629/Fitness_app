@@ -11,20 +11,13 @@ final recordRepositoryProvider = Provider(((ref) {
 class RecordRepository {
   final _firestore = FirebaseFirestore.instance;
 
-  Stream<Record?> fetchRecord() {
+  Stream<Record?> fetchRecord(slectedDay) {
     final snapshots = _firestore
         .collection('records')
-        .doc(getDateString(DateTime.now()))
+        .doc(getDateString(slectedDay))
         .snapshots();
     return snapshots.map(
         ((doc) => doc.data() == null ? null : Record.fromJson(doc.data()!)));
-  }
-
-  Stream<List<Record>> fetchRecordStream() {
-    final snapshot = _firestore.collection('stores').snapshots();
-
-    return snapshot.map(
-        (qs) => qs.docs.map((doc) => Record.fromJson(doc.data())).toList());
   }
 
   Future<void> setRecord({required Record record}) async {

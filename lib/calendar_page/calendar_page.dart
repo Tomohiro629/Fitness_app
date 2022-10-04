@@ -8,9 +8,7 @@ class CalendarPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return const Scaffold(
       backgroundColor: Color(0xff192028),
-      body: SafeArea(
-        child: CalendarWidget(),
-      ),
+      body: SafeArea(child: CalendarWidget()),
     );
   }
 }
