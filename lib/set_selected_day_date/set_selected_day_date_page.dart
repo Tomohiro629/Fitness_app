@@ -4,7 +4,6 @@ import 'package:flutterfire_ui/firestore.dart';
 import 'package:gap/gap.dart';
 
 import '../components/account_button.dart';
-import '../components/bordered_text.dart';
 import '../entity/user.dart';
 import '../record_page/record_controller.dart';
 import '../repository/user_repository.dart';

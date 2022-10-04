@@ -19,7 +19,11 @@ class UserDateGatePage extends ConsumerWidget {
         stream: currentUser,
         builder: ((context, snapshot) {
           final isExist = snapshot.data != null;
-          return isExist ? const CalendarPage() : const SetPage();
+          return isExist
+              ? CalendarPage(
+                  user: snapshot.data!,
+                )
+              : const SetPage();
         }));
   }
 }
