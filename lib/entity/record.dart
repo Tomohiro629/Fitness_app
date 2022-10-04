@@ -47,7 +47,7 @@ class Record {
       setCalorie: setCalorie,
       totalProtein: totalProtein ?? this.totalProtein,
       setProtein: setProtein,
-      recordTime: recordTime,
+      recordTime: DateTime.now(),
       userId: userId,
     );
   }
