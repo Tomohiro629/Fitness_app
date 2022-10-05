@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -42,5 +43,17 @@ class CalendarController extends StateNotifier<CalendarModel> {
 
   void changeFormat(CalendarFormat format) {
     state = state.copyWith(format: format);
+  }
+
+  Color textColor(DateTime day) {
+    const defaultTextColor = Colors.white;
+
+    if (day.weekday == DateTime.sunday) {
+      return Colors.red;
+    }
+    if (day.weekday == DateTime.saturday) {
+      return Colors.blueAccent;
+    }
+    return defaultTextColor;
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:karaoke_app/components/bordered_text.dart';
 
 import '../components/account_button.dart';
 import '../entity/user.dart';
@@ -18,14 +19,12 @@ class CalendarPage extends ConsumerWidget {
       body: SafeArea(
           child: Column(children: [
         Container(
-            padding: const EdgeInsets.only(top: 30.0),
-            child: const CalendarWidget()),
+            padding: const EdgeInsets.all(50),
+            child: const BorderedTextWidget(
+                label: "RECORD", storokeColor: Colors.indigo)),
         Container(
-            padding: const EdgeInsets.all(30),
-            child: Text(
-              "現体重${user.weight.toString()}kg",
-              style: const TextStyle(fontSize: 25.0),
-            )),
+            padding: const EdgeInsets.only(top: 30.0, bottom: 150.0),
+            child: const CalendarWidget()),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -41,7 +40,7 @@ class CalendarPage extends ConsumerWidget {
                       });
                 },
                 strokeColor: Colors.greenAccent,
-                text: "カロリー変更"),
+                text: "FIX Cal"),
             AccountButton(
                 splashColor: Colors.yellowAccent,
                 onTap: () {
@@ -54,7 +53,7 @@ class CalendarPage extends ConsumerWidget {
                       });
                 },
                 strokeColor: Colors.yellowAccent,
-                text: "タンパク量変更"),
+                text: "FIX Pro"),
           ],
         )
       ])),
