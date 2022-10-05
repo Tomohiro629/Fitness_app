@@ -18,14 +18,14 @@ class CalendarPage extends ConsumerWidget {
       body: SafeArea(
           child: Column(children: [
         Container(
-            padding: const EdgeInsets.only(top: 30.0),
-            child: const CalendarWidget()),
-        Container(
-            padding: const EdgeInsets.all(30),
+            padding: const EdgeInsets.all(50),
             child: Text(
               "現体重${user.weight.toString()}kg",
               style: const TextStyle(fontSize: 25.0),
             )),
+        Container(
+            padding: const EdgeInsets.only(top: 30.0, bottom: 150.0),
+            child: const CalendarWidget()),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
