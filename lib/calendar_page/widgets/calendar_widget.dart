@@ -1,5 +1,8 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:karaoke_app/selected_day_date_gate/selected_day_date_gate.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -16,11 +19,11 @@ class CalendarWidget extends ConsumerWidget {
 
     return TableCalendar(
       focusedDay: calendarModel.focusDay,
-      firstDay: DateTime.utc(2022, 9, 1),
-      lastDay: DateTime.utc(2100, 1, 1),
-      locale: 'ja_jp',
+      firstDay: DateTime.utc(2022, 10, 1),
+      lastDay: DateTime(DateTime.now().year, DateTime.now().month + 1, 0),
       calendarBuilders: CalendarBuilders(
         defaultBuilder: (context, day, focusedDay) {
+          //当月の日付
           return AnimatedContainer(
             duration: const Duration(milliseconds: 250),
             margin: const EdgeInsets.all(15.0),
@@ -34,6 +37,30 @@ class CalendarWidget extends ConsumerWidget {
             ),
           );
         },
+        dowBuilder: (context, day) {
+          //日付部分
+          return Padding(
+            padding: const EdgeInsets.only(left: 15.0),
+            child: Text(
+              DateFormat.E().format(day),
+              style: TextStyle(
+                color: ref
+                    .read(calendarControllerProvider.notifier)
+                    .textColor(day),
+              ),
+            ),
+          );
+        },
+        disabledBuilder: (context, day, focusedDay) {
+          //当月外の日付
+          return Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Text(
+              day.day.toString(),
+              style: const TextStyle(color: Color.fromARGB(255, 67, 66, 66)),
+            ),
+          );
+        },
       ),
       calendarFormat: calendarModel.format,
       availableCalendarFormats: const {
@@ -42,12 +69,11 @@ class CalendarWidget extends ConsumerWidget {
       },
       startingDayOfWeek: StartingDayOfWeek.sunday,
       calendarStyle: const CalendarStyle(
-        todayTextStyle: TextStyle(color: Colors.yellow),
+        todayTextStyle: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
         todayDecoration: BoxDecoration(
-          color: Color.fromARGB(149, 6, 27, 186),
+          color: Color.fromARGB(146, 51, 228, 169),
           shape: BoxShape.circle,
         ),
-        weekendTextStyle: TextStyle(color: Color.fromARGB(255, 255, 22, 22)),
       ),
       onFormatChanged: (format) {
         ref.read(calendarControllerProvider.notifier).changeFormat(format);
