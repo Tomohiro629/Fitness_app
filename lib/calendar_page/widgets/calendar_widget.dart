@@ -19,9 +19,22 @@ class CalendarWidget extends ConsumerWidget {
       firstDay: DateTime.utc(2022, 9, 1),
       lastDay: DateTime.utc(2100, 1, 1),
       locale: 'ja_jp',
-      selectedDayPredicate: (day) {
-        return isSameDay(calendarModel.focusDay, day);
-      },
+      calendarBuilders: CalendarBuilders(
+        defaultBuilder: (context, day, focusedDay) {
+          return AnimatedContainer(
+            duration: const Duration(milliseconds: 250),
+            margin: const EdgeInsets.all(15.0),
+            child: Text(
+              day.day.toString(),
+              style: TextStyle(
+                color: ref
+                    .read(calendarControllerProvider.notifier)
+                    .textColor(day),
+              ),
+            ),
+          );
+        },
+      ),
       calendarFormat: calendarModel.format,
       availableCalendarFormats: const {
         CalendarFormat.month: 'Month',

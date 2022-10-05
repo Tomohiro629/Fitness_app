@@ -33,10 +33,13 @@ class RecordPage extends ConsumerWidget {
             final record = snapshot.data();
             return Column(
               children: [
-                Text(
-                  getDateString(selectedDay),
-                  style:
-                      const TextStyle(color: Color.fromARGB(255, 49, 158, 235)),
+                Padding(
+                  padding: const EdgeInsets.only(top: 5.0),
+                  child: Text(
+                    getDateString(selectedDay),
+                    style: const TextStyle(
+                        color: Color.fromARGB(255, 49, 158, 235)),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 15.0),
