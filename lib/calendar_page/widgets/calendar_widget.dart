@@ -31,7 +31,7 @@ class CalendarWidget extends ConsumerWidget {
       calendarStyle: const CalendarStyle(
         todayTextStyle: TextStyle(color: Colors.yellow),
         todayDecoration: BoxDecoration(
-          color: Color.fromARGB(150, 6, 105, 186),
+          color: Color.fromARGB(149, 6, 27, 186),
           shape: BoxShape.circle,
         ),
         weekendTextStyle: TextStyle(color: Color.fromARGB(255, 255, 22, 22)),
