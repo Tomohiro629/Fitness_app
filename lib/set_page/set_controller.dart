@@ -23,7 +23,7 @@ class SetController extends ChangeNotifier {
 
   Future<void> setUserDate({
     required int totalCalorie,
-    required int totalProtein,
+    required double totalProtein,
     required double weight,
     required String userName,
   }) async {
@@ -38,7 +38,7 @@ class SetController extends ChangeNotifier {
   }
 
   Future<void> createRecord(
-      {required int setCalorie, required int setProtein}) async {
+      {required int setCalorie, required double setProtein}) async {
     final userId = _reader(authServiceProvider).userId;
     final record = Record.create(
         totalCalorie: 0,

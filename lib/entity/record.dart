@@ -15,8 +15,8 @@ class Record {
   factory Record.create({
     required int totalCalorie,
     required int setCalorie,
-    required int totalProtein,
-    required int setProtein,
+    required double totalProtein,
+    required double setProtein,
     required String userId,
   }) {
     return Record(
@@ -30,7 +30,7 @@ class Record {
     );
   }
 
-  Record update({required int totalCalorie, required int totalProtein}) {
+  Record update({required int totalCalorie, required double totalProtein}) {
     return _copyWith(
       totalCalorie: totalCalorie,
       totalProtein: totalProtein,
@@ -39,7 +39,7 @@ class Record {
 
   Record _copyWith({
     int? totalCalorie,
-    int? totalProtein,
+    double? totalProtein,
   }) {
     return Record(
       recordId: recordId,
@@ -79,8 +79,8 @@ class Record {
   final String recordId;
   final int totalCalorie;
   final int setCalorie;
-  final int totalProtein;
-  final int setProtein;
+  final double totalProtein;
+  final double setProtein;
   final DateTime recordTime;
   final String userId;
 }

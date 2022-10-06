@@ -28,7 +28,7 @@ class SettingController extends ChangeNotifier {
 
   Future<void> fixProtein({
     required User user,
-    required int setProtein,
+    required double setProtein,
   }) async {
     final fixCalorie = user.update(
         calorie: user.calorie, protein: setProtein, weight: user.weight);

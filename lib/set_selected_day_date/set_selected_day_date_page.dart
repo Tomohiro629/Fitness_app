@@ -36,7 +36,7 @@ class SetSelectedDayDatePage extends ConsumerWidget {
                           ref.watch(recordControllerProvider).setDailyRecord(
                               totalCalorie: 0,
                               setCalorie: user.calorie,
-                              totalProtein: 0,
+                              totalProtein: 0.0,
                               setProtein: user.protein);
                         }
                       },

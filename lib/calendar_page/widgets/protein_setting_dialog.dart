@@ -59,7 +59,8 @@ class ProteinSettingDialog extends ConsumerWidget {
                     onTap: () {
                       if (fixProtein.text.isNotEmpty) {
                         settingController.fixProtein(
-                            user: user, setProtein: int.parse(fixProtein.text));
+                            user: user,
+                            setProtein: double.parse(fixProtein.text));
                       }
                       Navigator.pop(context);
                     },
