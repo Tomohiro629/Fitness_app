@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:karaoke_app/components/account_button.dart';
-import 'package:karaoke_app/components/bordered_text.dart';
-import 'package:karaoke_app/set_page/set_controller.dart';
 
+import '../components/account_button.dart';
+import '../components/bordered_text.dart';
 import '../components/input_from_filed.dart';
+import 'set_controller.dart';
 
 class SetPage extends ConsumerWidget {
   const SetPage({Key? key}) : super(key: key);
@@ -74,12 +74,12 @@ class SetPage extends ConsumerWidget {
                       if (800 < double.parse(totalCalorie.text)) {
                         await setController.setUserDate(
                             totalCalorie: int.parse(totalCalorie.text),
-                            totalProtein: int.parse(totalProtein.text),
+                            totalProtein: double.parse(totalProtein.text),
                             weight: double.parse(weight.text),
                             userName: userName.text);
                         await setController.createRecord(
                             setCalorie: int.parse(totalCalorie.text),
-                            setProtein: int.parse(totalProtein.text));
+                            setProtein: double.parse(totalProtein.text));
                       }
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(

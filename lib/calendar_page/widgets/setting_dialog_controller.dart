@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/repository/user_repository.dart';
 
 import '../../entity/user.dart';
+import '../../repository/user_repository.dart';
 
 final settingControllerProvider =
     ChangeNotifierProvider<SettingController>((ref) {
@@ -28,7 +28,7 @@ class SettingController extends ChangeNotifier {
 
   Future<void> fixProtein({
     required User user,
-    required int setProtein,
+    required double setProtein,
   }) async {
     final fixCalorie = user.update(
         calorie: user.calorie, protein: setProtein, weight: user.weight);

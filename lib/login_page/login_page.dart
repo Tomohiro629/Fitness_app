@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:karaoke_app/components/account_button.dart';
-import 'package:karaoke_app/components/bordered_text.dart';
-import 'package:karaoke_app/login_page/login_controller.dart';
 
+import '../components/account_button.dart';
+import '../components/bordered_text.dart';
 import '../components/input_from_filed.dart';
+import 'login_controller.dart';
 
 class LoginPage extends ConsumerWidget {
   const LoginPage({Key? key}) : super(key: key);

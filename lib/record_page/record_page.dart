@@ -126,7 +126,7 @@ class RecordPage extends ConsumerWidget {
                                     recordController.addRecord(
                                         record: record,
                                         addProtein: record.totalProtein +
-                                            int.parse(addProtein.text),
+                                            double.parse(addProtein.text),
                                         addCalorie: record.totalCalorie);
                                   }
                                   addProtein.clear();

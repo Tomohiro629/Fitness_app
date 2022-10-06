@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/components/bordered_text.dart';
 
 import '../components/account_button.dart';
+import '../components/bordered_text.dart';
 import '../entity/user.dart';
 import 'widgets/calendar_widget.dart';
 import 'widgets/calorie_setting_dialog.dart';

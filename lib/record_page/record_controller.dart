@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/entity/record.dart';
-import 'package:karaoke_app/repository/record_repository.dart';
 
+import '../entity/record.dart';
+import '../repository/record_repository.dart';
 import '../service/auth_service.dart';
 
 final recordControllerProvider =
@@ -22,7 +22,7 @@ class RecordController extends ChangeNotifier {
   Future<void> addRecord(
       {required Record record,
       required int addCalorie,
-      required int addProtein}) async {
+      required double addProtein}) async {
     final recordCalorie =
         record.update(totalCalorie: addCalorie, totalProtein: addProtein);
 
@@ -36,8 +36,8 @@ class RecordController extends ChangeNotifier {
   Future<void> setDailyRecord(
       {required int totalCalorie,
       required int setCalorie,
-      required int totalProtein,
-      required int setProtein}) async {
+      required double totalProtein,
+      required double setProtein}) async {
     final userId = _reader(authServiceProvider).userId;
     final record = Record.create(
       userId: userId,

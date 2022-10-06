@@ -12,7 +12,7 @@ class User {
 
   factory User.create(
       {required int calorie,
-      required int protein,
+      required double protein,
       required double weight,
       required String userId,
       required String userName}) {
@@ -27,7 +27,7 @@ class User {
 
   User update({
     required int calorie,
-    required int protein,
+    required double protein,
     required double weight,
   }) {
     return _copyWith(calorie: calorie, protein: protein, weight: weight);
@@ -35,7 +35,7 @@ class User {
 
   User _copyWith({
     int? calorie,
-    int? protein,
+    double? protein,
     double? weight,
   }) {
     return User(
@@ -70,7 +70,7 @@ class User {
   }
 
   final int calorie;
-  final int protein;
+  final double protein;
   final double weight;
   final DateTime recordTime;
   final String userId;

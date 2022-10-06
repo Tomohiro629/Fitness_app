@@ -36,13 +36,16 @@ class SetSelectedDayDatePage extends ConsumerWidget {
                           ref.watch(recordControllerProvider).setDailyRecord(
                               totalCalorie: 0,
                               setCalorie: user.calorie,
-                              totalProtein: 0,
+                              totalProtein: 0.0,
                               setProtein: user.protein);
                         }
                       },
                       strokeColor: Colors.orange,
                       text: "RECORD START")
-                  : const Center(child: Text("please wait..."))
+                  : Center(
+                      child: DateTime.now().isBefore(selectedDay)
+                          ? const Text("Please wait...")
+                          : const Text("No Data..."))
             ]);
           }),
         ),

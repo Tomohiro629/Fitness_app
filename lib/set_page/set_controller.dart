@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/entity/record.dart';
-import 'package:karaoke_app/entity/user.dart';
-import 'package:karaoke_app/repository/record_repository.dart';
-import 'package:karaoke_app/repository/user_repository.dart';
 
+import '../entity/record.dart';
+import '../entity/user.dart';
+import '../repository/record_repository.dart';
+import '../repository/user_repository.dart';
 import '../service/auth_service.dart';
 
 final setControllerProvider = ChangeNotifierProvider<SetController>((ref) {
@@ -23,7 +23,7 @@ class SetController extends ChangeNotifier {
 
   Future<void> setUserDate({
     required int totalCalorie,
-    required int totalProtein,
+    required double totalProtein,
     required double weight,
     required String userName,
   }) async {
@@ -38,7 +38,7 @@ class SetController extends ChangeNotifier {
   }
 
   Future<void> createRecord(
-      {required int setCalorie, required int setProtein}) async {
+      {required int setCalorie, required double setProtein}) async {
     final userId = _reader(authServiceProvider).userId;
     final record = Record.create(
         totalCalorie: 0,
