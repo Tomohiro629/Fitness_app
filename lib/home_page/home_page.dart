@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:karaoke_app/components/bordered_text.dart';
 
 import '../components/account_button.dart';
+import '../components/bordered_text.dart';
 import '../login_page/login_page.dart';
 import '../sign_up/signup_page.dart';
 

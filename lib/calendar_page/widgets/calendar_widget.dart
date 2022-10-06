@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:karaoke_app/selected_day_date_gate/selected_day_date_gate.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../../selected_day_date_gate/selected_day_date_gate.dart';
 import '../calendar_controller.dart';
 
 class CalendarWidget extends ConsumerWidget {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/calendar_page/calendar_page.dart';
-import 'package:karaoke_app/entity/user.dart';
-import 'package:karaoke_app/repository/user_repository.dart';
-import 'package:karaoke_app/service/auth_service.dart';
 
+import '../calendar_page/calendar_page.dart';
+import '../entity/user.dart';
+import '../repository/user_repository.dart';
+import '../service/auth_service.dart';
 import '../set_page/set_page.dart';
 
 class UserDateGatePage extends ConsumerWidget {

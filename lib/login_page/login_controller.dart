@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/service/auth_service.dart';
-import 'package:karaoke_app/service/google_sign_in_service.dart';
+
+import '../service/auth_service.dart';
+import '../service/google_sign_in_service.dart';
 
 final loginControllerProvider = ChangeNotifierProvider<LoginController>((ref) {
   return LoginController(ref.read);

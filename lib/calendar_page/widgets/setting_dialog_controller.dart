@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/repository/user_repository.dart';
 
 import '../../entity/user.dart';
+import '../../repository/user_repository.dart';
 
 final settingControllerProvider =
     ChangeNotifierProvider<SettingController>((ref) {

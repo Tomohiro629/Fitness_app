@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/calendar_page/widgets/setting_dialog_controller.dart';
-import 'package:karaoke_app/components/account_button.dart';
 
+import '../../components/account_button.dart';
 import '../../entity/user.dart';
+import 'setting_dialog_controller.dart';
 
 class ProteinSettingDialog extends ConsumerWidget {
   const ProteinSettingDialog({super.key, required this.user});

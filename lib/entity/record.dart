@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:karaoke_app/service/common_method.dart';
+
+import '../service/common_method.dart';
 
 class Record {
   Record({

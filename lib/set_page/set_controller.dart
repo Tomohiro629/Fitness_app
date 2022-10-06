@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/entity/record.dart';
-import 'package:karaoke_app/entity/user.dart';
-import 'package:karaoke_app/repository/record_repository.dart';
-import 'package:karaoke_app/repository/user_repository.dart';
 
+import '../entity/record.dart';
+import '../entity/user.dart';
+import '../repository/record_repository.dart';
+import '../repository/user_repository.dart';
 import '../service/auth_service.dart';
 
 final setControllerProvider = ChangeNotifierProvider<SetController>((ref) {

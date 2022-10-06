@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/entity/record.dart';
-import 'package:karaoke_app/repository/record_repository.dart';
 
+import '../entity/record.dart';
+import '../repository/record_repository.dart';
 import '../service/auth_service.dart';
 
 final recordControllerProvider =
