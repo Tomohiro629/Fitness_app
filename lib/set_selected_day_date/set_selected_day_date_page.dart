@@ -42,7 +42,10 @@ class SetSelectedDayDatePage extends ConsumerWidget {
                       },
                       strokeColor: Colors.orange,
                       text: "RECORD START")
-                  : const Center(child: Text("please wait..."))
+                  : Center(
+                      child: DateTime.now().isBefore(selectedDay)
+                          ? const Text("Please wait...")
+                          : const Text("No Data..."))
             ]);
           }),
         ),
