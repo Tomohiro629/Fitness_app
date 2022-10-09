@@ -34,6 +34,8 @@ class RecordPage extends ConsumerWidget {
           query: recordController.recordQuery(selectedDay),
           itemBuilder: (context, snapshot) {
             final record = snapshot.data();
+            final totalCal = user.calorie - record.totalCalorie;
+            final totalPro = user.protein - record.totalProtein;
             return Column(
               children: [
                 Padding(
@@ -87,7 +89,9 @@ class RecordPage extends ConsumerWidget {
                         ],
                       )
                     : BorderedTextWidget(
-                        label: 'Total ${record.totalCalorie} cal ',
+                        label: totalCal < 0
+                            ? 'OVER ${-(totalCal)} CAL'
+                            : 'MISSINING $totalCal CAL',
                         storokeColor: record.setCalorie > record.totalCalorie
                             ? Colors.blue
                             : Colors.red,
@@ -139,7 +143,9 @@ class RecordPage extends ConsumerWidget {
                             ],
                           )
                         : BorderedTextWidget(
-                            label: 'Total ${record.totalProtein} g',
+                            label: totalPro < 0
+                                ? 'OVER ${-(totalPro)} G'
+                                : 'MISSINING ${totalPro.toStringAsFixed(1)} G',
                             storokeColor:
                                 record.setProtein > record.totalProtein
                                     ? Colors.blue
