@@ -24,7 +24,7 @@ class CalendarPage extends ConsumerWidget {
                 label: "RECORD", storokeColor: Colors.indigo)),
         Container(
             padding: const EdgeInsets.only(top: 30.0, bottom: 150.0),
-            child: const CalendarWidget()),
+            child: CalendarWidget(user: user)),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

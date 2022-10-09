@@ -6,15 +6,18 @@ import '../components/bordered_text.dart';
 import '../components/input_from_filed.dart';
 import '../components/sfradial_gauge_widget.dart';
 import '../entity/record.dart';
+import '../entity/user.dart';
 import '../service/common_method.dart';
 import 'record_controller.dart';
 
 class RecordPage extends ConsumerWidget {
   const RecordPage({
     Key? key,
+    required this.user,
     required this.selectedDay,
   }) : super(key: key);
 
+  final User user;
   final DateTime selectedDay;
 
   @override
