@@ -6,15 +6,18 @@ import '../components/bordered_text.dart';
 import '../components/input_from_filed.dart';
 import '../components/sfradial_gauge_widget.dart';
 import '../entity/record.dart';
+import '../entity/user.dart';
 import '../service/common_method.dart';
 import 'record_controller.dart';
 
 class RecordPage extends ConsumerWidget {
   const RecordPage({
     Key? key,
+    required this.user,
     required this.selectedDay,
   }) : super(key: key);
 
+  final User user;
   final DateTime selectedDay;
 
   @override
@@ -31,6 +34,8 @@ class RecordPage extends ConsumerWidget {
           query: recordController.recordQuery(selectedDay),
           itemBuilder: (context, snapshot) {
             final record = snapshot.data();
+            final totalCal = user.calorie - record.totalCalorie;
+            final totalPro = user.protein - record.totalProtein;
             return Column(
               children: [
                 Padding(
@@ -84,7 +89,9 @@ class RecordPage extends ConsumerWidget {
                         ],
                       )
                     : BorderedTextWidget(
-                        label: 'Total ${record.totalCalorie} cal ',
+                        label: totalCal < 0
+                            ? 'OVER ${-(totalCal)} CAL'
+                            : 'MISSINING $totalCal CAL',
                         storokeColor: record.setCalorie > record.totalCalorie
                             ? Colors.blue
                             : Colors.red,
@@ -136,7 +143,9 @@ class RecordPage extends ConsumerWidget {
                             ],
                           )
                         : BorderedTextWidget(
-                            label: 'Total ${record.totalProtein} g',
+                            label: totalPro < 0
+                                ? 'OVER ${-(totalPro)} G'
+                                : 'MISSINING ${totalPro.toStringAsFixed(1)} G',
                             storokeColor:
                                 record.setProtein > record.totalProtein
                                     ? Colors.blue

@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../entity/record.dart';
+import '../entity/user.dart';
 import '../record_page/record_page.dart';
 import '../repository/record_repository.dart';
 import '../set_selected_day_date/set_selected_day_date_page.dart';
 
 class SelectedDayDateGatePage extends ConsumerWidget {
-  const SelectedDayDateGatePage({Key? key, required this.selectedDay})
+  const SelectedDayDateGatePage(
+      {Key? key, required this.user, required this.selectedDay})
       : super(key: key);
+  final User user;
   final DateTime selectedDay;
 
   @override
@@ -21,7 +24,7 @@ class SelectedDayDateGatePage extends ConsumerWidget {
         builder: ((context, snapshot) {
           final isDate = snapshot.data != null;
           return isDate
-              ? RecordPage(selectedDay: selectedDay)
+              ? RecordPage(user: user, selectedDay: selectedDay)
               : SetSelectedDayDatePage(selectedDay: selectedDay);
         }));
   }

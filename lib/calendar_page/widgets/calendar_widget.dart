@@ -3,13 +3,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../../entity/user.dart';
 import '../../selected_day_date_gate/selected_day_date_gate.dart';
 import '../calendar_controller.dart';
 
 class CalendarWidget extends ConsumerWidget {
   const CalendarWidget({
     super.key,
+    required this.user,
   });
+  final User user;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -86,6 +89,7 @@ class CalendarWidget extends ConsumerWidget {
             context,
           ) =>
                   SelectedDayDateGatePage(
+                    user: user,
                     selectedDay: selectedDay,
                   )),
         );
