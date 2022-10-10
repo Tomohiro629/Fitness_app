@@ -5,8 +5,6 @@ import '../components/account_button.dart';
 import '../components/bordered_text.dart';
 import '../entity/user.dart';
 import 'widgets/calendar_widget.dart';
-import 'widgets/calorie_setting_dialog.dart';
-import 'widgets/protein_setting_dialog.dart';
 
 class CalendarPage extends ConsumerWidget {
   const CalendarPage({super.key, required this.user});
@@ -25,37 +23,6 @@ class CalendarPage extends ConsumerWidget {
         Container(
             padding: const EdgeInsets.only(top: 30.0, bottom: 150.0),
             child: CalendarWidget(user: user)),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            AccountButton(
-                splashColor: Colors.greenAccent,
-                onTap: () {
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return CalorieSettingDialog(
-                          user: user,
-                        );
-                      });
-                },
-                strokeColor: Colors.greenAccent,
-                text: "FIX Cal"),
-            AccountButton(
-                splashColor: Colors.yellowAccent,
-                onTap: () {
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return ProteinSettingDialog(
-                          user: user,
-                        );
-                      });
-                },
-                strokeColor: Colors.yellowAccent,
-                text: "FIX Pro"),
-          ],
-        )
       ])),
     );
   }
