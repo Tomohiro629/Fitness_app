@@ -62,7 +62,7 @@ class ImagesListWidget extends ConsumerWidget {
             backgroundColor: Colors.black,
             child: IconButton(
               icon: const Icon(Icons.visibility),
-              color: const Color.fromARGB(255, 1, 184, 126),
+              color: const Color.fromARGB(255, 184, 1, 1),
               onPressed: () {
 //画像の非表示　Stackで重ねるかデータを採らないようにする
               },
