@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:karaoke_app/components/sfradial_gauge_widget.dart';
+import 'package:karaoke_app/images_list/images_list_widget.dart';
 import 'package:karaoke_app/user_edit_page/user_edit_page.dart';
 
 import '../components/bordered_text.dart';
@@ -42,53 +42,7 @@ class CalendarPage extends ConsumerWidget {
                 ],
               )),
           CalendarWidget(user: user),
-          Stack(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                height: 350.0,
-                child: ListView(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Container(
-                        height: 300.0,
-                        width: 500.0,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Container(
-                        height: 300.0,
-                        width: 500.0,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Container(
-                        height: 300.0,
-                        width: 500.0,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Align(
-                alignment: Alignment.topRight,
-                child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.add_a_photo_outlined,
-                      color: Color.fromARGB(255, 184, 13, 1),
-                    )),
-              ),
-            ],
-          )
+          const ImagesListWidget(),
         ]),
       )),
     );

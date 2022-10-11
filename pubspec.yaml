@@ -38,12 +38,16 @@ dependencies:
   cloud_firestore: ^3.4.7
   firebase_auth: ^3.8.0
   firebase_core: ^1.22.0
+  firebase_storage: ^10.3.11
   flutterfire_ui: ^0.4.3+9
   flutter_riverpod: ^1.0.4
   flutter_screenutil: ^5.5.4
   gap: ^2.0.0
   google_sign_in: ^5.4.1
+  image_cropper: ^3.0.0
+  image_picker: ^0.8.6
   intl: ^0.17.0
+  permission_handler: ^10.1.0
   riverpod: ^1.0.3
   syncfusion_flutter_gauges: ^20.2.50
   table_calendar: ^3.0.7
