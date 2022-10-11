@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/components/account_button.dart';
 import 'package:karaoke_app/entity/image_body.dart';
 import 'package:karaoke_app/images_list/images_list_controller.dart';
 
@@ -53,48 +52,12 @@ class ImagesListWidget extends ConsumerWidget {
                   ref
                       .watch(imageCropperServiceProvider)
                       .cropImage(imageFile: imagePicker.imagePath!);
-                  showDialog(
-                      barrierDismissible: false,
-                      context: context,
-                      builder: (childContext) {
-                        return AlertDialog(
-                          content:
-                              Card(child: Image.file(imagePicker.imagePath!)),
-                          actions: [
-                            Row(
-                              children: [
-                                AccountButton(
-                                    splashColor: Colors.red,
-                                    onTap: () {
-                                      imageListController
-                                          .setImage(imagePicker.imagePath);
-                                    },
-                                    strokeColor: Colors.red,
-                                    text: "SET"),
-                                AccountButton(
-                                    splashColor: Colors.indigo,
-                                    onTap: () {
-                                      imagePicker.takeCamera();
-                                      if (imagePicker.imagePath != null) {
-                                        ref
-                                            .watch(imageCropperServiceProvider)
-                                            .cropImage(
-                                                imageFile:
-                                                    imagePicker.imagePath!);
-                                      }
-                                    },
-                                    strokeColor: Colors.indigo,
-                                    text: "RESHOOT")
-                              ],
-                            )
-                          ],
-                        );
-                      });
+                  imageListController.setImage(imagePicker.imagePath);
                 }
               },
               icon: const Icon(
                 Icons.add_a_photo_outlined,
-                color: Color.fromARGB(255, 184, 13, 1),
+                color: Color.fromARGB(255, 1, 184, 126),
               )),
         ),
       ],
