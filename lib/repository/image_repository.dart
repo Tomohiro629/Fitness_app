@@ -12,7 +12,7 @@ class ImageRepository {
   final _firestore = FirebaseFirestore.instance;
 
   Stream<List<ImageBody>> fetchImageStream() {
-    final snapshots = _firestore.collection('records').snapshots();
+    final snapshots = _firestore.collection('images').snapshots();
     return snapshots.map(((qs) => qs.docs.isEmpty
         ? []
         : qs.docs.map((doc) => ImageBody.fromJson(doc.data())).toList()));
