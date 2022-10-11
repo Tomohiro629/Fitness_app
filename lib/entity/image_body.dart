@@ -1,25 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Image {
-  Image({
+class ImageBody {
+  ImageBody({
     required this.imageURL,
     required this.recordTime,
     required this.userId,
   });
 
-  factory Image.create({
+  factory ImageBody.create({
     required String imageURL,
     required String userId,
   }) {
-    return Image(
+    return ImageBody(
       imageURL: imageURL,
       recordTime: DateTime.now(),
       userId: userId,
     );
   }
 
-  factory Image.fromJson(Map<String, dynamic> map) {
-    return Image(
+  factory ImageBody.fromJson(Map<String, dynamic> map) {
+    return ImageBody(
       imageURL: map['imageURL'],
       recordTime: (map['recordTime'] as Timestamp).toDate(),
       userId: map['userId'],

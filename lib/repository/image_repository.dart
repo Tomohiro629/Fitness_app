@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/entity/image.dart';
+import 'package:karaoke_app/entity/image_body.dart';
 
 import '../service/common_method.dart';
 
@@ -11,14 +11,14 @@ final imageRepositoryProvider = Provider(((ref) {
 class ImageRepository {
   final _firestore = FirebaseFirestore.instance;
 
-  Stream<List<Image>> fetchImageStream() {
+  Stream<List<ImageBody>> fetchImageStream() {
     final snapshots = _firestore.collection('records').snapshots();
     return snapshots.map(((qs) => qs.docs.isEmpty
         ? []
-        : qs.docs.map((doc) => Image.fromJson(doc.data())).toList()));
+        : qs.docs.map((doc) => ImageBody.fromJson(doc.data())).toList()));
   }
 
-  Future<void> setRecord({required Image image}) async {
+  Future<void> setImage({required ImageBody image}) async {
     await _firestore
         .collection("images")
         .doc(getDateString(DateTime.now()))
