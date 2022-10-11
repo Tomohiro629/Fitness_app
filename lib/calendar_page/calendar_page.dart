@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:karaoke_app/components/sfradial_gauge_widget.dart';
 import 'package:karaoke_app/user_edit_page/user_edit_page.dart';
 
 import '../components/bordered_text.dart';
