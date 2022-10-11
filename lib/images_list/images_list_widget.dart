@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:karaoke_app/components/account_button.dart';
-import 'package:karaoke_app/entity/image_body.dart';
-import 'package:karaoke_app/images_list/images_list_controller.dart';
-import 'package:karaoke_app/service/cloud_storage_service.dart';
 
+import '../entity/image_body.dart';
+import '../service/cloud_storage_service.dart';
 import '../service/image_cropper_service.dart';
 import '../service/image_picker_service.dart';
+import 'images_list_controller.dart';
 
 class ImagesListWidget extends ConsumerWidget {
   const ImagesListWidget({super.key});
@@ -51,11 +50,29 @@ class ImagesListWidget extends ConsumerWidget {
           child: imagePicker.imagePath != null
               ? IconButton(
                   onPressed: () async {
+                    showGeneralDialog(
+                        context: context,
+                        barrierColor: Colors.black.withOpacity(0.5),
+                        pageBuilder: (BuildContext context, animation,
+                            secondaryAnimation) {
+                          return Center(
+                            child: Stack(
+                              children: const [
+                                CircularProgressIndicator(
+                                  color: Colors.greenAccent,
+                                ),
+                              ],
+                            ),
+                          );
+                        });
                     await ref
                         .watch(storageServiceProvider)
                         .uploadPostImageAndGetUrl(file: imagePicker.imagePath!);
                     await imageListController.setImage(
                         imageURL: ref.watch(storageServiceProvider).imageURL!);
+                    imagePicker.imagePath = null;
+                    // ignore: use_build_context_synchronously
+                    Navigator.pop(context);
                   },
                   icon: const Icon(
                     Icons.add_a_photo_outlined,
