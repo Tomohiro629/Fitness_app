@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:karaoke_app/components/account_button.dart';
 import 'package:karaoke_app/entity/image_body.dart';
 import 'package:karaoke_app/images_list/images_list_controller.dart';
+import 'package:karaoke_app/service/cloud_storage_service.dart';
 
 import '../service/image_cropper_service.dart';
 import '../service/image_picker_service.dart';
@@ -12,6 +14,7 @@ class ImagesListWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final imageListController = ref.watch(imageListControllerProvider);
     final imagePicker = ref.watch(imagePickerServiceProvider);
+    final croppedImage = ref.watch(imageCropperServiceProvider);
     return Stack(
       children: [
         Container(
@@ -45,20 +48,31 @@ class ImagesListWidget extends ConsumerWidget {
         ),
         Align(
           alignment: Alignment.topRight,
-          child: IconButton(
-              onPressed: () {
-                imagePicker.takeCamera();
-                if (imagePicker.imagePath != null) {
-                  ref
-                      .watch(imageCropperServiceProvider)
-                      .cropImage(imageFile: imagePicker.imagePath!);
-                  imageListController.setImage(imagePicker.imagePath);
-                }
-              },
-              icon: const Icon(
-                Icons.add_a_photo_outlined,
-                color: Color.fromARGB(255, 1, 184, 126),
-              )),
+          child: imagePicker.imagePath != null
+              ? IconButton(
+                  onPressed: () async {
+                    await ref
+                        .watch(storageServiceProvider)
+                        .uploadPostImageAndGetUrl(file: imagePicker.imagePath!);
+                    await imageListController.setImage(
+                        imageURL: ref.watch(storageServiceProvider).imageURL!);
+                  },
+                  icon: const Icon(
+                    Icons.add_a_photo_outlined,
+                    color: Color.fromARGB(255, 184, 1, 138),
+                  ))
+              : IconButton(
+                  onPressed: () async {
+                    imagePicker.imagePath = null;
+                    imagePicker.takeCamera();
+                    if (imagePicker.imagePath != null) {
+                      croppedImage.cropImage(imageFile: imagePicker.imagePath!);
+                    }
+                  },
+                  icon: const Icon(
+                    Icons.camera_alt_outlined,
+                    color: Color.fromARGB(255, 1, 184, 126),
+                  )),
         ),
       ],
     );

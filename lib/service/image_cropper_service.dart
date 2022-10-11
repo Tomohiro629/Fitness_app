@@ -10,6 +10,8 @@ final imageCropperServiceProvider =
 });
 
 class ImageCropperService extends ChangeNotifier {
+  CroppedFile? croppedFile;
+
   Future<File?> cropImage({required File imageFile}) async {
     CroppedFile? croppedFile = await ImageCropper().cropImage(
       sourcePath: imageFile.path,
@@ -23,13 +25,14 @@ class ImageCropperService extends ChangeNotifier {
       uiSettings: [
         AndroidUiSettings(
             toolbarTitle: '画像編集',
-            toolbarColor: Colors.deepOrange,
+            toolbarColor: const Color.fromARGB(255, 1, 184, 126),
             toolbarWidgetColor: Colors.white,
             initAspectRatio: CropAspectRatioPreset.original,
             lockAspectRatio: false),
       ],
     );
     if (croppedFile == null) return null;
+    croppedFile = croppedFile;
     return File(croppedFile.path);
   }
 }

@@ -21,9 +21,10 @@ class ImageListController extends ChangeNotifier {
     return _reader(imageRepositoryProvider).fetchImageStream();
   }
 
-  Future<void> setImage(imageURL) async {
+  Future<void> setImage({required String imageURL}) async {
     final userId = _reader(authServiceProvider).userId;
     final recordImage = ImageBody.create(imageURL: imageURL, userId: userId);
     await _reader(imageRepositoryProvider).setImage(image: recordImage);
+    notifyListeners();
   }
 }
