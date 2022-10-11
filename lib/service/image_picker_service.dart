@@ -27,15 +27,4 @@ class ImagePickerService extends ChangeNotifier {
     }
     notifyListeners();
   }
-
-  Future<void> takeGallery() async {
-    final picekdfile =
-        await _picker.pickImage(source: ImageSource.gallery, imageQuality: 80);
-    if (picekdfile != null) {
-      File? img = File(picekdfile.path);
-      img = await reader(imageCropperServiceProvider).cropImage(imageFile: img);
-      imagePath = img;
-    }
-    notifyListeners();
-  }
 }
