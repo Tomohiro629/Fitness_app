@@ -16,58 +16,95 @@ class ImagesListWidget extends ConsumerWidget {
     final imageListController = ref.watch(imageListControllerProvider);
     final imagePicker = ref.watch(imagePickerServiceProvider);
     final croppedImage = ref.watch(imageCropperServiceProvider);
+    final isVisible = imageListController.isVisible;
 
     return Stack(
       children: [
         Column(
           children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              height: 380.0,
-              child: StreamBuilder<List<ImageBody>>(
-                  stream: imageListController.fetchImageStream(),
-                  builder: (context, AsyncSnapshot<List<ImageBody>> snapshot) {
-                    if (snapshot.hasData) {
-                      return ListView(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        children: snapshot.data!.map((ImageBody image) {
-                          return Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  width: 380.0,
-                                  child: Image.network(image.imageURL),
-                                ),
-                                const Gap(10),
-                                Text("${getDateString(image.recordTime)} 撮影")
-                              ],
-                            ),
-                          );
-                        }).toList(),
+            Visibility(
+              visible: isVisible,
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                height: 380.0,
+                child: StreamBuilder<List<ImageBody>>(
+                    stream: imageListController.fetchImageStream(),
+                    builder:
+                        (context, AsyncSnapshot<List<ImageBody>> snapshot) {
+                      if (snapshot.hasData) {
+                        return ListView(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          children: snapshot.data!.map((ImageBody image) {
+                            return Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    width: 380.0,
+                                    child: Image.network(image.imageURL),
+                                  ),
+                                  const Gap(10),
+                                  Text("${getDateString(image.recordTime)} 撮影")
+                                ],
+                              ),
+                            );
+                          }).toList(),
+                        );
+                      }
+                      if (snapshot.hasError) {}
+                      return const Center(
+                        child: Text("no data"),
                       );
-                    }
-                    if (snapshot.hasError) {}
-                    return const Center(
-                      child: Text("no data"),
-                    );
-                  }),
+                    }),
+              ),
             ),
           ],
         ),
-        Align(
-          alignment: Alignment.bottomLeft,
-          child: CircleAvatar(
-            backgroundColor: Colors.black,
-            child: IconButton(
-              icon: const Icon(Icons.visibility),
-              color: const Color.fromARGB(255, 184, 1, 1),
-              onPressed: () {
-//画像の非表示　Stackで重ねるかデータを採らないようにする
-              },
+        if (isVisible == false)
+          Container(
+            color: const Color.fromARGB(139, 52, 50, 50),
+            width: double.infinity,
+            height: 380.0,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("センシティブな内容が含まれます。"),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: InkWell(
+                    onTap: () {
+                      imageListController.setIsVisible();
+                    },
+                    child: const Text("表示"),
+                  ),
+                )
+              ],
             ),
           ),
+        Align(
+          alignment: Alignment.bottomLeft,
+          child: isVisible == true
+              ? CircleAvatar(
+                  backgroundColor: Colors.black,
+                  child: IconButton(
+                    icon: const Icon(Icons.visibility),
+                    color: const Color.fromARGB(255, 184, 1, 1),
+                    onPressed: () {
+                      imageListController.setIsVisible();
+                    },
+                  ),
+                )
+              : CircleAvatar(
+                  backgroundColor: Colors.black,
+                  child: IconButton(
+                    icon: const Icon(Icons.visibility_off),
+                    color: Colors.blueAccent,
+                    onPressed: () {
+                      imageListController.setIsVisible();
+                    },
+                  ),
+                ),
         ),
         Align(
           alignment: Alignment.topRight,
@@ -120,7 +157,7 @@ class ImagesListWidget extends ConsumerWidget {
                       },
                       icon: const Icon(
                         Icons.camera_alt_outlined,
-                        color: Color.fromARGB(255, 1, 184, 126),
+                        color: Colors.blueAccent,
                       )),
                 ),
         ),
