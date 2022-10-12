@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../components/account_button.dart';
+import '../components/custom_button.dart';
 import '../components/bordered_text.dart';
 import '../login_page/login_page.dart';
 import '../sign_up/signup_page.dart';
@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                AccountButton(
+                CustomButton(
                     splashColor: const Color.fromARGB(117, 206, 65, 65),
                     onTap: () async {
                       Navigator.push(
@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
                     },
                     strokeColor: Colors.red,
                     text: "SIGN UP"),
-                AccountButton(
+                CustomButton(
                     splashColor: Colors.indigo,
                     onTap: () async {
                       Navigator.push(

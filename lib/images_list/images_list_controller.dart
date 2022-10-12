@@ -13,6 +13,7 @@ final imageListControllerProvider =
 
 class ImageListController extends ChangeNotifier {
   final Reader _reader;
+  bool isVisible = true;
   ImageListController(
     this._reader,
   );
@@ -25,6 +26,15 @@ class ImageListController extends ChangeNotifier {
     final userId = _reader(authServiceProvider).userId;
     final recordImage = ImageBody.create(imageURL: imageURL, userId: userId);
     await _reader(imageRepositoryProvider).setImage(image: recordImage);
+    notifyListeners();
+  }
+
+  void setIsVisible() {
+    if (isVisible == true) {
+      isVisible = false;
+    } else {
+      isVisible = true;
+    }
     notifyListeners();
   }
 }

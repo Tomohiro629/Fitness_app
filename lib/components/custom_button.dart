@@ -1,8 +1,8 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 
-class AccountButton extends StatelessWidget {
-  const AccountButton(
+class CustomButton extends StatelessWidget {
+  const CustomButton(
       {Key? key,
       required this.splashColor,
       required this.onTap,
