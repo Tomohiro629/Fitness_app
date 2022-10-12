@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/firestore.dart';
 import 'package:gap/gap.dart';
 
+import '../components/app_colors.dart';
 import '../components/custom_button.dart';
 import '../entity/user.dart';
 import '../record_page/record_controller.dart';
@@ -18,7 +19,7 @@ class SetSelectedDayDatePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final userId = ref.watch(authServiceProvider).userId;
     return Scaffold(
-      backgroundColor: const Color(0xff192028),
+      backgroundColor: AppColors.backColor,
       body: SafeArea(
           child: Center(
         child: FirestoreListView<User>(

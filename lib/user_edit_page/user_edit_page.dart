@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:karaoke_app/user_edit_page/user_edit_controller.dart';
 
-import '../components/custom_button.dart';
+import '../components/app_colors.dart';
 import '../components/bordered_text.dart';
+import '../components/custom_button.dart';
 import '../components/input_from_filed.dart';
 import '../entity/user.dart';
+import 'user_edit_controller.dart';
 
 class UserEditPage extends ConsumerWidget {
   const UserEditPage({super.key, required this.user});
@@ -24,7 +25,7 @@ class UserEditPage extends ConsumerWidget {
     editProtein.text = user.protein.toString();
 
     return Scaffold(
-      backgroundColor: const Color(0xff192028),
+      backgroundColor: AppColors.backColor,
       body: Center(
         child: SingleChildScrollView(
           child: Column(

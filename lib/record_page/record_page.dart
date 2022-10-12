@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/firestore.dart';
 
+import '../components/app_colors.dart';
 import '../components/bordered_text.dart';
 import '../components/input_from_filed.dart';
 import '../components/sfradial_gauge_widget.dart';
@@ -27,7 +28,7 @@ class RecordPage extends ConsumerWidget {
     final addProtein = TextEditingController();
 
     return Scaffold(
-      backgroundColor: const Color(0xff192028),
+      backgroundColor: AppColors.backColor,
       body: SafeArea(
         child: Center(
             child: FirestoreListView<Record>(

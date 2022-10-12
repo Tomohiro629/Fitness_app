@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
-import '../components/custom_button.dart';
+import '../components/app_colors.dart';
 import '../components/bordered_text.dart';
+import '../components/custom_button.dart';
 import '../components/input_from_filed.dart';
 import 'signup_controller.dart';
 
@@ -16,7 +17,7 @@ class SignupPage extends ConsumerWidget {
     final password = TextEditingController();
 
     return Scaffold(
-      backgroundColor: const Color(0xff192028),
+      backgroundColor: AppColors.backColor,
       body: Center(
         child: SingleChildScrollView(
           child: Column(
