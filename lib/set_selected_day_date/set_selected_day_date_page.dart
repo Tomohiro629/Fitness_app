@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/firestore.dart';
 import 'package:gap/gap.dart';
 
-import '../components/account_button.dart';
+import '../components/custom_button.dart';
 import '../entity/user.dart';
 import '../record_page/record_controller.dart';
 import '../repository/user_repository.dart';
@@ -28,7 +28,7 @@ class SetSelectedDayDatePage extends ConsumerWidget {
             return Column(children: [
               const Gap(400),
               getDateString(selectedDay) == getDateString(DateTime.now())
-                  ? AccountButton(
+                  ? CustomButton(
                       splashColor: Colors.orange,
                       onTap: () {
                         if (getDateString(selectedDay) ==

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
-import '../components/account_button.dart';
+import '../components/custom_button.dart';
 import '../components/bordered_text.dart';
 import '../components/input_from_filed.dart';
 import 'signup_controller.dart';
@@ -44,7 +44,7 @@ class SignupPage extends ConsumerWidget {
                     color: Color.fromARGB(117, 206, 65, 65), width: 3.0),
               ),
               const Gap(50),
-              AccountButton(
+              CustomButton(
                   splashColor: const Color.fromARGB(117, 206, 65, 65),
                   onTap: () async {
                     try {

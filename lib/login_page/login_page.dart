@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
-import '../components/account_button.dart';
+import '../components/custom_button.dart';
 import '../components/bordered_text.dart';
 import '../components/input_from_filed.dart';
 import 'login_controller.dart';
@@ -47,7 +47,7 @@ class LoginPage extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AccountButton(
+                  CustomButton(
                       splashColor: Colors.indigo,
                       onTap: () async {
                         try {
@@ -80,37 +80,37 @@ class LoginPage extends ConsumerWidget {
                       },
                       strokeColor: Colors.indigo,
                       text: "LOG IN"),
-                  const Gap(50),
-                  AccountButton(
-                      splashColor: Colors.indigo,
-                      onTap: () async {
-                        try {
-                          await loginController.handleSignIn();
-                        } catch (e) {
-                          if (e.toString() ==
-                              "[firebase_auth/unknown] Given String is empty or null") {
-                            loginController
-                                .setErrorText("メールアドレス又はパスワード未入力です。");
-                          } else if (e.toString() ==
-                              "[firebase_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.") {
-                            loginController.setErrorText("登録のないメールアドレスです。");
-                          } else {
-                            loginController.setErrorText("ログインエラー\n再度お試しください。");
-                          }
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                loginController.errorMessage,
-                                textAlign: TextAlign.center,
-                              ),
-                              backgroundColor: Colors.red,
-                              duration: const Duration(seconds: 2),
-                            ),
-                          );
-                        }
-                      },
-                      strokeColor: Colors.indigo,
-                      text: "Google\nLOG IN")
+
+                  // CustomButton(
+                  //     splashColor: Colors.indigo,
+                  //     onTap: () async {
+                  //       try {
+                  //         await loginController.handleSignIn();
+                  //       } catch (e) {
+                  //         if (e.toString() ==
+                  //             "[firebase_auth/unknown] Given String is empty or null") {
+                  //           loginController
+                  //               .setErrorText("メールアドレス又はパスワード未入力です。");
+                  //         } else if (e.toString() ==
+                  //             "[firebase_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.") {
+                  //           loginController.setErrorText("登録のないメールアドレスです。");
+                  //         } else {
+                  //           loginController.setErrorText("ログインエラー\n再度お試しください。");
+                  //         }
+                  //         ScaffoldMessenger.of(context).showSnackBar(
+                  //           SnackBar(
+                  //             content: Text(
+                  //               loginController.errorMessage,
+                  //               textAlign: TextAlign.center,
+                  //             ),
+                  //             backgroundColor: Colors.red,
+                  //             duration: const Duration(seconds: 2),
+                  //           ),
+                  //         );
+                  //       }
+                  //     },
+                  //     strokeColor: Colors.indigo,
+                  //     text: "Google\nLOG IN")
                 ],
               ),
             ],

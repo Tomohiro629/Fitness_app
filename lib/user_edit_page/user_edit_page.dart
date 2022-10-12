@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:karaoke_app/user_edit_page/user_edit_controller.dart';
 
-import '../components/account_button.dart';
+import '../components/custom_button.dart';
 import '../components/bordered_text.dart';
 import '../components/input_from_filed.dart';
 import '../entity/user.dart';
@@ -62,7 +62,7 @@ class UserEditPage extends ConsumerWidget {
                     color: Color.fromARGB(117, 240, 114, 105), width: 3.0),
               ),
               const Gap(50),
-              AccountButton(
+              CustomButton(
                   splashColor: const Color.fromARGB(117, 105, 240, 175),
                   onTap: () async {
                     try {
