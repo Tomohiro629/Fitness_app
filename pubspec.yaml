@@ -40,6 +40,7 @@ dependencies:
   firebase_core: ^1.22.0
   firebase_storage: ^10.3.11
   flutterfire_ui: ^0.4.3+9
+  flutter_launcher_icons: ^0.10.0
   flutter_riverpod: ^1.0.4
   flutter_screenutil: ^5.5.4
   gap: ^2.0.0
@@ -52,6 +53,12 @@ dependencies:
   syncfusion_flutter_gauges: ^20.2.50
   table_calendar: ^3.0.7
   uuid: 3.0.6
+
+flutter_icons:   # 追加
+  android: true  # 追加
+  ios: true      # 追加
+  image_path: "assets/icon.png" # 追加   
+
 
 dev_dependencies:
   flutter_test:
