@@ -24,39 +24,56 @@ class ImagesListWidget extends ConsumerWidget {
           children: [
             Visibility(
               visible: isVisible,
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                height: 380.0,
-                child: StreamBuilder<List<ImageBody>>(
-                    stream: imageListController.fetchImageStream(),
-                    builder:
-                        (context, AsyncSnapshot<List<ImageBody>> snapshot) {
-                      if (snapshot.hasData) {
-                        return ListView(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          children: snapshot.data!.map((ImageBody image) {
-                            return Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    width: 380.0,
-                                    child: Image.network(image.imageURL),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Center(
+                    child: SizedBox(
+                        width: 150.0,
+                        child: Column(
+                          children: const [
+                            LinearProgressIndicator(),
+                            Gap(10.0),
+                            Text("Loading...")
+                          ],
+                        )),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    height: 380.0,
+                    child: StreamBuilder<List<ImageBody>>(
+                        stream: imageListController.fetchImageStream(),
+                        builder:
+                            (context, AsyncSnapshot<List<ImageBody>> snapshot) {
+                          if (snapshot.hasData) {
+                            return ListView(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              children: snapshot.data!.map((ImageBody image) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Column(
+                                    children: [
+                                      SizedBox(
+                                        width: 380.0,
+                                        child: Image.network(image.imageURL),
+                                      ),
+                                      const Gap(10),
+                                      Text(
+                                          "${getDateString(image.recordTime)} 撮影")
+                                    ],
                                   ),
-                                  const Gap(10),
-                                  Text("${getDateString(image.recordTime)} 撮影")
-                                ],
-                              ),
+                                );
+                              }).toList(),
                             );
-                          }).toList(),
-                        );
-                      }
-                      if (snapshot.hasError) {}
-                      return const Center(
-                        child: Text("no data"),
-                      );
-                    }),
+                          }
+                          if (snapshot.hasError) {}
+                          return const Center(
+                            child: Text("no data"),
+                          );
+                        }),
+                  ),
+                ],
               ),
             ),
           ],
