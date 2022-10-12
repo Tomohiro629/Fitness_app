@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:karaoke_app/images_list/images_list_widget.dart';
-import 'package:karaoke_app/user_edit_page/user_edit_page.dart';
 
+import '../components/app_colors.dart';
 import '../components/bordered_text.dart';
 import '../entity/user.dart';
+import '../images_list/images_list_widget.dart';
+import '../user_edit_page/user_edit_page.dart';
 import 'widgets/calendar_widget.dart';
 
 class CalendarPage extends ConsumerWidget {
@@ -15,7 +16,7 @@ class CalendarPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      backgroundColor: const Color(0xff192028),
+      backgroundColor: AppColors.backColor,
       body: SafeArea(
           child: SingleChildScrollView(
         child: Column(children: [
