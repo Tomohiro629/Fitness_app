@@ -34,8 +34,8 @@ class RecordPage extends ConsumerWidget {
           query: recordController.recordQuery(selectedDay),
           itemBuilder: (context, snapshot) {
             final record = snapshot.data();
-            final totalCal = user.calorie - record.totalCalorie;
-            final totalPro = user.protein - record.totalProtein;
+            final totalCal = record.setCalorie - record.totalCalorie;
+            final totalPro = record.setProtein - record.totalProtein;
             return Column(
               children: [
                 Padding(
